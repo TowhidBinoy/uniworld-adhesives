@@ -1,1 +1,1 @@
-web: /opt/venv/bin/python manage.py migrate && /opt/venv/bin/python manage.py collectstatic --noinput && /opt/venv/bin/gunicorn uniworld.wsgi:application --bind 0.0.0.0:$PORT
+web: /opt/venv/bin/python manage.py migrate && /opt/venv/bin/python seed_real_products.py && /opt/venv/bin/python manage.py collectstatic --noinput && /opt/venv/bin/gunicorn uniworld.wsgi:application --bind 0.0.0.0:$PORT
