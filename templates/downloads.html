@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"Downloads — Product Catalogues, TDS & Certificates | Uniworld Adhesives" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Download Uniworld Adhesives product catalogues, technical data sheets (TDS), safety data sheets (SDS), and ISO 9001:2015 quality documents." }}{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK BLUEPRINT HERO -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <img
+    src="{% static 'product/images/about/bg.png' %}"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity pointer-events-none"
+  />
+  <div class="pointer-events-none absolute -top-24 right-0 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-6 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">Downloads</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <!-- Left Headline (8 Cols) -->
+      <div class="lg:col-span-8 space-y-5" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs font-mono text-rose-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>DOCUMENT REPOSITORY · ISO 9001:2015</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.08]">
+          Downloads &amp;
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400 mt-1">
+            Technical Library
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Access our library of product catalogues, technical specifications, safety documentation, and ISO 9001:2015 quality resources for industrial procurement and factory teams.
+        </p>
+      </div>
+
+      <!-- Right Document Vault Card (4 Cols) -->
+      <div class="lg:col-span-4" data-aos="fade-left" data-aos-delay="120">
+        <div class="rounded-3xl bg-[#131720]/95 border border-white/15 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.85)] space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <span class="font-mono text-[10px] uppercase tracking-wider text-slate-400">QUALITY ASSURANCE</span>
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">
+              VERIFIED FILES
+            </span>
+          </div>
+          <p class="font-display text-lg font-bold text-white">Catalogues, Specs &amp; Certificates</p>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Need a specific grade's Technical Data Sheet (TDS), Safety Data Sheet (SDS), or batch COA? Contact our Rupganj technical desk directly.
+          </p>
+          <a href="{% url 'technical_specs' %}" class="block text-center py-2.5 px-4 rounded-xl bg-white/[0.06] hover:bg-[#AB0716] border border-white/15 text-xs font-mono font-semibold text-white transition">
+            Compare All 15 Grades →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. SEARCH BAR & DOWNLOAD CATEGORIES -->
+<section class="py-14 sm:py-24 grid-blueprint-light border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 space-y-10">
+
+    <!-- Filter & Search Bar -->
+    <div class="rounded-2xl bg-white border border-slate-200 p-4 sm:p-5 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-4" data-aos="fade-up">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="font-mono text-[11px] uppercase tracking-wider text-slate-400 font-bold mr-1">Categories:</span>
+        {% for category in download_categories %}
+        <a
+          href="#cat-{{ forloop.counter }}"
+          class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-[#0C0E12] hover:text-white text-xs font-semibold text-slate-700 transition"
+        >
+          {{ category.title }}
+        </a>
+        {% empty %}
+        <span class="text-xs text-slate-400 font-mono">All available files listed below</span>
+        {% endfor %}
+      </div>
+
+      <!-- Instant Search -->
+      <div class="relative w-full lg:w-80">
+        <input
+          type="text"
+          id="download-search-input"
+          placeholder="Search catalogue, TDS, or document..."
+          class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+        />
+        <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Download Categories List -->
+    <div class="space-y-8" id="download-categories-container">
+      {% for category in download_categories %}
+      <div
+        id="cat-{{ forloop.counter }}"
+        class="download-category-card rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+        data-aos="fade-up"
+      >
+        <!-- Category Header -->
+        <div class="px-6 sm:px-8 py-6 bg-[#0C0E12] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-[#AB0716]">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#AB0716]/20 border border-[#AB0716]/40 text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" />
+                <path d="M8 7h8M8 11h8M8 15h5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rose-400 font-bold">
+                SECTION 0{{ forloop.counter }}
+              </span>
+              <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mt-0.5">
+                {{ category.title }}
+              </h2>
+              {% if category.description %}
+              <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">
+                {{ category.description }}
+              </p>
+              {% endif %}
+            </div>
+          </div>
+
+          <span class="font-mono text-xs px-3 py-1 rounded-full bg-white/10 text-slate-200 self-start sm:self-center shrink-0">
+            {{ category.files.count }} Document{{ category.files.count|pluralize }}
+          </span>
+        </div>
+
+        <!-- File Rows -->
+        <div class="divide-y divide-slate-100">
+          {% for file in category.files.all %}
+            {% if file.is_active %}
+            <div
+              class="download-file-row flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-6 sm:px-8 py-5 hover:bg-slate-50/90 transition-colors duration-200"
+              data-file-search="{{ file.title|lower }} {{ category.title|lower }} {{ file.get_file_extension|lower }}"
+            >
+              <div class="flex items-start sm:items-center gap-4 min-w-0">
+                <div class="w-11 h-11 rounded-xl bg-rose-50 border border-rose-100 text-[#AB0716] flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-linecap="round" />
+                    <polyline points="14 2 14 8 20 8" />
+                  </svg>
+                </div>
+
+                <div class="min-w-0">
+                  <p class="font-display font-bold text-[#0C0E12] text-base sm:text-lg leading-snug break-words">
+                    {{ file.title }}
+                  </p>
+                  <div class="flex flex-wrap items-center gap-2 mt-1.5 font-mono text-[11px] text-slate-500">
+                    <span class="px-2 py-0.5 rounded bg-slate-100 text-[#0C0E12] font-bold">
+                      {{ file.get_file_extension }}
+                    </span>
+                    {% if file.get_file_size_display %}
+                    <span>• {{ file.get_file_size_display }}</span>
+                    {% endif %}
+                    <span>• {{ file.created_at|date:"F Y" }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="{% url 'download_file' file.uuid %}"
+                class="btn-primary-glow inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold px-6 py-3 shrink-0 w-full sm:w-auto"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path d="M12 15V3m0 12l-4-4m4 4l4-4" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M4 20h16" stroke-linecap="round" />
+                </svg>
+                <span>Download</span>
+              </a>
+            </div>
+            {% endif %}
+          {% empty %}
+          <div class="px-8 py-10 text-center text-slate-500 text-sm">
+            No files available in this category yet.
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% empty %}
+      <div class="rounded-3xl bg-white border border-slate-200 p-12 text-center shadow-xs">
+        <p class="font-display text-xl font-bold text-[#0C0E12]">No download categories available at the moment.</p>
+        <p class="text-sm text-slate-500 mt-2">Please contact our team if you need product catalogues or technical sheets.</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Custom TDS / SDS & COA Assistance Banner -->
+    <div class="rounded-3xl bg-[#0C0E12] text-white p-7 sm:p-10 border border-white/10 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6" data-aos="fade-up">
+      <div class="space-y-2 max-w-2xl">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-rose-400 font-bold">Need Specific Grade Documentation?</span>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">
+          Request TDS, SDS, or Batch Certificates
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          If you require a Technical Data Sheet (TDS), Safety Data Sheet (SDS), or substrate compatibility guide for a specific adhesive or sealant grade, message our technical desk directly.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+        <a href="{% url 'contact' %}" class="btn-primary-glow px-7 py-3.5 text-sm font-semibold text-center">
+          Request Document →
+        </a>
+        <a href="{% url 'rnd' %}" class="px-6 py-3.5 rounded-lg border border-white/20 hover:border-white text-xs sm:text-sm font-semibold text-white text-center transition">
+          R&amp;D &amp; Lab QC
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.getElementById('download-search-input')?.addEventListener('input', function () {
+    const q = this.value.toLowerCase().trim();
+
+    document.querySelectorAll('.download-category-card').forEach(catCard => {
+      const rows = catCard.querySelectorAll('.download-file-row');
+      if (rows.length === 0) return;
+
+      let visibleCount = 0;
+      rows.forEach(row => {
+        const hay = row.dataset.fileSearch || '';
+        const match = !q || hay.includes(q);
+        row.classList.toggle('hidden', !match);
+        if (match) visibleCount++;
+      });
+
+      catCard.classList.toggle('hidden', q && visibleCount === 0);
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{{ meta_title|default:"Adhesive & Sealant Manufacturer in Bangladesh | Uniworld" }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ meta_description|default:"ISO 9001:2015 certified maker of industrial adhesives, sealants, primers and cleaners for footwear, furniture and hardware. Made in Bangladesh. Get a quote." }}{% endblock %}" />
+
+  {% if noindex %}
+  <meta name="robots" content="noindex, follow" />
+  {% else %}
+  <meta name="robots" content="index, follow" />
+  {% endif %}
+
+  <link rel="canonical" href="{% block canonical %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
+  <meta property="og:site_name" content="Uniworld Adhesives" />
+  <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
+  <meta property="og:title" content="{% block og_title %}{{ meta_title|default:"Adhesive & Sealant Manufacturer in Bangladesh | Uniworld" }}{% endblock %}" />
+  <meta property="og:description" content="{% block og_description %}{{ meta_description|default:"ISO 9001:2015 certified maker of industrial adhesives, sealants, primers and cleaners for footwear, furniture and hardware. Made in Bangladesh." }}{% endblock %}" />
+  <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'product/images/header/logo.png' %}{% endblock %}" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="{% static 'product/images/header/logo.png' %}" />
+
+  <!-- Fonts: Outfit + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/css/intlTelInput.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#AB0716",
+            "primary-hover": "#8C0511",
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            display: ["Outfit", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    body {
+      max-width: 100%;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: #0C0E12;
+      background-color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    section {
+      max-width: 100%;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: "Outfit", sans-serif;
+    }
+
+    /* Engineering Grid Backgrounds */
+    .grid-blueprint-dark {
+      background-color: #090B0E;
+      background-image:
+        radial-gradient(circle at 75% 20%, rgba(171, 7, 22, 0.24), transparent 52%),
+        radial-gradient(circle at 15% 85%, rgba(171, 7, 22, 0.12), transparent 45%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    .grid-blueprint-light {
+      background-color: #F8F9FB;
+      background-image:
+        linear-gradient(to right, rgba(12, 14, 18, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(12, 14, 18, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Smooth Laser Underline Nav Hover */
+    .nav-item-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 0;
+      color: #CBD5E1;
+      font-weight: 500;
+      transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      white-space: nowrap;
+    }
+    .nav-item-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #AB0716, #FF4D5E);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-item-link:hover,
+    .nav-item-link.is-active {
+      color: #FFFFFF;
+    }
+    .nav-item-link:hover::after,
+    .nav-item-link.is-active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Shimmer Primary Button */
+    .btn-primary-glow {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #AB0716 0%, #850410 100%);
+      color: #FFFFFF;
+      border-radius: 8px;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+      box-shadow: 0 10px 25px -6px rgba(171, 7, 22, 0.55);
+    }
+    .btn-primary-glow::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: skewX(-22deg);
+      transition: left 0.65s ease;
+    }
+    .btn-primary-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px -6px rgba(171, 7, 22, 0.78);
+    }
+    .btn-primary-glow:hover::before {
+      left: 145%;
+    }
+
+    /* Infinite Marquee Ticker */
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .animate-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Smooth Floating Product Animation */
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-slow { animation: floatY 5s ease-in-out infinite; }
+
+    /* Smooth Hero Stage Content Transition */
+    .stage-fade {
+      transition: opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), filter 0.32s ease;
+    }
+    .stage-fade.is-switching {
+      opacity: 0;
+      transform: translateY(8px) scale(0.96);
+      filter: blur(4px);
+    }
+
+    /* Hide scrollbar for mobile horizontal tabs */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
+  {% block schema %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{{ meta_title|default:'Adhesive & Sealant Manufacturer in Bangladesh | Uniworld' }}",
+    "description": "{{ meta_description|default:'ISO 9001:2015 certified maker of industrial adhesives, sealants, primers and cleaners for footwear, furniture and hardware. Made in Bangladesh.' }}",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Uniworld Adhesives & Sealants",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'product/images/header/logo.png' %}"
+      }
+    }
+  }
+  </script>
+  {% endblock %}
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen w-full selection:bg-[#AB0716] selection:text-white">
+
+  {% include 'includes/header.html' %}
+
+  <main class="flex-grow w-full">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'includes/footer.html' %}
+  {% include 'includes/quote_popup.html' %}
+
+  <!-- Floating Back-to-Top Button with Circular Scroll Progress -->
+  <button
+    id="back-to-top"
+    type="button"
+    aria-label="Back to top"
+    class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-[#0C0E12]/90 backdrop-blur-md text-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] flex items-center justify-center opacity-0 invisible translate-y-4 transition-all duration-300 hover:scale-110 hover:bg-[#AB0716] cursor-pointer group"
+  >
+    <svg class="w-12 h-12 -rotate-90" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2.5" />
+      <circle
+        id="scroll-progress-circle"
+        cx="24"
+        cy="24"
+        r="21"
+        fill="none"
+        stroke="#AB0716"
+        stroke-width="2.5"
+        stroke-dasharray="131.95"
+        stroke-dashoffset="131.95"
+        stroke-linecap="round"
+        class="group-hover:stroke-white transition-colors"
+      />
+    </svg>
+    <svg class="w-4 h-4 absolute text-white transition-transform duration-300 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/js/intlTelInput.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 750, once: true, offset: 40, easing: 'ease-out-cubic' });
+      }
+
+      // Back to Top + Circular Scroll Progress
+      const backToTopBtn = document.getElementById('back-to-top');
+      const progressCircle = document.getElementById('scroll-progress-circle');
+      const circumference = 2 * Math.PI * 21; // 131.95
+
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+
+        if (progressCircle) {
+          progressCircle.style.strokeDashoffset = circumference - progress * circumference;
+        }
+
+        if (scrollTop > 320) {
+          backToTopBtn?.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+          backToTopBtn?.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+          backToTopBtn?.classList.add('opacity-0', 'invisible', 'translate-y-4');
+          backToTopBtn?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+      }
+
+      window.addEventListener('scroll', updateScrollProgress, { passive: true });
+      backToTopBtn?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

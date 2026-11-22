@@ -1,0 +1,588 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"About Uniworld Adhesives & Sealants | ISO 9001:2015 Manufacturer in Bangladesh" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Learn about Uniworld Adhesives & Sealants—founded in 2018 in Bangladesh, ISO 9001:2015 certified manufacturer of industrial adhesives, sealants, primers, and cleaners." }}{% endblock %}
+
+{% block extra_head %}
+<style>
+  .about-spotlight {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.35s ease;
+  }
+  .about-spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(450px circle at var(--mx, 50%) var(--my, 50%), rgba(171, 7, 22, 0.12), transparent 48%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .about-spotlight:hover::before {
+    opacity: 1;
+  }
+  .about-spotlight:hover {
+    transform: translateY(-4px);
+    border-color: rgba(171, 7, 22, 0.5);
+    box-shadow: 0 22px 45px -15px rgba(12, 14, 18, 0.15);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. ANIMATED DARK BLUEPRINT HERO -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <img
+    src="{% static 'product/images/hero.jpeg' %}"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity pointer-events-none"
+  />
+  <div class="pointer-events-none absolute -top-24 right-0 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-6 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">About Us</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <!-- Left Headline (7 Cols) -->
+      <div class="lg:col-span-7 space-y-6" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs font-mono text-rose-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>ISO 9001:2015 CERTIFIED · ESTABLISHED 2018</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.08]">
+          Empowering Industries with the Science of
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400 mt-1">
+            Stronger Bonds.
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+          A Bangladesh-based manufacturer of industrial adhesives, silicone sealants, surface primers, and chemical solutions—serving footwear, furniture, construction, and manufacturing leaders from Dhaka and Rupganj.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
+          <a href="{% url 'product' %}" class="btn-primary-glow px-7 py-4 text-sm font-semibold inline-flex items-center justify-center gap-2">
+            <span>Explore Our 15 Grades</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="{% url 'contact' %}" class="px-6 py-4 rounded-lg border border-white/20 bg-white/[0.04] hover:bg-white/[0.1] text-sm font-semibold text-white text-center transition">
+            Connect With Our Team
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Company Profile Highlight Card (5 Cols) -->
+      <div class="lg:col-span-5" data-aos="fade-left" data-aos-delay="120">
+        <div class="rounded-3xl bg-[#131720]/95 border border-white/15 p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.85)] space-y-5">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10">
+            <div>
+              <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Corporate Footprint</span>
+              <span class="font-display font-bold text-lg text-white">Uniworld Adhesives &amp; Sealants</span>
+            </div>
+            <img src="{% static 'product/images/footer/iso-9001.png' %}" alt="ISO 9001:2015 Certified" class="h-11 w-auto bg-white p-1 rounded shrink-0" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3.5">
+            <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">FOUNDED</span>
+              <span class="block font-display text-2xl font-extrabold text-white mt-1">2018</span>
+              <span class="block text-[11px] text-slate-400 mt-0.5">Made in Bangladesh</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">PORTFOLIO</span>
+              <span class="block font-display text-2xl font-extrabold text-[#AB0716] mt-1">15 Grades</span>
+              <span class="block text-[11px] text-slate-400 mt-0.5">Adhesives, Sealants &amp; Primers</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">HEAD OFFICE</span>
+              <span class="block font-display text-base font-bold text-white mt-1">Asad Gate, Dhaka</span>
+              <span class="block text-[11px] text-slate-400 mt-0.5">Sales, R&amp;D &amp; Support</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">PLANT &amp; QC LAB</span>
+              <span class="block font-display text-base font-bold text-emerald-400 mt-1">Rupganj, Narayanganj</span>
+              <span class="block text-[11px] text-slate-400 mt-0.5">ISO 9001:2015 Batch Tested</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. WHO WE ARE SECTION (All 5 Paragraphs Preserved in a Structured, Scannable Editorial Layout) -->
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+      <!-- Left Structured Editorial Narrative (7 Cols) -->
+      <div class="lg:col-span-7 space-y-6" data-aos="fade-right">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Company Overview</span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2 leading-tight">
+            Who <span class="text-[#AB0716]">We Are</span>
+          </h2>
+        </div>
+
+        <!-- Lead Paragraph with Left Crimson Accent -->
+        <p class="text-base sm:text-lg text-[#0C0E12] font-medium leading-relaxed border-l-4 border-[#AB0716] pl-5 py-1 bg-slate-50/70 rounded-r-xl">
+          Founded in 2018, Uniworld Adhesives &amp; Sealants is a Bangladesh-based manufacturer of industrial adhesives, sealants, and bonding solutions. From our head office in Dhaka and manufacturing facility in Rupganj, Narayanganj, we serve businesses across a range of industries with products developed to meet the demands of modern manufacturing.
+        </p>
+
+        <!-- Structured Content Blocks so all paragraphs read effortlessly -->
+        <div class="space-y-4 pt-2">
+          <div class="p-5 sm:p-6 rounded-2xl border border-slate-200/90 bg-white hover:border-slate-300 transition">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold block mb-1.5">01 · Product Range &amp; Formulations</span>
+            <p class="text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+              Our product range includes SBS sprayable adhesives, synthetic rubber adhesives, polyurethane adhesives, graft adhesives, primers, silicone sealants, and industrial cleaning solutions. Each product is developed with its intended application in mind, helping manufacturers achieve dependable bonding, consistent production quality, and lasting performance across a variety of materials and working conditions.
+            </p>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-2xl border border-slate-200/90 bg-white hover:border-slate-300 transition">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold block mb-1.5">02 · ISO 9001:2015 Quality &amp; Reliability</span>
+            <p class="text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+              As an ISO 9001:2015 certified company, we place strong emphasis on quality management, manufacturing consistency, and continuous improvement. Our production processes are supported by quality control measures designed to maintain product reliability and meet the requirements of our customers. We combine practical industry knowledge with ongoing product development to address the evolving needs of the industries we serve.
+            </p>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-2xl border border-slate-200/90 bg-white hover:border-slate-300 transition">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold block mb-1.5">03 · Industry Partnership &amp; Long-Term Growth</span>
+            <p class="text-sm sm:text-[15px] text-slate-600 leading-relaxed mb-3">
+              At Uniworld, our role extends beyond manufacturing and supplying products. We work to understand our customers' applications, identify suitable solutions, and build lasting business relationships through dependable products and responsive service. Whether serving the footwear, furniture, automotive, construction, packaging, or general manufacturing sectors, we aim to be a reliable partner in our customers' day-to-day operations and long-term growth.
+            </p>
+            <p class="text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+              As we continue to develop our capabilities and expand our product portfolio, our focus remains on strengthening local manufacturing, improving product performance, and delivering solutions that businesses can rely on. We believe lasting partnerships are built through consistent quality, practical expertise, and trust earned over time.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual Architectural Collage (5 Cols) -->
+      <div class="lg:col-span-5 lg:sticky lg:top-28 space-y-6" data-aos="fade-left">
+        <div class="rounded-3xl bg-[#0C0E12] text-white p-5 sm:p-6 shadow-2xl border border-white/10 space-y-5">
+          <div class="relative rounded-2xl overflow-hidden">
+            <img
+              src="{% static 'product/images/about/about1.png' %}"
+              alt="Uniworld Adhesives manufacturing plant and application testing"
+              class="w-full h-64 sm:h-72 object-cover hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-[#0C0E12]/90 backdrop-blur-md border border-white/15 px-3.5 py-2.5 rounded-xl">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-rose-400 font-bold">RUPGANJ FACILITY</span>
+              <span class="font-mono text-[10px] text-emerald-400 font-semibold">● ISO 9001:2015</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="rounded-xl overflow-hidden border border-white/10 h-32">
+              <img
+                src="{% static 'product/images/about/about2.png' %}"
+                alt="Uniworld R&D and Quality Control Team"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="rounded-xl bg-white/[0.04] border border-white/10 p-4 flex flex-col justify-between">
+              <span class="font-mono text-[10px] text-slate-400 uppercase">SECTORS SERVED</span>
+              <p class="font-display text-sm font-bold text-white leading-snug">
+                Footwear, Furniture, Automotive, Construction &amp; Packaging
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-1 flex items-center justify-between text-xs font-mono text-slate-400 border-t border-white/10">
+            <span>Dhaka HQ · Rupganj Plant</span>
+            <a href="{% url 'rnd' %}" class="text-rose-400 hover:text-white transition font-semibold">Inspect Lab →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3. ARCHITECTURAL CENTER-SPINE ZIG-ZAG TIMELINE: MILESTONES IN INDUSTRIAL BONDING -->
+<section class="py-20 sm:py-28 grid-blueprint-light border-b border-slate-200 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20" data-aos="fade-up">
+      <span class="font-mono text-xs uppercase tracking-[0.22em] text-[#AB0716] font-bold">
+        Growth Trajectory · 2018 — 2026
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0C0E12] mt-2 tracking-tight">
+        Milestones in Industrial Bonding
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+        From a dedicated footwear adhesive facility in Rupganj to an ISO 9001:2015 certified 15-grade polymer manufacturer serving industries nationwide.
+      </p>
+    </div>
+
+    <!-- Center-Spine Timeline Wrapper -->
+    <div class="relative max-w-5xl mx-auto">
+      <!-- Vertical Spine Line (Left on Mobile, Exact Center on Desktop) -->
+      <div class="absolute left-5 lg:left-1/2 top-2 bottom-2 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#AB0716] via-rose-400 to-slate-300"></div>
+
+      <div class="space-y-12 sm:space-y-16">
+
+        <!-- ITEM 1: 2018 (Left Content on Desktop) -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-14" data-aos="fade-right">
+          <!-- Center Node Dot -->
+          <div class="absolute left-5 lg:left-1/2 top-6 lg:top-1/2 -translate-x-1/2 lg:-translate-y-1/2 z-20 flex items-center justify-center">
+            <span class="w-4 h-4 rounded-full bg-[#AB0716] ring-4 ring-white shadow-md"></span>
+          </div>
+
+          <!-- Left Column Content -->
+          <div class="pl-14 lg:pl-0 lg:text-right lg:pr-6 relative">
+            <span class="pointer-events-none select-none font-display text-6xl sm:text-7xl font-black text-slate-900/[0.05] leading-none block -mb-5">
+              2018
+            </span>
+            <div class="relative z-10 bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm hover:border-[#AB0716] hover:shadow-xl transition-all duration-300">
+              <div class="inline-flex items-center gap-2 font-mono text-xs font-bold text-[#AB0716] mb-2">
+                <span>2018</span>
+                <span>·</span>
+                <span>FOUNDATION</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-[#0C0E12]">
+                Rupganj Plant Foundation
+              </h3>
+              <p class="text-sm text-slate-600 mt-2.5 leading-relaxed">
+                Established local manufacturing at Mahona, Rupganj, Narayanganj, launching polychloroprene and polyurethane adhesives tailored for footwear and leather factories.
+              </p>
+              <div class="mt-4 pt-3 border-t border-slate-100 font-mono text-[11px] text-slate-500">
+                Deliverable: Footwear &amp; Elastomer Bonding
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Empty Spacer on Desktop -->
+          <div class="hidden lg:block"></div>
+        </div>
+
+        <!-- ITEM 2: 2020 (Right Content on Desktop) -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-14" data-aos="fade-left">
+          <!-- Center Node Dot -->
+          <div class="absolute left-5 lg:left-1/2 top-6 lg:top-1/2 -translate-x-1/2 lg:-translate-y-1/2 z-20 flex items-center justify-center">
+            <span class="w-4 h-4 rounded-full bg-[#0C0E12] ring-4 ring-white shadow-md"></span>
+          </div>
+
+          <!-- Left Empty Spacer on Desktop -->
+          <div class="hidden lg:block"></div>
+
+          <!-- Right Column Content -->
+          <div class="pl-14 lg:pl-6 relative">
+            <span class="pointer-events-none select-none font-display text-6xl sm:text-7xl font-black text-slate-900/[0.05] leading-none block -mb-5">
+              2020
+            </span>
+            <div class="relative z-10 bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm hover:border-[#AB0716] hover:shadow-xl transition-all duration-300">
+              <div class="inline-flex items-center gap-2 font-mono text-xs font-bold text-[#AB0716] mb-2">
+                <span>2020</span>
+                <span>·</span>
+                <span>PORTFOLIO EXPANSION</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-[#0C0E12]">
+                SBS Spray &amp; Foam Lamination Line
+              </h3>
+              <p class="text-sm text-slate-600 mt-2.5 leading-relaxed">
+                Introduced low-viscosity SBS Sprayable Adhesives (Clear &amp; White SB602) engineered for clean spray atomization across mattress, sofa upholstery, and woodworking lines.
+              </p>
+              <div class="mt-4 pt-3 border-t border-slate-100 font-mono text-[11px] text-slate-500">
+                Deliverable: 80–140 cPs Spray Formulations
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 3: 2023 (Left Content on Desktop) -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-14" data-aos="fade-right">
+          <!-- Center Node Dot -->
+          <div class="absolute left-5 lg:left-1/2 top-6 lg:top-1/2 -translate-x-1/2 lg:-translate-y-1/2 z-20 flex items-center justify-center">
+            <span class="w-4 h-4 rounded-full bg-[#0C0E12] ring-4 ring-white shadow-md"></span>
+          </div>
+
+          <!-- Left Column Content -->
+          <div class="pl-14 lg:pl-0 lg:text-right lg:pr-6 relative">
+            <span class="pointer-events-none select-none font-display text-6xl sm:text-7xl font-black text-slate-900/[0.05] leading-none block -mb-5">
+              2023
+            </span>
+            <div class="relative z-10 bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm hover:border-[#AB0716] hover:shadow-xl transition-all duration-300">
+              <div class="inline-flex items-center gap-2 font-mono text-xs font-bold text-emerald-700 mb-2">
+                <span>2023</span>
+                <span>·</span>
+                <span>QUALITY CERTIFICATION</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-[#0C0E12]">
+                ISO 9001:2015 Certified QC Lab
+              </h3>
+              <p class="text-sm text-slate-600 mt-2.5 leading-relaxed">
+                Formalized our quality management system with standardized Brookfield viscosity checks, 180° T-peel testing, heat-chamber validation, and 12-month retained sample archives.
+              </p>
+              <div class="mt-4 pt-3 border-t border-slate-100 font-mono text-[11px] text-emerald-700 font-semibold">
+                Deliverable: 100% Batch Traceability
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Empty Spacer on Desktop -->
+          <div class="hidden lg:block"></div>
+        </div>
+
+        <!-- ITEM 4: 2026 (Right Content on Desktop - Highlighted Dark Milestone) -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-14" data-aos="fade-left">
+          <!-- Center Pulsing Active Node -->
+          <div class="absolute left-5 lg:left-1/2 top-6 lg:top-1/2 -translate-x-1/2 lg:-translate-y-1/2 z-20 flex items-center justify-center">
+            <span class="absolute w-7 h-7 rounded-full bg-[#AB0716]/30 animate-ping"></span>
+            <span class="relative w-4 h-4 rounded-full bg-[#AB0716] ring-4 ring-white shadow-md"></span>
+          </div>
+
+          <!-- Left Empty Spacer on Desktop -->
+          <div class="hidden lg:block"></div>
+
+          <!-- Right Column Content -->
+          <div class="pl-14 lg:pl-6 relative">
+            <span class="pointer-events-none select-none font-display text-6xl sm:text-7xl font-black text-[#AB0716]/10 leading-none block -mb-5">
+              2026
+            </span>
+            <div class="relative z-10 bg-[#0C0E12] text-white rounded-2xl border border-[#AB0716]/50 p-6 sm:p-8 shadow-2xl">
+              <div class="inline-flex items-center gap-2 font-mono text-xs font-bold text-rose-400 mb-2">
+                <span>2025 – 2026</span>
+                <span>·</span>
+                <span>NATIONWIDE SCALE</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-white">
+                15-Grade Industrial &amp; Hardware Range
+              </h3>
+              <p class="text-sm text-slate-300 mt-2.5 leading-relaxed">
+                Expanded nationwide supply across 300ml Acetic &amp; Neutral Silicone Sealants, Nail Free construction adhesive, Cyanoacrylate Super Glue, Aerosol Spray Paints, and bulk factory drums.
+              </p>
+              <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between font-mono text-[11px]">
+                <span class="text-amber-400 font-semibold">15 Formulations Active</span>
+                <a href="{% url 'product' %}" class="text-white hover:text-[#AB0716] transition">Browse All →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. VISION, MISSION & TECHNICAL PARTNERSHIP -->
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up">
+      <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Direction &amp; Purpose</span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2">
+        We're more than just a manufacturer — we're your technical partner
+      </h2>
+      <p class="text-sm sm:text-lg text-slate-600 mt-4 leading-relaxed">
+        Helping you choose, apply, and perfect adhesive solutions that improve your product and your productivity.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Vision Card -->
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-8 sm:p-10 hover:border-[#AB0716] transition-all" data-aos="fade-right">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center shadow-xs shrink-0">
+            <img src="{% static 'product/images/about/vision.png' %}" alt="Our Vision" class="w-8 h-8 object-contain" />
+          </div>
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-widest text-[#AB0716] font-bold">LONG-TERM HORIZON</span>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12]">Our Vision</h3>
+          </div>
+        </div>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          To be recognized as a premier leader in adhesive innovation, known for products that blend science, sustainability, and reliability, and for partnerships that empower industries to build with confidence and creativity.
+        </p>
+      </div>
+
+      <!-- Mission Card -->
+      <div class="rounded-3xl bg-[#0C0E12] text-white p-8 sm:p-10 border border-white/10 shadow-xl" data-aos="fade-left">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+            <img src="{% static 'product/images/about/mission.png' %}" alt="Our Mission" class="w-8 h-8 object-contain" />
+          </div>
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-widest text-rose-400 font-bold">DAILY EXECUTION</span>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white">Our Mission</h3>
+          </div>
+        </div>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          To engineer advanced bonding technologies that enable industries to manufacture better, faster, and more sustainably — while upholding the highest standards of quality, safety, and environmental responsibility.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ASYMMETRIC BENTO GRID: CORE VALUES (Unique Architectural Layout, No Narrow Columns) -->
+<section class="py-16 sm:py-24 grid-blueprint-light border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12" data-aos="fade-up">
+      <div>
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">What Guides Us</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2">
+          Core Values
+        </h2>
+      </div>
+      <p class="text-sm text-slate-600 max-w-md">
+        Five principles governing every batch formulated in our Rupganj laboratory and supplied to factories nationwide.
+      </p>
+    </div>
+
+    <!-- Asymmetric 6-Column Bento Grid: Top 2 Wide Cards (3+3), Bottom 3 Balanced Cards (2+2+2) -->
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+      <!-- Value 1: Innovation (3 Cols - Featured Dark) -->
+      <div class="md:col-span-3 rounded-3xl bg-[#0C0E12] text-white p-8 sm:p-10 relative overflow-hidden group" data-aos="fade-up" data-aos-delay="0">
+        <div class="absolute -right-8 -bottom-8 w-44 h-44 bg-[#AB0716]/25 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center">
+            <img src="{% static 'product/images/about/innovation.png' %}" alt="Innovation" class="w-8 h-8 object-contain" />
+          </div>
+          <span class="font-mono text-xs px-3 py-1 rounded-full bg-[#AB0716] text-white font-bold">01 / INNOVATION</span>
+        </div>
+        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Innovation</h3>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-md">
+          Every formula we develop begins with research and ends with measurable results—tailored for real production line speeds and substrates.
+        </p>
+      </div>
+
+      <!-- Value 2: Quality (3 Cols - Featured Light Accent) -->
+      <div class="about-spotlight md:col-span-3 rounded-3xl bg-white border border-slate-200 p-8 sm:p-10 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="80">
+        <div>
+          <div class="flex items-start justify-between gap-4 mb-6">
+            <div class="w-14 h-14 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center">
+              <img src="{% static 'product/images/about/quality.png' %}" alt="Quality" class="w-8 h-8 object-contain" />
+            </div>
+            <span class="font-mono text-xs px-3 py-1 rounded-full bg-slate-100 text-[#0C0E12] font-bold">02 / QUALITY</span>
+          </div>
+          <h3 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12] mb-3">Quality</h3>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-md">
+            We commit to uncompromising excellence through rigorous testing and standardization under our ISO 9001:2015 Quality Management System.
+          </p>
+        </div>
+      </div>
+
+      <!-- Value 3: Sustainability (2 Cols) -->
+      <div class="about-spotlight md:col-span-2 rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="140">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <img src="{% static 'product/images/about/sustainability.png' %}" alt="Sustainability" class="w-12 h-12 object-contain" />
+            <span class="font-mono text-[11px] text-[#AB0716] font-bold">03</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mb-2">Sustainability</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            We minimize environmental impact through greener chemistry and cleaner production.
+          </p>
+        </div>
+      </div>
+
+      <!-- Value 4: Integrity (2 Cols) -->
+      <div class="about-spotlight md:col-span-2 rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <img src="{% static 'product/images/about/integrity.png' %}" alt="Integrity" class="w-12 h-12 object-contain" />
+            <span class="font-mono text-[11px] text-[#AB0716] font-bold">04</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mb-2">Integrity</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            We value transparency, trust, and ethical collaboration with clients and partners.
+          </p>
+        </div>
+      </div>
+
+      <!-- Value 5: Customer (2 Cols) -->
+      <div class="about-spotlight md:col-span-2 rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="260">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <img src="{% static 'product/images/about/customer.png' %}" alt="Customer" class="w-12 h-12 object-contain" />
+            <span class="font-mono text-[11px] text-[#AB0716] font-bold">05</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mb-2">Customer</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            We don't just supply products — we solve real bonding problems on your production floor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. INFRASTRUCTURE & CAPABILITY SECTION -->
+<section class="py-16 sm:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="relative rounded-3xl overflow-hidden bg-[#0C0E12] text-white p-8 sm:p-12 lg:p-16 shadow-2xl border border-white/10" data-aos="fade-up">
+      <img
+        src="{% static 'product/images/about/bg2.png' %}"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-luminosity pointer-events-none"
+      />
+      <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+        <span class="inline-block font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">
+          Plant &amp; Dhaka Headquarters
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+          Infrastructure &amp; Capability
+        </h2>
+        <p class="text-base sm:text-xl text-slate-200 font-light leading-relaxed">
+          Our factory in Rupganj is equipped with high-shear mixers, <strong class="text-white font-semibold">automatic batch processors</strong>, and <strong class="text-white font-semibold">advanced QC labs</strong> for consistency and precision. We maintain ISO-aligned protocols, batch traceability, and strict safety compliance. Our Head Office in Dhaka oversees R&amp;D, marketing, and customer support, ensuring that every client receives personalized attention and timely solutions.
+        </p>
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="{% url 'rnd' %}" class="btn-primary-glow w-full sm:w-auto px-7 py-3.5 text-sm font-semibold">
+            Inspect R&amp;D &amp; QC Lab →
+          </a>
+          <a href="{% url 'contact' %}" class="w-full sm:w-auto px-6 py-3.5 rounded-lg border border-white/20 hover:border-white text-sm font-semibold text-white transition">
+            Visit Head Office or Plant
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seamless Marquee Ticker -->
+<div class="relative overflow-hidden bg-[#060709] border-y border-white/10 py-4">
+  <div class="animate-marquee-track items-center">
+    {% for i in "1234" %}
+    <div class="flex items-center shrink-0">
+      <span class="mx-6 sm:mx-8 font-display text-base sm:text-xl font-extrabold uppercase tracking-[0.2em] text-white">
+        Bonding the Future
+      </span>
+      <span class="w-2 h-2 rotate-45 bg-[#AB0716]"></span>
+      <span class="mx-6 sm:mx-8 font-display text-base sm:text-xl font-extrabold uppercase tracking-[0.2em] text-transparent" style="-webkit-text-stroke: 1px rgba(255,255,255,0.45);">
+        ISO 9001:2015 Certified
+      </span>
+      <span class="w-2 h-2 rotate-45 bg-[#AB0716]"></span>
+      <span class="mx-6 sm:mx-8 font-display text-base sm:text-xl font-extrabold uppercase tracking-[0.2em] text-white">
+        Made in Bangladesh
+      </span>
+      <span class="w-2 h-2 rotate-45 bg-[#AB0716]"></span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.querySelectorAll('.about-spotlight').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+    });
+  });
+</script>
+{% endblock %}

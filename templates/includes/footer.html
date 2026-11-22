@@ -1,0 +1,218 @@
+{% load static %}
+
+<style>
+  @keyframes whatsappPulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+    70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+  .whatsapp-float-btn {
+    animation: whatsappPulse 2.4s infinite;
+  }
+  /* Shift Back-to-Top slightly above Floating WhatsApp button so they never overlap */
+  #back-to-top {
+    bottom: 5.5rem !important;
+  }
+</style>
+
+<footer class="relative bg-[#07080B] text-white overflow-hidden border-t border-white/10">
+  <!-- Ambient Background Glows -->
+  <div class="pointer-events-none absolute -top-40 left-1/4 w-[500px] h-[500px] bg-[#AB0716]/15 rounded-full blur-[140px]"></div>
+
+  <!-- Top Conversion Banner -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16">
+    <div class="relative rounded-2xl bg-gradient-to-r from-[#141821] via-[#181C26] to-[#12151C] border border-white/15 p-8 sm:p-10 lg:p-12 shadow-[0_25px_70px_rgba(0,0,0,0.7)] overflow-hidden" data-aos="fade-up">
+      <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-500"></div>
+
+      <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#AB0716]/15 border border-[#AB0716]/30 font-mono text-[11px] uppercase tracking-widest text-rose-300 font-semibold mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#AB0716] animate-ping"></span>
+            Rupganj R&amp;D Lab &amp; Bulk Sales
+          </div>
+          <p class="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Tell us what you’re bonding.
+          </p>
+          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
+            Share your substrates (EVA, PU, PVC, foam, wood, glass, or metal), line speed, and heat-resistance needs. Our technical team will match or customize the exact grade.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 shrink-0">
+          <a
+            href="{% url 'contact' %}"
+            class="btn-primary-glow px-8 py-4 text-sm font-semibold inline-flex items-center gap-2.5"
+          >
+            <span>Request a Quote</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="{% url 'technical_specs' %}"
+            class="px-6 py-4 rounded-lg border border-white/15 bg-white/[0.04] hover:bg-white/[0.1] hover:border-white/30 text-sm font-semibold text-white transition-all"
+          >
+            Spec Matrix →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Footer Grid -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+
+      <!-- Column 1: Brand Identity & ISO Badge -->
+      <div class="lg:col-span-4 space-y-6">
+        <a href="{% url 'index' %}" class="inline-flex items-center gap-3.5 group">
+          <img src="{% static 'product/images/header/logo.png' %}" alt="Uniworld Adhesives logo" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
+          <div>
+            <span class="block font-display text-2xl font-extrabold tracking-tight text-white leading-none">UNIWORLD</span>
+            <span class="block font-mono text-[10px] uppercase tracking-[0.24em] text-slate-400 mt-1">Adhesives &amp; Sealants</span>
+          </div>
+        </a>
+
+        <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+          ISO 9001:2015 certified Bangladeshi manufacturer of industrial adhesives, silicone sealants, primers, and surface cleaners engineered for footwear, furniture, and hardware.
+        </p>
+
+        <div class="flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition max-w-sm">
+          <img src="{% static 'product/images/footer/iso-9001.png' %}" alt="ISO 9001:2015 Certified Quality Management System" class="h-12 w-auto rounded bg-white p-1 shrink-0" />
+          <div>
+            <p class="font-display text-sm font-bold text-white">ISO 9001:2015 Certified</p>
+            <p class="text-xs text-slate-400 mt-0.5">Batch-tested QC at Rupganj Plant</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-1">
+          <a
+            href="https://www.facebook.com/uniworldadhesive"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/10 hover:border-[#AB0716] hover:bg-[#AB0716] text-xs font-medium text-slate-200 hover:text-white transition-all inline-flex items-center gap-2"
+          >
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a
+            href="https://www.youtube.com/@UnisoftSyntheticBangladesh"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/10 hover:border-[#AB0716] hover:bg-[#AB0716] text-xs font-medium text-slate-200 hover:text-white transition-all inline-flex items-center gap-2"
+          >
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links (Including Blog) -->
+      <div class="lg:col-span-2">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-5">Quick Links</p>
+        <ul class="space-y-3 text-sm text-slate-300">
+          <li><a href="{% url 'about' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">About Uniworld</a></li>
+          <li><a href="{% url 'industries_hub' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Industries Served</a></li>
+          <li><a href="{% url 'rnd' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">R&amp;D &amp; Quality</a></li>
+          <li><a href="{% url 'sustainability' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Sustainability</a></li>
+          <li><a href="{% url 'blog' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Blog &amp; Guides</a></li>
+          <li><a href="{% url 'downloads' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Downloads (PDF)</a></li>
+          <li><a href="{% url 'faq' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">B2B FAQs</a></li>
+          <li><a href="{% url 'contact' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Product Lines (Categories) -->
+      <div class="lg:col-span-3">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-5">Product Lines</p>
+        <ul class="space-y-3 text-sm text-slate-300">
+          <li><a href="{% url 'product' %}" class="text-[#AB0716] font-semibold hover:text-rose-400 hover:translate-x-1 inline-block transition-all">All Products (15 Grades) →</a></li>
+          <li><a href="{% url 'technical_specs' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Technical Spec Matrix</a></li>
+          <li><a href="{% url 'category_products' 'footwear' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Footwear &amp; Leather Adhesives</a></li>
+          <li><a href="{% url 'category_products' 'furniture' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Furniture &amp; Foam Adhesives</a></li>
+          <li><a href="{% url 'category_products' 'hardware' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Hardware &amp; Construction Sealants</a></li>
+          <li><a href="{% url 'single_product' 'eva-primer' %}" class="hover:text-white hover:translate-x-1 inline-block transition-all">Surface Primers &amp; Cleaners</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Facilities & 3 Contact Numbers -->
+      <div class="lg:col-span-3 space-y-4">
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.07]">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#AB0716] font-bold mb-1.5">Head Office</p>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Family World Tower, 2/6 Sir Syed Road, Asad Gate, Dhaka 1207
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.07]">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#AB0716] font-bold mb-1.5">Manufacturing Plant</p>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Dhaka-Sylhet Highway, Mahona, Rupganj, Narayanganj
+          </p>
+        </div>
+
+        <div class="px-1 space-y-1.5">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold mb-2">Direct Sales &amp; Hours</p>
+          <div class="flex flex-col space-y-1 font-mono text-xs text-white">
+            <a href="tel:+8801898802405" class="hover:text-[#AB0716] transition">+880 1898-802405</a>
+            <a href="tel:+8801711563790" class="hover:text-[#AB0716] transition">+880 1711-563790</a>
+            <a href="tel:+8801757692826" class="hover:text-[#AB0716] transition">+880 1757-692826</a>
+          </div>
+          <p class="text-xs text-slate-300 pt-1">
+            <a href="mailto:info@uniworldsolutions.com" class="hover:text-[#AB0716] transition">info@uniworldsolutions.com</a>
+          </p>
+          <p class="text-[11px] text-slate-500 pt-0.5">Saturday – Thursday, 9:00 AM – 6:00 PM</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar with Animated Kreatech Developer Credit -->
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+        <p>&copy; {% now "Y" %} Uniworld Adhesives &amp; Sealants. All rights reserved.</p>
+        <span class="hidden sm:inline text-white/20">|</span>
+        <p class="inline-flex items-center gap-1.5 text-slate-400">
+          <span>Engineered &amp; Developed by</span>
+          <a
+            href="https://kreatech.ca/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 hover:border-[#AB0716] text-white font-display font-bold tracking-wide transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(171,7,22,0.35)]"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-[#AB0716] group-hover:bg-emerald-400 transition-colors"></span>
+            <span class="bg-gradient-to-r from-white via-rose-200 to-white bg-clip-text group-hover:text-transparent transition-all">
+              Kreatech
+            </span>
+            <svg class="w-3 h-3 text-rose-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </a>
+        </p>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="{% url 'privacy_policy' %}" class="hover:text-white transition">Privacy Policy</a>
+        <a href="{% url 'terms_of_use' %}" class="hover:text-white transition">Terms of Use</a>
+        <a href="/sitemap.xml" class="hover:text-white transition">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Full-Site Floating WhatsApp Button (+880 1898-802405) -->
+<a
+  href="https://wa.me/8801898802405?text=Hello%20Uniworld%20Adhesives%2C%20I%20would%20like%20to%20inquire%20about%20your%20products%20and%20pricing."
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat on WhatsApp (+880 1898-802405)"
+  title="Chat on WhatsApp: +880 1898-802405"
+  class="whatsapp-float-btn fixed bottom-6 right-6 z-50 w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white shadow-[0_12px_30px_rgba(37,211,102,0.45)] flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+>
+  <svg class="w-7 h-7 fill-current" viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16.004 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.256.59 4.458 1.71 6.398L3.1 28.8l6.564-1.722a12.74 12.74 0 0 0 6.34 1.682h.006c7.058 0 12.796-5.74 12.796-12.8 0-3.42-1.332-6.636-3.75-9.054A12.716 12.716 0 0 0 16.004 3.2zm0 23.4h-.004a10.58 10.58 0 0 1-5.394-1.476l-.386-.23-3.896 1.022 1.04-3.798-.252-.4a10.566 10.566 0 0 1-1.622-5.638c0-5.844 4.756-10.6 10.604-10.6 2.832 0 5.494 1.104 7.496 3.106a10.532 10.532 0 0 1 3.104 7.498c0 5.844-4.756 10.596-10.6 10.596zm5.814-7.938c-.318-.16-1.884-.93-2.176-1.036-.292-.106-.504-.16-.716.16-.212.318-.822 1.036-1.008 1.248-.186.212-.372.238-.69.08-.318-.16-1.344-.496-2.56-1.58-.946-.844-1.584-1.886-1.77-2.204-.186-.318-.02-.49.14-.648.144-.142.318-.372.478-.558.16-.186.212-.318.318-.53.106-.212.054-.398-.026-.558-.08-.16-.716-1.726-.982-2.364-.258-.62-.52-.536-.716-.546l-.61-.01c-.212 0-.558.08-.85.398-.292.318-1.114 1.088-1.114 2.654 0 1.566 1.14 3.078 1.3 3.29.16.212 2.244 3.426 5.436 4.804.76.328 1.352.524 1.814.67.762.242 1.456.208 2.004.126.612-.092 1.884-.77 2.15-1.514.266-.744.266-1.382.186-1.514-.08-.132-.292-.212-.61-.372z"/>
+  </svg>
+  <span class="hidden sm:block pointer-events-none absolute right-16 px-3 py-1.5 rounded-lg bg-[#0C0E12] text-white font-mono text-[11px] whitespace-nowrap border border-white/15 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shadow-lg">
+    WhatsApp: +880 1898-802405
+  </span>
+</a>

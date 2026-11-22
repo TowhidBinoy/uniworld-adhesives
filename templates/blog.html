@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"Adhesive & Sealant Guides and News | Uniworld Blog" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Practical guides to choosing and applying adhesives, sealants and primers for footwear, furniture and construction, plus Uniworld product news and updates." }}{% endblock %}
+
+{% block extra_head %}
+<style>
+  .editorial-card {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.35s ease;
+  }
+  .editorial-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(171, 7, 22, 0.5);
+    box-shadow: 0 24px 50px -16px rgba(12, 14, 18, 0.16);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK BLUEPRINT HERO -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <img
+    src="{% static 'product/images/blog/bg.png' %}"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-luminosity pointer-events-none"
+  />
+  <div class="pointer-events-none absolute -top-24 right-0 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-6 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">Technical Blog &amp; Guides</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+      <div class="lg:col-span-8 space-y-4" data-aos="fade-up">
+        <span class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-rose-400 font-bold">
+          <span class="w-2 h-2 rounded-full bg-[#AB0716]"></span>
+          R&amp;D Knowledge Hub · Application Notes
+        </span>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.08]">
+          Adhesive &amp; Sealant
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400">
+            Guides &amp; Insights
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Field-tested guidance on primer selection, spray atomization, silicone curing, and industrial bonding workflows from Uniworld's technical team.
+        </p>
+      </div>
+
+      <!-- Search Box Aligned Bottom Right -->
+      <div class="lg:col-span-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="relative">
+          <input
+            type="text"
+            id="blog-search-input"
+            placeholder="Search guides (e.g., EVA, SBS, Silicone)..."
+            class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/[0.08] border border-white/20 text-sm text-white placeholder-slate-400 focus:bg-[#131720] focus:border-[#AB0716] focus:outline-none transition"
+          />
+          <svg class="w-4 h-4 text-slate-400 absolute left-4 top-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. TOPIC FILTER BAR & BALANCED 3-COLUMN EDITORIAL GRID -->
+<section class="py-14 sm:py-22 grid-blueprint-light border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 space-y-10">
+
+    {% if posts %}
+      <!-- Filter Tabs + Article Count -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200/80" data-aos="fade-up">
+        <div class="flex flex-wrap gap-2" id="blog-topic-tabs">
+          <button type="button" data-topic="all" class="blog-topic-btn px-4 py-2 rounded-xl font-mono text-xs font-bold bg-[#0C0E12] text-white cursor-pointer transition">
+            All Guides ({{ posts|length }})
+          </button>
+          <button type="button" data-topic="footwear" class="blog-topic-btn px-4 py-2 rounded-xl font-mono text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:border-[#0C0E12] cursor-pointer transition">
+            Footwear &amp; Primers
+          </button>
+          <button type="button" data-topic="foam" class="blog-topic-btn px-4 py-2 rounded-xl font-mono text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:border-[#0C0E12] cursor-pointer transition">
+            Foam &amp; Furniture
+          </button>
+          <button type="button" data-topic="silicone" class="blog-topic-btn px-4 py-2 rounded-xl font-mono text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:border-[#0C0E12] cursor-pointer transition">
+            Silicone &amp; Glazing
+          </button>
+        </div>
+
+        <span class="font-mono text-xs text-slate-500">
+          Showing <strong id="visible-post-count" class="text-[#0C0E12]">{{ posts|length }}</strong> technical articles
+        </span>
+      </div>
+
+      <!-- Balanced 3-Column Grid (Zero Awkward Empty Gaps) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7" id="blog-posts-grid">
+        {% for post in posts %}
+        <article
+          class="blog-search-item editorial-card rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-xs flex flex-col justify-between"
+          data-search="{{ post.title|lower }} {{ post.excerpt|lower }} {{ post.tags|lower }}"
+          data-aos="fade-up"
+          data-aos-delay="{{ forloop.counter0 }}0"
+        >
+          <div>
+            <!-- Cover Image -->
+            <a href="{% url 'blog_details' post.slug %}" class="relative block h-56 bg-[#0C0E12] overflow-hidden group">
+              {% if post.featured_image %}
+              <img
+                src="{{ post.featured_image.url }}"
+                alt="{{ post.title }}"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              {% else %}
+              <img
+                src="{% static 'product/images/blog/bg.png' %}"
+                alt="{{ post.title }}"
+                class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+              />
+              {% endif %}
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0C0E12]/70 via-transparent to-transparent"></div>
+
+              {% if forloop.first %}
+              <span class="absolute top-3.5 left-3.5 font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded bg-[#AB0716] text-white font-bold">
+                Latest Guide
+              </span>
+              {% endif %}
+
+              <span class="absolute bottom-3.5 left-3.5 font-mono text-[11px] px-2.5 py-1 rounded bg-black/75 backdrop-blur-xs text-white">
+                {{ post.published_date|date:"j M Y" }}
+              </span>
+            </a>
+
+            <!-- Card Content -->
+            <div class="p-6 space-y-3">
+              {% if post.tags %}
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block truncate">
+                {{ post.tags }}
+              </span>
+              {% endif %}
+
+              <h2 class="font-display text-xl font-bold text-[#0C0E12] leading-snug line-clamp-2">
+                <a href="{% url 'blog_details' post.slug %}" class="hover:text-[#AB0716] transition-colors">
+                  {{ post.title }}
+                </a>
+              </h2>
+
+              {% if post.excerpt %}
+              <p class="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                {{ post.excerpt }}
+              </p>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <div class="px-6 py-4 bg-slate-50/90 border-t border-slate-100 flex items-center justify-between gap-2">
+            <a href="{% url 'blog_details' post.slug %}" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0C0E12] hover:text-[#AB0716] transition">
+              <span>Read Full Guide</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <span class="font-mono text-[11px] text-slate-400">5 min read</span>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+
+    {% else %}
+      <!-- Clean Empty State -->
+      <div class="rounded-3xl bg-white border border-slate-200 p-10 sm:p-16 text-center max-w-3xl mx-auto shadow-xs space-y-4">
+        <span class="inline-block font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">
+          Technical Publications
+        </span>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12]">
+          New Application Guides Coming Soon
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Our R&amp;D team is preparing detailed technical guides on footwear sole bonding, sprayable foam adhesives, and silicone sealant selection.
+        </p>
+        <div class="pt-3 flex flex-wrap items-center justify-center gap-3">
+          <a href="{% url 'technical_specs' %}" class="btn-primary-glow px-6 py-3 text-xs sm:text-sm font-semibold">
+            View Technical Spec Matrix →
+          </a>
+          <a href="{% url 'downloads' %}" class="px-6 py-3 rounded-lg border border-slate-300 hover:border-[#0C0E12] text-xs sm:text-sm font-semibold text-[#0C0E12] transition">
+            Download Catalogues
+          </a>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Bottom Technical Resource Banner -->
+    <div class="rounded-3xl bg-[#0C0E12] text-white p-7 sm:p-10 border border-white/10 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6" data-aos="fade-up">
+      <div class="space-y-1.5 max-w-2xl">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-rose-400 font-bold">Rupganj R&amp;D &amp; Application Lab</span>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">
+          Need Product Datasheets (TDS/SDS) or Lab Testing?
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Compare all 15 adhesive &amp; sealant specifications side-by-side or request trial samples for your production line.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <a href="{% url 'technical_specs' %}" class="btn-primary-glow px-6 py-3.5 text-xs sm:text-sm font-semibold">
+          Compare Spec Matrix →
+        </a>
+        <a href="{% url 'contact' %}" class="px-6 py-3.5 rounded-lg border border-white/20 hover:border-white text-xs sm:text-sm font-semibold text-white transition">
+          Request Sample
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  let activeTopic = 'all';
+
+  function filterBlogCards() {
+    const q = (document.getElementById('blog-search-input')?.value || '').toLowerCase().trim();
+    let count = 0;
+
+    document.querySelectorAll('.blog-search-item').forEach(card => {
+      const hay = card.dataset.search || '';
+      const matchTopic = activeTopic === 'all' || hay.includes(activeTopic);
+      const matchQuery = !q || hay.includes(q);
+      const show = matchTopic && matchQuery;
+      card.classList.toggle('hidden', !show);
+      if (show) count++;
+    });
+
+    const counterEl = document.getElementById('visible-post-count');
+    if (counterEl) counterEl.textContent = count;
+  }
+
+  document.querySelectorAll('.blog-topic-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      activeTopic = this.dataset.topic;
+      document.querySelectorAll('.blog-topic-btn').forEach(b => {
+        b.classList.remove('bg-[#0C0E12]', 'text-white');
+        b.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+      });
+      this.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+      this.classList.add('bg-[#0C0E12]', 'text-white');
+      filterBlogCards();
+    });
+  });
+
+  document.getElementById('blog-search-input')?.addEventListener('input', filterBlogCards);
+</script>
+{% endblock %}

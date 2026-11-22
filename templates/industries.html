@@ -1,0 +1,353 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"Industries Served — Automotive, Woodworking, Footwear, Electronics & Retail | Uniworld" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Discover how Uniworld Adhesives serves Bangladesh's automotive, woodworking & furniture, footwear & leather, electronics, textile & foam, and DIY/hardware industries." }}{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK BLUEPRINT HERO (With 6-Sector Coverage Card) -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <img
+    src="{% static 'product/images/industre/03.png' %}"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-luminosity pointer-events-none"
+  />
+  <div class="pointer-events-none absolute -top-24 right-0 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-6 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">Industries Served</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <!-- Left Headline (8 Cols) -->
+      <div class="lg:col-span-8 space-y-5" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs font-mono text-rose-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>APPLICATION-MATCHED BONDING · ISO 9001:2015</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.08]">
+          Industries We Serve with
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400 mt-1">
+            Precision Bonding
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Different industries bond completely different substrates under heat, flex, vibration, or moisture. Browse Uniworld's 15 industrial adhesive, primer, cleaner, and sealant grades matched to 6 core manufacturing and trade sectors across Bangladesh.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
+          <a href="{% url 'product' %}" class="btn-primary-glow px-7 py-4 text-sm font-semibold inline-flex items-center justify-center gap-2">
+            <span>Explore All Products</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="{% url 'technical_specs' %}" class="px-6 py-4 rounded-lg border border-white/20 bg-white/[0.04] hover:bg-white/[0.1] text-sm font-semibold text-white text-center transition">
+            Full Spec Matrix (15)
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Sector Snapshot Card (4 Cols) -->
+      <div class="lg:col-span-4" data-aos="fade-left" data-aos-delay="120">
+        <div class="rounded-3xl bg-[#131720]/95 border border-white/15 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.85)] space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <span class="font-mono text-[10px] uppercase tracking-wider text-slate-400">SECTOR COVERAGE</span>
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">
+              6 CORE SECTORS
+            </span>
+          </div>
+          <p class="font-display text-lg font-bold text-white">Engineered for Factory &amp; Trade</p>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Every formulation is batch-tested at Rupganj for viscosity, peel force, and tropical heat durability.
+          </p>
+          <div class="grid grid-cols-2 gap-2 pt-1 font-mono text-[10px]">
+            <div class="p-2 rounded-lg bg-black/50 border border-white/10 text-slate-200">01 · Automotive</div>
+            <div class="p-2 rounded-lg bg-black/50 border border-white/10 text-slate-200">02 · Woodworking</div>
+            <div class="p-2 rounded-lg bg-black/50 border border-white/10 text-slate-200">03 · Footwear</div>
+            <div class="p-2 rounded-lg bg-black/50 border border-white/10 text-slate-200">04 · Electronics</div>
+            <div class="p-2 rounded-lg bg-black/50 border border-white/10 text-slate-200">05 · Textile &amp; Foam</div>
+            <div class="p-2 rounded-lg bg-black/50 border border-white/10 text-slate-200">06 · DIY &amp; Retail</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CLEAN 3-COLUMN × 2-ROW INDUSTRIES GRID (ALL 6 SECTORS) -->
+<section class="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+
+    <div class="max-w-2xl mb-12" data-aos="fade-up">
+      <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Application Sectors</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0C0E12] mt-2">
+        Bonding Solutions by Industry
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600 mt-2.5 leading-relaxed">
+        Select an industry sector below to explore matched formulations, substrate compatibility, and pack options.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+      <!-- Sector 1: Automotive & Transportation (01.png) -->
+      <article class="group rounded-2xl bg-white border border-slate-200 hover:border-[#AB0716]/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between" data-aos="fade-up">
+        <div>
+          <div class="relative aspect-[16/10] w-full bg-[#0C0E12] overflow-hidden">
+            <img
+              src="{% static 'product/images/industre/01.png' %}"
+              alt="Automotive and Transportation Adhesives"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-3.5 left-3.5 font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#0C0E12]/90 text-white font-semibold">
+              01 · Automotive
+            </span>
+          </div>
+
+          <div class="p-6 space-y-2.5">
+            <h3 class="font-display text-xl font-bold text-[#0C0E12] group-hover:text-[#AB0716] transition-colors">
+              Automotive &amp; Transportation
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              High-temperature and fuel/oil resistance, NVH damping, and flexible bonds on plastics, foams, and interior trim for fast cycle times.
+            </p>
+            <p class="text-xs font-mono text-slate-500 pt-1">
+              <strong class="text-[#0C0E12]">Key Grades:</strong> Synthetic Rubber, SBS Spray, PU
+            </p>
+          </div>
+        </div>
+
+        <div class="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
+          <a href="{% url 'product' %}" class="text-xs sm:text-sm font-semibold text-[#0C0E12] hover:text-[#AB0716] transition">
+            Browse Products →
+          </a>
+          <a href="{% url 'contact' %}" class="text-xs font-mono font-semibold text-[#AB0716] hover:underline">
+            Get Quote
+          </a>
+        </div>
+      </article>
+
+      <!-- Sector 2: Woodworking & Furniture (02.png) -->
+      <article class="group rounded-2xl bg-white border border-slate-200 hover:border-[#AB0716]/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="60">
+        <div>
+          <div class="relative aspect-[16/10] w-full bg-[#0C0E12] overflow-hidden">
+            <img
+              src="{% static 'product/images/industre/02.png' %}"
+              alt="Woodworking and Furniture Adhesives"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-3.5 left-3.5 font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#0C0E12]/90 text-white font-semibold">
+              02 · Woodworking
+            </span>
+          </div>
+
+          <div class="p-6 space-y-2.5">
+            <h3 class="font-display text-xl font-bold text-[#0C0E12] group-hover:text-[#AB0716] transition-colors">
+              Woodworking &amp; Furniture
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Fast tack, heat resistance, clean spray or roll application, and calibrated open-time options for laminates, wood panels, and cabinetry.
+            </p>
+            <p class="text-xs font-mono text-slate-500 pt-1">
+              <strong class="text-[#0C0E12]">Key Grades:</strong> Synthetic Rubber, SBS Spray, Nail Free
+            </p>
+          </div>
+        </div>
+
+        <div class="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
+          <a href="{% url 'category_products' 'furniture' %}" class="text-xs sm:text-sm font-semibold text-[#0C0E12] hover:text-[#AB0716] transition">
+            View Furniture Range →
+          </a>
+          <a href="{% url 'contact' %}" class="text-xs font-mono font-semibold text-[#AB0716] hover:underline">
+            Get Quote
+          </a>
+        </div>
+      </article>
+
+      <!-- Sector 3: Footwear & Leather Goods (03.png) -->
+      <article class="group rounded-2xl bg-white border border-slate-200 hover:border-[#AB0716]/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="120">
+        <div>
+          <div class="relative aspect-[16/10] w-full bg-[#0C0E12] overflow-hidden">
+            <img
+              src="{% static 'product/images/industre/03.png' %}"
+              alt="Footwear and Leather Goods Manufacturing"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-3.5 left-3.5 font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#0C0E12]/90 text-white font-semibold">
+              03 · Footwear
+            </span>
+          </div>
+
+          <div class="p-6 space-y-2.5">
+            <h3 class="font-display text-xl font-bold text-[#0C0E12] group-hover:text-[#AB0716] transition-colors">
+              Footwear &amp; Leather Goods
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Strong elastomer bonding for EVA, PU, PVC, TPR, and leather—delivering high green strength, flex-crack resistance, and heat activation.
+            </p>
+            <p class="text-xs font-mono text-slate-500 pt-1">
+              <strong class="text-[#0C0E12]">Key Grades:</strong> Polyurethane (PU), Graft CR, EVA &amp; PU Primers
+            </p>
+          </div>
+        </div>
+
+        <div class="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
+          <a href="{% url 'category_products' 'footwear' %}" class="text-xs sm:text-sm font-semibold text-[#0C0E12] hover:text-[#AB0716] transition">
+            View Footwear Range →
+          </a>
+          <a href="{% url 'contact' %}" class="text-xs font-mono font-semibold text-[#AB0716] hover:underline">
+            Get Quote
+          </a>
+        </div>
+      </article>
+
+      <!-- Sector 4: Electronics & Appliances (04.png) -->
+      <article class="group rounded-2xl bg-white border border-slate-200 hover:border-[#AB0716]/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between" data-aos="fade-up">
+        <div>
+          <div class="relative aspect-[16/10] w-full bg-[#0C0E12] overflow-hidden">
+            <img
+              src="{% static 'product/images/industre/04.png' %}"
+              alt="Electronics and Appliances Sealants and Adhesives"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-3.5 left-3.5 font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#0C0E12]/90 text-white font-semibold">
+              04 · Electronics
+            </span>
+          </div>
+
+          <div class="p-6 space-y-2.5">
+            <h3 class="font-display text-xl font-bold text-[#0C0E12] group-hover:text-[#AB0716] transition-colors">
+              Electronics &amp; Appliances
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Dielectric stability for sealants, thermal cycling tolerance, clean non-corrosive bonds on plastics and metals, and low outgassing.
+            </p>
+            <p class="text-xs font-mono text-slate-500 pt-1">
+              <strong class="text-[#0C0E12]">Key Grades:</strong> Neutral Silicone Sealant, Super Glue
+            </p>
+          </div>
+        </div>
+
+        <div class="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
+          <a href="{% url 'single_product' 'silicone-sealant-neutral' %}" class="text-xs sm:text-sm font-semibold text-[#0C0E12] hover:text-[#AB0716] transition">
+            View Neutral Sealants →
+          </a>
+          <a href="{% url 'contact' %}" class="text-xs font-mono font-semibold text-[#AB0716] hover:underline">
+            Get Quote
+          </a>
+        </div>
+      </article>
+
+      <!-- Sector 5: Textile, Foam & Flexible Materials (05.png) -->
+      <article class="group rounded-2xl bg-white border border-slate-200 hover:border-[#AB0716]/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="60">
+        <div>
+          <div class="relative aspect-[16/10] w-full bg-[#0C0E12] overflow-hidden">
+            <img
+              src="{% static 'product/images/industre/05.png' %}"
+              alt="Textile, Foam and Flexible Materials Lamination"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-3.5 left-3.5 font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#0C0E12]/90 text-white font-semibold">
+              05 · Textile &amp; Foam
+            </span>
+          </div>
+
+          <div class="p-6 space-y-2.5">
+            <h3 class="font-display text-xl font-bold text-[#0C0E12] group-hover:text-[#AB0716] transition-colors">
+              Textile, Foam &amp; Flexible Materials
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              High tack to porous substrates, adjustable open time, soft non-hardening seams, and low-odor spray options for mattress and sofa foam.
+            </p>
+            <p class="text-xs font-mono text-slate-500 pt-1">
+              <strong class="text-[#0C0E12]">Key Grades:</strong> SBS Sprayable (Clear &amp; SB602 White)
+            </p>
+          </div>
+        </div>
+
+        <div class="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
+          <a href="{% url 'single_product' 'sbs-sprayable-adhesive' %}" class="text-xs sm:text-sm font-semibold text-[#0C0E12] hover:text-[#AB0716] transition">
+            View Foam Adhesives →
+          </a>
+          <a href="{% url 'contact' %}" class="text-xs font-mono font-semibold text-[#AB0716] hover:underline">
+            Get Quote
+          </a>
+        </div>
+      </article>
+
+      <!-- Sector 6: DIY, Trade & Retail (06.png) -->
+      <article class="group rounded-2xl bg-white border border-slate-200 hover:border-[#AB0716]/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="120">
+        <div>
+          <div class="relative aspect-[16/10] w-full bg-[#0C0E12] overflow-hidden">
+            <img
+              src="{% static 'product/images/industre/06.png' %}"
+              alt="DIY, Trade and Hardware Retail Sealants and Glues"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-3.5 left-3.5 font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#0C0E12]/90 text-white font-semibold">
+              06 · DIY &amp; Retail
+            </span>
+          </div>
+
+          <div class="p-6 space-y-2.5">
+            <h3 class="font-display text-xl font-bold text-[#0C0E12] group-hover:text-[#AB0716] transition-colors">
+              DIY, Trade &amp; Retail
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Easy application, multi-substrate compatibility, clear instructions, and safe handling across sealants, Nail Free, super glue, and spray paints.
+            </p>
+            <p class="text-xs font-mono text-slate-500 pt-1">
+              <strong class="text-[#0C0E12]">Key Grades:</strong> Acetic Silicone, Nail Free, Super Glue
+            </p>
+          </div>
+        </div>
+
+        <div class="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
+          <a href="{% url 'category_products' 'hardware' %}" class="text-xs sm:text-sm font-semibold text-[#0C0E12] hover:text-[#AB0716] transition">
+            View Hardware Range →
+          </a>
+          <a href="{% url 'contact' %}" class="text-xs font-mono font-semibold text-[#AB0716] hover:underline">
+            Get Quote
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3. SIMPLE & CLEAN TECHNICAL CONSULTATION CTA -->
+<section class="py-16 sm:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="rounded-2xl bg-[#0C0E12] text-white p-8 sm:p-12 flex flex-col lg:flex-row lg:items-center justify-between gap-6" data-aos="fade-up">
+      <div class="space-y-2 max-w-2xl">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-rose-400 font-bold">Technical &amp; Bulk Sales Support</span>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">
+          Need Help Selecting the Right Adhesive Grade?
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Share your substrate materials and production requirements with our Rupganj technical team for sample testing and bulk quotation.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <a href="{% url 'contact' %}" class="btn-primary-glow px-7 py-3.5 text-sm font-semibold">
+          Contact Technical Team →
+        </a>
+        <a href="{% url 'technical_specs' %}" class="px-6 py-3.5 rounded-lg border border-white/20 hover:border-white text-sm font-semibold text-white transition">
+          Compare Specs
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

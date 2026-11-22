@@ -1,0 +1,567 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"Contact Uniworld Adhesives | Get a Quote & Factory Location in Bangladesh" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Request a bulk quote, product sample, or TDS/SDS sheet from Uniworld Adhesives. Visit our Head Office in Asad Gate, Dhaka or Manufacturing Plant in Rupganj, Narayanganj." }}{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Uniworld Adhesives & Sealants",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'product/images/header/logo.png' %}",
+  "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+  "telephone": "+8801898802405",
+  "email": "info@uniworldsolutions.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Family World Tower, 2/6 Sir Syed Road, Asad Gate",
+    "addressLocality": "Dhaka",
+    "postalCode": "1207",
+    "addressCountry": "BD"
+  },
+  "department": {
+    "@type": "Organization",
+    "name": "Uniworld Manufacturing Plant",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Dhaka-Sylhet Highway, Mahona, Rupganj",
+      "addressLocality": "Narayanganj",
+      "addressCountry": "BD"
+    }
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK BLUEPRINT HERO -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <img
+    src="{% static 'product/images/contact/bg.png' %}"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity pointer-events-none"
+  />
+  <div class="pointer-events-none absolute -top-24 right-0 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-6 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">Contact &amp; Quote Desk</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <!-- Left Headline (7 Cols) -->
+      <div class="lg:col-span-7 space-y-5" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs font-mono text-rose-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>DIRECT FACTORY DESK · DHAKA &amp; RUPGANJ</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.08]">
+          We're Here to Help You Build
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400 mt-1">
+            Stronger Bonds.
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Request factory-direct bulk pricing, sample packs for substrate testing, or Technical &amp; Safety Data Sheets (TDS/SDS). Our sales and Rupganj R&amp;D teams respond within one business day.
+        </p>
+      </div>
+
+      <!-- Right Quick Hotline & Dispatch Card (5 Cols) -->
+      <div class="lg:col-span-5" data-aos="fade-left" data-aos-delay="120">
+        <div class="rounded-3xl bg-[#131720]/95 border border-white/15 p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.85)] space-y-5">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10">
+            <div>
+              <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Direct B2B Sales Line</span>
+              <span class="font-display font-bold text-lg text-white">Immediate Assistance</span>
+            </div>
+            <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">
+              SAT – THU
+            </span>
+          </div>
+
+          <div class="space-y-3">
+            <a href="tel:+8801898802405" class="flex items-center justify-between p-4 rounded-2xl bg-black/50 border border-white/10 hover:border-[#AB0716] transition group">
+              <div>
+                <span class="block font-mono text-[10px] text-slate-400">PRIMARY HOTLINE</span>
+                <span class="font-mono text-base sm:text-lg font-bold text-white group-hover:text-rose-400 transition">+880 1898-802405</span>
+              </div>
+              <span class="w-9 h-9 rounded-xl bg-[#AB0716]/20 text-rose-400 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </span>
+            </a>
+
+            <a href="tel:+8801711563790" class="flex items-center justify-between p-4 rounded-2xl bg-black/50 border border-white/10 hover:border-[#AB0716] transition group">
+              <div>
+                <span class="block font-mono text-[10px] text-slate-400">FACTORY &amp; BULK DISPATCH</span>
+                <span class="font-mono text-base sm:text-lg font-bold text-white group-hover:text-rose-400 transition">+880 1711-563790</span>
+              </div>
+              <span class="w-9 h-9 rounded-xl bg-white/10 text-slate-300 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. MAIN QUOTATION FORM & DIRECT CONTACT CHANNELS -->
+<section class="py-16 sm:py-24 grid-blueprint-light border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+      <!-- LEFT COLUMN (7 Cols): B2B Quotation & Inquiry Form -->
+      <div class="lg:col-span-7" data-aos="fade-up">
+        <div class="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-10 shadow-xl">
+          <div class="pb-6 mb-7 border-b border-slate-100">
+            <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Quotation &amp; Sample Request</span>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12] mt-1">
+              Send Us Your Requirements
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1.5">
+              Fill out the form below for factory pricing, sample testing, or dealer inquiries.
+            </p>
+          </div>
+
+          <form id="contact-form" class="space-y-5">
+            {% csrf_token %}
+
+            <!-- Row 1: Full Name & Company Name -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Full Name *</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  placeholder="e.g., Tanvir Ahmed"
+                  required
+                  class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+                />
+                <p id="full_name-error" class="text-red-600 text-xs mt-1 hidden"></p>
+              </div>
+
+              <div>
+                <label for="contact-company" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Company / Factory Name *</label>
+                <input
+                  type="text"
+                  id="contact-company"
+                  placeholder="e.g., Apex Footwear Ltd."
+                  required
+                  class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+                />
+              </div>
+            </div>
+
+            <!-- Row 2: Phone & Email -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Phone / WhatsApp *</label>
+                <input
+                  type="tel"
+                  id="contact-phone"
+                  placeholder="1898 802405"
+                  required
+                  class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+                />
+                <p id="phone-error" class="text-red-600 text-xs mt-1 hidden"></p>
+              </div>
+
+              <div>
+                <label for="contact-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Work Email *</label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  placeholder="procurement@company.com"
+                  required
+                  class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+                />
+                <p id="email-error" class="text-red-600 text-xs mt-1 hidden"></p>
+              </div>
+            </div>
+
+            <!-- Row 3: Product Line & Estimated Volume -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-product" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Product / Grade of Interest</label>
+                <select
+                  id="contact-product"
+                  class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+                >
+                  <option value="General Inquiry / Multiple Grades">General Inquiry / Multiple Grades</option>
+                  <option value="Polyurethane (PU) Adhesive (Standard / Premium)">Polyurethane (PU) Adhesive (Standard / Premium)</option>
+                  <option value="Graft CR (Chloroprene) Adhesive">Graft CR (Chloroprene) Adhesive</option>
+                  <option value="SBS Sprayable Adhesive (Clear / White SB602)">SBS Sprayable Adhesive (Clear / White SB602)</option>
+                  <option value="Synthetic Rubber Contact Adhesive">Synthetic Rubber Contact Adhesive</option>
+                  <option value="EVA & PU/PVC Primers / Synthetic Cleaner">EVA &amp; PU/PVC Primers / Synthetic Cleaner</option>
+                  <option value="Silicone Sealants (Acetic / Neutral)">Silicone Sealants (Acetic / Neutral)</option>
+                  <option value="Nail Free / Super Glue / Aerosol / Rat Glue">Nail Free / Super Glue / Aerosol / Rat Glue</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="contact-volume" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Estimated Order Volume</label>
+                <select
+                  id="contact-volume"
+                  class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+                >
+                  <option value="Lab Sample / Trial Pack">Lab Sample / Trial Pack</option>
+                  <option value="30 L – 150 L (1–10 Pails)">30 L – 150 L (1–10 Pails)</option>
+                  <option value="150 L – 600 L (10–40 Pails)">150 L – 600 L (10–40 Pails)</option>
+                  <option value="600 L+ / 200L Industrial Drums">600 L+ / 200L Industrial Drums</option>
+                  <option value="Hardware Carton Wholesale">Hardware Carton Wholesale</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="contact-message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Application, Substrates &amp; Delivery Location *</label>
+              <textarea
+                id="contact-message"
+                rows="4"
+                placeholder="Tell us about your materials (e.g., EVA sole, leather, PU foam, glass), required pack sizes, and factory location..."
+                required
+                class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none resize-none text-sm transition"
+              ></textarea>
+              <p id="message-error" class="text-red-600 text-xs mt-1 hidden"></p>
+            </div>
+
+            <!-- Privacy Checkbox -->
+            <label class="flex items-start gap-3 cursor-pointer select-none pt-1">
+              <input type="checkbox" id="contact-privacy" required class="w-4 h-4 mt-0.5 accent-[#AB0716] rounded" />
+              <span class="text-xs text-slate-600 leading-relaxed">
+                I agree to the <a href="{% url 'privacy_policy' %}" class="underline text-[#AB0716] hover:text-[#8C0511]">Privacy Policy</a> and consent to be contacted by Uniworld Adhesives regarding this inquiry.
+              </span>
+            </label>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              id="contact-submit-btn"
+              class="btn-primary-glow w-full py-4 text-sm sm:text-base font-semibold tracking-wide inline-flex items-center justify-center gap-2.5 cursor-pointer"
+            >
+              <span>Submit Quotation &amp; Inquiry</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN (5 Cols): Contact Cards & NAP Details -->
+      <div class="lg:col-span-5 space-y-5" data-aos="fade-left" data-aos-delay="100">
+        <!-- Email & Hours Card -->
+        <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-xs space-y-5">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 text-[#AB0716] flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-slate-400 font-bold">OFFICIAL EMAIL</span>
+              <h3 class="font-display text-lg font-bold text-[#0C0E12]">Sales &amp; Technical Desk</h3>
+              <a href="mailto:info@uniworldsolutions.com" class="text-sm font-mono font-semibold text-[#AB0716] hover:underline break-all mt-1 inline-block">
+                {% if contact_info %}{{ contact_info.email }}{% else %}info@uniworldsolutions.com{% endif %}
+              </a>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-100 pt-5 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-slate-100 text-[#0C0E12] flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-slate-400 font-bold">WORKING HOURS</span>
+              <h3 class="font-display text-lg font-bold text-[#0C0E12]">Office &amp; Plant Schedule</h3>
+              <p class="text-sm text-slate-600 mt-0.5">
+                {% if contact_info %}{{ contact_info.working_hours }}{% else %}Saturday – Thursday, 9:00 AM – 6:00 PM{% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Head Office Card -->
+        <div class="rounded-2xl bg-white border border-slate-200 hover:border-[#AB0716] p-6 shadow-xs transition">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-[#0C0E12] text-white flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold">CORPORATE HEAD OFFICE</span>
+                <h3 class="font-display text-xl font-bold text-[#0C0E12] mt-0.5">Dhaka Office</h3>
+                <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+                  {% if contact_info %}{{ contact_info.head_office_address }}{% else %}Family World Tower, 2/6 Sir Syed Road, Asad Gate, Dhaka 1207{% endif %}
+                </p>
+                <div class="mt-3 flex flex-wrap items-center gap-3">
+                  <button type="button" onclick="focusLocationMap('dhaka')" class="text-xs font-mono font-bold text-[#0C0E12] hover:text-[#AB0716] underline cursor-pointer">
+                    View on Map ↓
+                  </button>
+                  <a href="https://maps.google.com/?q=Family+World+Tower+Asad+Gate+Dhaka+1207" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-slate-500 hover:text-[#0C0E12]">
+                    Open Google Maps ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manufacturing Plant Card -->
+        <div class="rounded-2xl bg-[#0C0E12] text-white border border-white/10 p-6 shadow-xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-[#AB0716] text-white flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-rose-400 font-bold">ISO 9001:2015 PLANT &amp; LAB</span>
+              <h3 class="font-display text-xl font-bold text-white mt-0.5">Manufacturing Plant</h3>
+              <p class="text-sm text-slate-300 mt-1.5 leading-relaxed">
+                {% if contact_info %}{{ contact_info.factory_address }}{% else %}Dhaka-Sylhet Highway, Mahona, Rupganj, Narayanganj{% endif %}
+              </p>
+              <div class="mt-3 flex flex-wrap items-center gap-3">
+                <button type="button" onclick="focusLocationMap('rupganj')" class="text-xs font-mono font-bold text-emerald-400 hover:text-white underline cursor-pointer">
+                  View on Map ↓
+                </button>
+                <a href="https://maps.google.com/?q=Mahona+Rupganj+Narayanganj+Dhaka-Sylhet+Highway" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-slate-400 hover:text-white">
+                  Open Google Maps ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3. INTERACTIVE DUAL-LOCATION GOOGLE MAPS SECTION -->
+<section id="locations-map-section" class="py-16 sm:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10" data-aos="fade-up">
+      <div>
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Find Our Facilities</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0C0E12] mt-2">
+          Head Office &amp; Manufacturing Plant Maps
+        </h2>
+      </div>
+
+      <!-- Location Switcher Buttons -->
+      <div class="flex flex-wrap gap-2.5" id="map-switcher-btns">
+        <button
+          type="button"
+          id="btn-map-dhaka"
+          onclick="focusLocationMap('dhaka')"
+          class="px-5 py-3 rounded-xl font-mono text-xs font-bold bg-[#0C0E12] text-white shadow-md transition cursor-pointer"
+        >
+          01 · Head Office (Asad Gate, Dhaka)
+        </button>
+        <button
+          type="button"
+          id="btn-map-rupganj"
+          onclick="focusLocationMap('rupganj')"
+          class="px-5 py-3 rounded-xl font-mono text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer"
+        >
+          02 · Manufacturing Plant (Rupganj)
+        </button>
+      </div>
+    </div>
+
+    <!-- Dual Side-by-Side Maps on Desktop + Active Highlight -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" data-aos="fade-up">
+      <!-- Map 1: Dhaka Head Office -->
+      <div id="card-map-dhaka" class="rounded-3xl border-2 border-[#0C0E12] bg-slate-50 overflow-hidden shadow-lg transition-all duration-300">
+        <div class="p-5 sm:p-6 bg-[#0C0E12] text-white flex items-center justify-between gap-4">
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-rose-400 font-bold">DHAKA HEAD OFFICE</span>
+            <h3 class="font-display text-lg font-bold text-white mt-0.5">Family World Tower, Asad Gate</h3>
+            <p class="text-xs text-slate-400 mt-0.5">2/6 Sir Syed Road, Mohammadpur, Dhaka 1207</p>
+          </div>
+          <a
+            href="https://maps.google.com/?q=Family+World+Tower+2/6+Sir+Syed+Road+Asad+Gate+Dhaka+1207"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3.5 py-2 rounded-lg bg-white/10 hover:bg-[#AB0716] text-xs font-mono text-white transition shrink-0"
+          >
+            Directions ↗
+          </a>
+        </div>
+        <div class="w-full h-72 sm:h-80 bg-slate-200">
+          <iframe
+            title="Uniworld Adhesives Head Office - Asad Gate, Dhaka"
+            src="https://maps.google.com/maps?q=Family%20World%20Tower%20Asad%20Gate%20Dhaka%201207&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            class="w-full h-full border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Map 2: Rupganj Manufacturing Plant -->
+      <div id="card-map-rupganj" class="rounded-3xl border-2 border-slate-200 bg-slate-50 overflow-hidden shadow-lg transition-all duration-300">
+        <div class="p-5 sm:p-6 bg-[#0C0E12] text-white flex items-center justify-between gap-4">
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-emerald-400 font-bold">MANUFACTURING PLANT &amp; R&amp;D LAB</span>
+            <h3 class="font-display text-lg font-bold text-white mt-0.5">Mahona, Rupganj, Narayanganj</h3>
+            <p class="text-xs text-slate-400 mt-0.5">Dhaka-Sylhet Highway, Rupganj Industrial Zone</p>
+          </div>
+          <a
+            href="https://maps.google.com/?q=Mahona+Rupganj+Narayanganj+Dhaka-Sylhet+Highway"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3.5 py-2 rounded-lg bg-white/10 hover:bg-[#AB0716] text-xs font-mono text-white transition shrink-0"
+          >
+            Directions ↗
+          </a>
+        </div>
+        <div class="w-full h-72 sm:h-80 bg-slate-200">
+          <iframe
+            title="Uniworld Adhesives Manufacturing Plant - Rupganj, Narayanganj"
+            src="https://maps.google.com/maps?q=Mahona%20Rupganj%20Narayanganj%20Bangladesh&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            class="w-full h-full border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  let contactPhoneInput = null;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const contactPhoneEl = document.getElementById('contact-phone');
+    if (contactPhoneEl && typeof intlTelInput !== 'undefined') {
+      contactPhoneInput = intlTelInput(contactPhoneEl, {
+        initialCountry: 'bd',
+        showFlags: false,
+        separateDialCode: true,
+      });
+    }
+
+    document.getElementById('contact-form')?.addEventListener('submit', handleContactSubmit);
+  });
+
+  function focusLocationMap(loc) {
+    const section = document.getElementById('locations-map-section');
+    const btnDhaka = document.getElementById('btn-map-dhaka');
+    const btnRupganj = document.getElementById('btn-map-rupganj');
+    const cardDhaka = document.getElementById('card-map-dhaka');
+    const cardRupganj = document.getElementById('card-map-rupganj');
+
+    if (loc === 'rupganj') {
+      btnRupganj?.classList.remove('bg-slate-100', 'text-slate-700');
+      btnRupganj?.classList.add('bg-[#0C0E12]', 'text-white', 'shadow-md');
+      btnDhaka?.classList.remove('bg-[#0C0E12]', 'text-white', 'shadow-md');
+      btnDhaka?.classList.add('bg-slate-100', 'text-slate-700');
+
+      cardRupganj?.classList.remove('border-slate-200');
+      cardRupganj?.classList.add('border-[#AB0716]');
+      cardDhaka?.classList.remove('border-[#AB0716]', 'border-[#0C0E12]');
+      cardDhaka?.classList.add('border-slate-200');
+      cardRupganj?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      btnDhaka?.classList.remove('bg-slate-100', 'text-slate-700');
+      btnDhaka?.classList.add('bg-[#0C0E12]', 'text-white', 'shadow-md');
+      btnRupganj?.classList.remove('bg-[#0C0E12]', 'text-white', 'shadow-md');
+      btnRupganj?.classList.add('bg-slate-100', 'text-slate-700');
+
+      cardDhaka?.classList.remove('border-slate-200');
+      cardDhaka?.classList.add('border-[#AB0716]');
+      cardRupganj?.classList.remove('border-[#AB0716]', 'border-[#0C0E12]');
+      cardRupganj?.classList.add('border-slate-200');
+      (cardDhaka || section)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  async function handleContactSubmit(e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('contact-submit-btn');
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.textContent = 'Submitting Request...';
+    submitBtn.disabled = true;
+
+    let phoneValue = document.getElementById('contact-phone').value;
+    if (contactPhoneInput) {
+      const dialCode = contactPhoneInput.getSelectedCountryData().dialCode;
+      phoneValue = '+' + dialCode + ' ' + phoneValue;
+    }
+
+    const company = document.getElementById('contact-company')?.value || '';
+    const product = document.getElementById('contact-product')?.value || '';
+    const volume = document.getElementById('contact-volume')?.value || '';
+    const rawMessage = document.getElementById('contact-message')?.value || '';
+
+    const composedMessage = `Company: ${company}\nProduct Interest: ${product}\nEstimated Volume: ${volume}\n\nRequirements:\n${rawMessage}`;
+
+    const data = {
+      product_uuid: null,
+      selected_sizes: '',
+      full_name: company ? `${document.getElementById('contact-name').value} (${company})` : document.getElementById('contact-name').value,
+      email: document.getElementById('contact-email').value,
+      phone: phoneValue,
+      message: composedMessage,
+    };
+
+    try {
+      const response = await fetch('/inquiry/submit/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCsrfToken() },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        document.getElementById('contact-form').reset();
+        showSuccessMessage(result.message || 'Thank you! Your inquiry has been received.');
+      } else {
+        result.errors
+          ? showFormErrors('contact-form', result.errors)
+          : showSuccessMessage(result.error || 'Please check all required fields.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showSuccessMessage('Network error. Please try again.');
+    } finally {
+      submitBtn.innerHTML = originalHTML;
+      submitBtn.disabled = false;
+    }
+  }
+</script>
+{% endblock %}

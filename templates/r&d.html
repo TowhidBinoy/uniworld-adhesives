@@ -1,0 +1,488 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block extra_head %}
+<style>
+  /* Spotlight Hover Card Effect */
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+    background: #FFFFFF;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.35s ease;
+  }
+  .spotlight-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(171, 7, 22, 0.09), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+  .spotlight-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(171, 7, 22, 0.5);
+    box-shadow: 0 22px 45px -15px rgba(12, 14, 18, 0.14);
+  }
+
+  /* Animated Lab Pulse Ring */
+  @keyframes labRadar {
+    0% { transform: scale(0.85); opacity: 0.75; }
+    100% { transform: scale(1.65); opacity: 0; }
+  }
+  .radar-ping {
+    animation: labRadar 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. INTERACTIVE TENSILE LAB HERO SECTION -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <img
+    src="{% static 'product/images/blog/bg2.png' %}"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity pointer-events-none"
+  />
+  <div class="pointer-events-none absolute -top-24 right-0 w-[460px] h-[460px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-6 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">R&amp;D &amp; Quality</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <!-- Left Engineering Headline (6 Cols) -->
+      <div class="lg:col-span-6 space-y-6" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs font-mono text-rose-300">
+          <span class="w-2 h-2 rounded-full bg-[#AB0716] animate-ping"></span>
+          <span>ISO 9001:2015 CERTIFIED · RUPGANJ POLYMER LAB</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.07]">
+          Adhesive R&amp;D and
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400">
+            Quality Testing
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl">
+          Innovation and excellence in adhesive technology. Every Uniworld batch is verified for 180° T-peel strength, Brookfield viscosity, and 85°C thermal endurance before leaving our Rupganj factory.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
+          <a href="{% url 'contact' %}" class="btn-primary-glow px-7 py-4 text-sm font-semibold inline-flex items-center justify-center gap-2">
+            <span>Request Free Substrate Trial</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="{% url 'technical_specs' %}" class="px-6 py-4 rounded-lg border border-white/20 bg-white/[0.04] hover:bg-white/[0.1] text-sm font-semibold text-white text-center transition">
+            Full Spec Matrix →
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Interactive Live Tensile Peel-Test Simulator (6 Cols) -->
+      <div class="lg:col-span-6" data-aos="fade-left" data-aos-delay="120">
+        <div class="rounded-3xl bg-gradient-to-b from-[#161B24] to-[#0D1016] border border-white/15 p-6 sm:p-8 shadow-[0_35px_90px_rgba(0,0,0,0.9)] space-y-6">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <div class="relative w-3 h-3 flex items-center justify-center">
+                <span class="radar-ping absolute inset-0 rounded-full bg-emerald-400"></span>
+                <span class="relative w-2 h-2 rounded-full bg-emerald-400"></span>
+              </div>
+              <span class="font-mono text-xs uppercase tracking-wider text-slate-200 font-bold">
+                Live Tensile Peel Simulator
+              </span>
+            </div>
+            <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-white/10 text-slate-300">
+              ASTM D1876
+            </span>
+          </div>
+
+          <!-- Substrate Selector Pills -->
+          <div>
+            <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-2.5">
+              Click a Substrate Pair to Run Lab Readout:
+            </span>
+            <div class="grid grid-cols-3 gap-2" id="sim-buttons">
+              <button type="button" data-sim="0" class="sim-btn py-2.5 px-3 rounded-xl font-mono text-[11px] font-bold bg-[#AB0716] text-white shadow-md transition-all cursor-pointer">
+                PU + Leather
+              </button>
+              <button type="button" data-sim="1" class="sim-btn py-2.5 px-3 rounded-xl font-mono text-[11px] font-bold bg-white/[0.06] text-slate-300 hover:bg-white/[0.12] transition-all cursor-pointer">
+                EVA + Graft CR
+              </button>
+              <button type="button" data-sim="2" class="sim-btn py-2.5 px-3 rounded-xl font-mono text-[11px] font-bold bg-white/[0.06] text-slate-300 hover:bg-white/[0.12] transition-all cursor-pointer">
+                Foam + SBS
+              </button>
+            </div>
+          </div>
+
+          <!-- Animated Force Meter Display -->
+          <div class="p-5 rounded-2xl bg-black/50 border border-white/10 space-y-4">
+            <div class="flex items-end justify-between">
+              <div>
+                <span id="sim-system" class="font-mono text-[11px] text-[#AB0716] font-bold block">PREMIUM PU ADHESIVE</span>
+                <span id="sim-pair" class="font-display text-lg sm:text-xl font-bold text-white">PU Sole ↔ Microfiber Upper</span>
+              </div>
+              <div class="text-right">
+                <span id="sim-value" class="font-mono text-3xl sm:text-4xl font-extrabold text-emerald-400">5.2</span>
+                <span class="font-mono text-xs text-slate-400 block">N/mm (24h)</span>
+              </div>
+            </div>
+
+            <!-- Animated Tensile Progress Bar -->
+            <div class="space-y-1.5">
+              <div class="w-full h-3 rounded-full bg-white/10 overflow-hidden">
+                <div id="sim-bar" class="h-full bg-gradient-to-r from-[#AB0716] via-rose-500 to-emerald-400 rounded-full transition-all duration-700 ease-out" style="width: 92%;"></div>
+              </div>
+              <div class="flex justify-between font-mono text-[10px] text-slate-400">
+                <span>0 N/mm</span>
+                <span id="sim-failure" class="text-emerald-400 font-semibold">RESULT: SUBSTRATE TEAR (PASS)</span>
+                <span>6.0 N/mm</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Telemetry Readout -->
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">GREEN (30m)</span>
+              <span id="sim-green" class="block font-mono text-sm font-bold text-white mt-0.5">2.1 N/mm</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">HEAT LIMIT</span>
+              <span id="sim-heat" class="block font-mono text-sm font-bold text-amber-400 mt-0.5">85°C</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">VISCOSITY</span>
+              <span id="sim-visc" class="block font-mono text-sm font-bold text-white mt-0.5">2,600 cPs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FOUR-STAGE R&D & VALIDATION PILLARS (Interactive Mouse-Spotlight Cards + Original Icons) -->
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14" data-aos="fade-up">
+      <div class="max-w-2xl">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Core Laboratory Capabilities</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2">
+          Four-Stage Formulation &amp; Validation
+        </h2>
+      </div>
+      <p class="text-slate-600 text-sm sm:text-base max-w-md">
+        Every formulation developed at Uniworld undergoes chemical, rheological, mechanical, and thermal validation before commercial rollout.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Card 1 -->
+      <div class="spotlight-card rounded-2xl border border-slate-200 p-7 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="0">
+        <div>
+          <div class="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center mb-6">
+            <img src="{% static 'product/images/about/innovation.png' %}" alt="Product formulation and material analysis" class="w-10 h-10 object-contain" />
+          </div>
+          <span class="font-mono text-[11px] text-[#AB0716] font-bold">01 · POLYMER SYNTHESIS</span>
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mt-1.5 mb-3">
+            Product formulation and material analysis
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Resin grafting, solid-content calibration, and solvent evaporation profiling engineered specifically for Bangladesh's tropical climate.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-mono text-[11px] text-slate-500">
+          <span>PU · Graft CR · SBS</span>
+          <span class="text-[#AB0716] font-bold">LAB 01</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="spotlight-card rounded-2xl border border-slate-200 p-7 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="80">
+        <div>
+          <div class="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center mb-6">
+            <img src="{% static 'product/images/about/quality.png' %}" alt="Peel, shear and tack testing" class="w-10 h-10 object-contain" />
+          </div>
+          <span class="font-mono text-[11px] text-[#AB0716] font-bold">02 · TENSILE &amp; TACK</span>
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mt-1.5 mb-3">
+            Peel, shear &amp; tack testing
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            180° T-peel tensile pull testing at 30 minutes and 24 hours, static dead-weight shear checks, and open tack window timing.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-mono text-[11px] text-slate-500">
+          <span>N/mm Load Verified</span>
+          <span class="text-[#AB0716] font-bold">LAB 02</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="spotlight-card rounded-2xl border border-slate-200 p-7 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="160">
+        <div>
+          <div class="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center mb-6">
+            <img src="{% static 'product/images/about/integrity.png' %}" alt="Thermal and chemical resistance validation" class="w-10 h-10 object-contain" />
+          </div>
+          <span class="font-mono text-[11px] text-[#AB0716] font-bold">03 · THERMAL &amp; CHEMICAL</span>
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mt-1.5 mb-3">
+            Thermal and chemical resistance validation
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Aging oven stress tests up to 85°C, water immersion hydrolysis resistance, and PVC plasticizer migration testing.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-mono text-[11px] text-slate-500">
+          <span>Up to 85°C Chamber</span>
+          <span class="text-[#AB0716] font-bold">LAB 03</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="spotlight-card rounded-2xl border border-slate-200 p-7 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="240">
+        <div>
+          <div class="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center mb-6">
+            <img src="{% static 'product/images/about/customer.png' %}" alt="Substrate compatibility studies" class="w-10 h-10 object-contain" />
+          </div>
+          <span class="font-mono text-[11px] text-[#AB0716] font-bold">04 · SUBSTRATE MATRIX</span>
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mt-1.5 mb-3">
+            Substrate compatibility studies
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Testing cleaner + primer + adhesive stacks on customer-supplied EVA, Phylon, TPR, leather, foam, HPL laminates, and glass.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-mono text-[11px] text-slate-500">
+          <span>EVA · PVC · Foam · Metal</span>
+          <span class="text-[#AB0716] font-bold">LAB 04</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. NEW VISUAL COMPARISON SECTION: WHY SURFACE PREP + PRIMER MATTERS (Lab Proof) -->
+<section class="py-16 sm:py-24 grid-blueprint-light border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-12" data-aos="fade-up">
+      <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Surface Science Proof</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0C0E12] mt-2">
+        How Uniworld Surface Prep Multiplies Bond Strength
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+        Molded EVA and PU shoe soles carry invisible silicone release agents. Our lab data demonstrates the peel-strength jump when pairing Synthetic Cleaner and EVA/PU Primers with Uniworld adhesives:
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Stage 1 -->
+      <div class="rounded-2xl bg-white border border-slate-200 p-7 relative" data-aos="fade-up" data-aos-delay="0">
+        <span class="font-mono text-xs px-2.5 py-1 rounded bg-slate-100 text-slate-600 font-bold">UNPRIMED SURFACE</span>
+        <h3 class="font-display text-xl font-bold text-[#0C0E12] mt-4">Adhesive Only (No Prep)</h3>
+        <p class="font-mono text-3xl font-extrabold text-slate-400 mt-3">1.4 <span class="text-sm">N/mm</span></p>
+        <div class="w-full h-2.5 bg-slate-100 rounded-full mt-4 overflow-hidden">
+          <div class="h-full bg-slate-400 rounded-full" style="width: 27%;"></div>
+        </div>
+        <p class="text-xs text-slate-500 mt-4 leading-relaxed">
+          Residual mould-release wax blocks polymer wetting, risking edge delamination under flex stress.
+        </p>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="rounded-2xl bg-white border border-slate-200 p-7 relative" data-aos="fade-up" data-aos-delay="100">
+        <span class="font-mono text-xs px-2.5 py-1 rounded bg-amber-50 text-amber-700 font-bold">SOLVENT WIPED</span>
+        <h3 class="font-display text-xl font-bold text-[#0C0E12] mt-4">Synthetic Cleaner + Adhesive</h3>
+        <p class="font-mono text-3xl font-extrabold text-[#0C0E12] mt-3">2.9 <span class="text-sm">N/mm</span></p>
+        <div class="w-full h-2.5 bg-slate-100 rounded-full mt-4 overflow-hidden">
+          <div class="h-full bg-[#0C0E12] rounded-full" style="width: 56%;"></div>
+        </div>
+        <p class="text-xs text-slate-600 mt-4 leading-relaxed">
+          Wiping with <a href="{% url 'single_product' 'synthetic-cleaner' %}" class="text-[#AB0716] font-semibold hover:underline">Synthetic Cleaner</a> lifts surface grease and release oils for clean contact.
+        </p>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="rounded-2xl bg-[#0C0E12] text-white border border-[#AB0716] p-7 relative shadow-xl" data-aos="fade-up" data-aos-delay="200">
+        <span class="font-mono text-xs px-2.5 py-1 rounded bg-[#AB0716] text-white font-bold">FULL LAB SYSTEM</span>
+        <h3 class="font-display text-xl font-bold text-white mt-4">Cleaner + Primer + PU / Graft CR</h3>
+        <p class="font-mono text-3xl font-extrabold text-emerald-400 mt-3">5.2 <span class="text-sm">N/mm</span></p>
+        <div class="w-full h-2.5 bg-white/10 rounded-full mt-4 overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-[#AB0716] to-emerald-400 rounded-full" style="width: 96%;"></div>
+        </div>
+        <p class="text-xs text-slate-300 mt-4 leading-relaxed">
+          <a href="{% url 'single_product' 'eva-primer' %}" class="text-rose-400 font-semibold hover:underline">EVA Primer</a> or <a href="{% url 'single_product' 'pupvc-primer' %}" class="text-rose-400 font-semibold hover:underline">PU/PVC Primer</a> chemically activates the substrate for substrate-tearing bond strength.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. ISO 9001:2015 BATCH-TO-DISPATCH QC PIPELINE -->
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-8 space-y-6" data-aos="fade-right">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Batch Traceability &amp; Quality Audit</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0C0E12]">
+          ISO 9001:2015 Certified Quality Control
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Every production lot at our Rupganj plant carries a unique batch tracking number stamped on every 3 L tin, 15 L pail, 200 L drum, and 300 ml cartridge. Sealed reference samples from every batch are archived in our QC lab for 12 months.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+            <span class="font-mono text-xs text-[#AB0716] font-bold">GATE 01</span>
+            <p class="font-display font-bold text-base text-[#0C0E12] mt-1">Raw Material Assay</p>
+            <p class="text-xs text-slate-600 mt-1.5">Purity and moisture verification of PU resins, CR rubber, and solvents.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+            <span class="font-mono text-xs text-[#AB0716] font-bold">GATE 02</span>
+            <p class="font-display font-bold text-base text-[#0C0E12] mt-1">In-Process Viscosity</p>
+            <p class="text-xs text-slate-600 mt-1.5">Brookfield viscosity &amp; solid-content calibration prior to filling.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+            <span class="font-mono text-xs text-[#AB0716] font-bold">GATE 03</span>
+            <p class="font-display font-bold text-base text-[#0C0E12] mt-1">Batch COA &amp; Retain</p>
+            <p class="text-xs text-slate-600 mt-1.5">12-month retained control sample &amp; Certificate of Analysis on request.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4" data-aos="fade-left">
+        <div class="rounded-3xl bg-slate-50 border border-slate-200 p-8 text-center shadow-sm">
+          <img src="{% static 'product/images/footer/iso-9001.png' %}" alt="ISO 9001:2015 Certified Quality Management System" class="h-28 w-auto mx-auto mb-4" />
+          <h3 class="font-display text-xl font-bold text-[#0C0E12]">ISO 9001:2015 Certified</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Audited Quality Management System covering formulation R&amp;D, manufacturing, laboratory testing, and nationwide bulk distribution.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. COLLABORATION SECTION (Preserves Your Original Collaboration Banner) -->
+<section class="py-16 sm:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="relative rounded-3xl overflow-hidden bg-[#0C0E12] text-white p-8 sm:p-14 lg:p-20 text-center shadow-2xl border border-white/10" data-aos="fade-up">
+      <img
+        src="{% static 'product/images/about/bg2.png' %}"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity pointer-events-none"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0C0E12]/90 via-[#0C0E12]/80 to-[#AB0716]/30"></div>
+
+      <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+        <span class="inline-block font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">
+          Co-Engineering &amp; Custom Formulation
+        </span>
+
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+          Chemist <span class="text-[#AB0716]">Collaboration</span>
+        </h2>
+
+        <p class="text-base sm:text-xl text-slate-200 font-light leading-relaxed">
+          Our chemists work closely with manufacturers to develop application-specific formulations that improve productivity and reduce waste.
+        </p>
+
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="{% url 'contact' %}" class="btn-primary-glow w-full sm:w-auto px-8 py-4 text-sm font-semibold">
+            Submit Substrates for Lab Trial →
+          </a>
+          <a href="{% url 'downloads' %}" class="w-full sm:w-auto px-7 py-4 rounded-lg border border-white/25 hover:border-white text-sm font-semibold text-white transition">
+            Download Company Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // 1. Spotlight Mouse-Tracking Effect on Pillar Cards
+  document.querySelectorAll('.spotlight-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+  });
+
+  // 2. Interactive Tensile Peel-Test Simulator
+  const simData = [
+    {
+      system: 'PREMIUM PU ADHESIVE',
+      pair: 'PU Sole ↔ Microfiber Upper',
+      val: '5.2',
+      bar: '88%',
+      failure: 'RESULT: SUBSTRATE TEAR (PASS)',
+      green: '2.1 N/mm',
+      heat: '85°C',
+      visc: '2,600 cPs'
+    },
+    {
+      system: 'EVA PRIMER + GRAFT CR',
+      pair: 'Molded EVA Sole ↔ Synthetic Upper',
+      val: '4.6',
+      bar: '78%',
+      failure: 'RESULT: EVA FOAM TEAR (PASS)',
+      green: '1.9 N/mm',
+      heat: '75°C',
+      visc: '3,000 cPs'
+    },
+    {
+      system: 'SBS SPRAYABLE ADHESIVE',
+      pair: 'High-Density PU Foam ↔ Upholstery',
+      val: '3.4',
+      bar: '62%',
+      failure: 'RESULT: FOAM FIBER TEAR (PASS)',
+      green: '1.5 N/mm',
+      heat: '65°C',
+      visc: '100 cPs'
+    }
+  ];
+
+  document.querySelectorAll('.sim-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const item = simData[parseInt(this.dataset.sim, 10)];
+      if (!item) return;
+
+      document.querySelectorAll('.sim-btn').forEach(b => {
+        b.classList.remove('bg-[#AB0716]', 'text-white', 'shadow-md');
+        b.classList.add('bg-white/[0.06]', 'text-slate-300');
+      });
+      this.classList.remove('bg-white/[0.06]', 'text-slate-300');
+      this.classList.add('bg-[#AB0716]', 'text-white', 'shadow-md');
+
+      document.getElementById('sim-system').textContent = item.system;
+      document.getElementById('sim-pair').textContent = item.pair;
+      document.getElementById('sim-value').textContent = item.val;
+      document.getElementById('sim-bar').style.width = item.bar;
+      document.getElementById('sim-failure').textContent = item.failure;
+      document.getElementById('sim-green').textContent = item.green;
+      document.getElementById('sim-heat').textContent = item.heat;
+      document.getElementById('sim-visc').textContent = item.visc;
+    });
+  });
+</script>
+{% endblock %}

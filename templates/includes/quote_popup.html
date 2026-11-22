@@ -1,0 +1,383 @@
+<!-- Premium B2B Quote Modal -->
+<div id="quote-popup" class="fixed inset-0 z-[9999] hidden opacity-0 transition-opacity duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+  <!-- Dark Glass Backdrop -->
+  <div id="quote-overlay" class="fixed inset-0 bg-[#050608]/85 backdrop-blur-md transition-opacity duration-300"></div>
+
+  <!-- Modal Centering Wrapper -->
+  <div class="flex items-center justify-center min-h-screen p-4 sm:p-6">
+    <div
+      id="quote-modal"
+      class="relative z-10 bg-white w-full max-w-2xl rounded-3xl border border-slate-200/80 shadow-[0_35px_100px_rgba(0,0,0,0.75)] overflow-hidden transform scale-95 translate-y-4 transition-all duration-300 ease-out"
+    >
+      <!-- Top Architectural Dark Header -->
+      <div class="relative bg-gradient-to-r from-[#0C0E12] via-[#131720] to-[#0C0E12] text-white px-6 sm:px-8 py-6 flex items-start justify-between gap-4 border-b border-white/10">
+        <!-- Bottom Gradient Accent Line -->
+        <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-500"></div>
+
+        <div>
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#AB0716]/20 border border-[#AB0716]/40 font-mono text-[10px] uppercase tracking-[0.2em] text-rose-300 font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#AB0716] animate-ping"></span>
+            Factory Direct B2B Desk
+          </div>
+          <p id="quote-product-name" class="font-display text-xl sm:text-2xl font-extrabold text-white mt-2 tracking-tight">
+            Request Bulk Quote
+          </p>
+          <p class="text-xs text-slate-400 mt-1">
+            Direct pricing, TDS/SDS sheets &amp; sample dispatch from Rupganj Plant
+          </p>
+        </div>
+
+        <!-- Perfectly Centered SVG Close Button -->
+        <button
+          type="button"
+          id="quote-close"
+          aria-label="Close modal"
+          class="w-10 h-10 rounded-xl bg-white/[0.07] border border-white/15 hover:bg-[#AB0716] hover:border-[#AB0716] text-slate-300 hover:text-white inline-flex items-center justify-center shrink-0 transition-all duration-200 cursor-pointer"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Form Body -->
+      <div class="p-6 sm:p-8 max-h-[80vh] overflow-y-auto bg-white">
+        <form id="quote-form" class="space-y-5">
+          {% csrf_token %}
+          <input type="hidden" id="quote-product-uuid" name="product_uuid" />
+
+          <!-- Quick Pack Size Pill Selector + Custom Input -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <label for="quote-sizes-input" class="font-mono text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                Pack Size(s) Required
+              </label>
+              <span class="font-mono text-[10px] text-[#AB0716] font-semibold">Click pills or type</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5" id="modal-size-pills">
+              <button type="button" data-size="3 L Tin" class="modal-size-pill px-3 py-1 rounded-lg font-mono text-xs bg-white border border-slate-300 text-slate-700 hover:border-[#AB0716] transition cursor-pointer">+ 3 L Tin</button>
+              <button type="button" data-size="15 L Pail" class="modal-size-pill px-3 py-1 rounded-lg font-mono text-xs bg-white border border-slate-300 text-slate-700 hover:border-[#AB0716] transition cursor-pointer">+ 15 L Pail</button>
+              <button type="button" data-size="200 L Drum" class="modal-size-pill px-3 py-1 rounded-lg font-mono text-xs bg-white border border-slate-300 text-slate-700 hover:border-[#AB0716] transition cursor-pointer">+ 200 L Drum</button>
+              <button type="button" data-size="300 ml Cartridge" class="modal-size-pill px-3 py-1 rounded-lg font-mono text-xs bg-white border border-slate-300 text-slate-700 hover:border-[#AB0716] transition cursor-pointer">+ 300 ml Cartridge</button>
+            </div>
+
+            <input
+              type="text"
+              id="quote-sizes-input"
+              name="selected_sizes"
+              placeholder="Selected pack sizes appear here..."
+              class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-[#AB0716] focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-xs sm:text-sm font-mono text-[#0C0E12] transition"
+            />
+          </div>
+
+          <!-- Row 1: Contact Name & Company/Factory Name -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Your Full Name *</label>
+              <input
+                type="text"
+                id="quote-name"
+                name="full_name"
+                placeholder="e.g., Tanvir Ahmed"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+              />
+              <p id="name-error" class="text-red-600 text-xs mt-1 hidden"></p>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Company / Factory Name *</label>
+              <input
+                type="text"
+                id="quote-company"
+                name="company_name"
+                placeholder="e.g., Apex Footwear Ltd."
+                required
+                class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+              />
+            </div>
+          </div>
+
+          <!-- Row 2: Phone & Work Email -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Phone / WhatsApp *</label>
+              <input
+                type="tel"
+                id="quote-phone"
+                name="phone"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+              />
+              <p id="phone-error" class="text-red-600 text-xs mt-1 hidden"></p>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Work Email *</label>
+              <input
+                type="email"
+                id="quote-email"
+                name="email"
+                placeholder="procurement@company.com"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+              />
+              <p id="email-error" class="text-red-600 text-xs mt-1 hidden"></p>
+            </div>
+          </div>
+
+          <!-- Row 3: Estimated Quantity & Delivery District -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Estimated Order Volume *</label>
+              <select
+                id="quote-volume"
+                name="order_volume"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+              >
+                <option value="">Select quantity range...</option>
+                <option value="Lab Sample / Trial Pack">Lab Sample / Trial Pack</option>
+                <option value="30 L – 150 L (1–10 Pails)">30 L – 150 L (1–10 Pails)</option>
+                <option value="150 L – 600 L (10–40 Pails)">150 L – 600 L (10–40 Pails)</option>
+                <option value="600 L+ / 200L Industrial Drums">600 L+ / 200L Industrial Drums</option>
+                <option value="Hardware Carton Wholesale (24+ pcs)">Hardware Carton Wholesale (24+ pcs)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Delivery Location *</label>
+              <input
+                type="text"
+                id="quote-location"
+                name="delivery_location"
+                placeholder="e.g., Gazipur / Savar / Narayanganj"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+              />
+            </div>
+          </div>
+
+          <!-- Row 4: Technical / Substrate Requirements -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Substrates &amp; Application Notes *</label>
+            <textarea
+              id="quote-message"
+              name="message"
+              rows="3"
+              placeholder="Specify substrates (e.g., EVA sole to leather, PU foam lamination), spray/brush line, or target delivery date..."
+              required
+              class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none resize-none text-sm transition"
+            ></textarea>
+            <p id="message-error" class="text-red-600 text-xs mt-1 hidden"></p>
+          </div>
+
+          <label class="flex items-start gap-2.5 cursor-pointer pt-1">
+            <input type="checkbox" id="quote-privacy" required class="w-4 h-4 mt-0.5 accent-[#AB0716]" />
+            <span class="text-xs text-slate-600 leading-relaxed">
+              I agree to the <a href="{% url 'privacy_policy' %}" class="underline text-[#AB0716] hover:text-[#8C0511]">Privacy Policy</a> and consent to receive a quotation from Uniworld Adhesives.
+            </span>
+          </label>
+
+          <button
+            type="submit"
+            id="quote-submit-btn"
+            class="btn-primary-glow w-full py-4 text-sm font-semibold tracking-wide inline-flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>Submit Bulk Quotation Request</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let quotePhoneInput = null;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const quotePhoneEl = document.getElementById('quote-phone');
+    if (quotePhoneEl && typeof intlTelInput !== 'undefined') {
+      quotePhoneInput = intlTelInput(quotePhoneEl, {
+        initialCountry: 'bd',
+        showFlags: false,
+        separateDialCode: true,
+      });
+    }
+
+    // Quick size pill toggles inside modal
+    document.querySelectorAll('.modal-size-pill').forEach((pill) => {
+      pill.addEventListener('click', function () {
+        const input = document.getElementById('quote-sizes-input');
+        if (!input) return;
+        const sizeVal = this.dataset.size;
+        const current = input.value
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean);
+        if (!current.includes(sizeVal)) {
+          current.push(sizeVal);
+          input.value = current.join(', ');
+        }
+      });
+    });
+
+    document.getElementById('quote-close')?.addEventListener('click', closeQuotePopup);
+    document.getElementById('quote-overlay')?.addEventListener('click', closeQuotePopup);
+    document.getElementById('quote-form')?.addEventListener('submit', handleQuoteSubmit);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !document.getElementById('quote-popup')?.classList.contains('hidden')) {
+        closeQuotePopup();
+      }
+    });
+  });
+
+  function handleGetQuote(productUuid, productName) {
+    const selectedSizes = Array.from(document.querySelectorAll('.product-size-checkbox:checked')).map((cb) => cb.value);
+    const sizesInput = document.getElementById('quote-sizes-input');
+    if (sizesInput) {
+      sizesInput.value = selectedSizes.length > 0 ? selectedSizes.join(', ') : '';
+    }
+    openQuotePopup(productUuid, productName);
+  }
+
+  function openQuotePopup(productUuid, productName) {
+    const popup = document.getElementById('quote-popup');
+    const modal = document.getElementById('quote-modal');
+    if (!popup || !modal) return;
+
+    document.getElementById('quote-product-uuid').value = productUuid || '';
+    document.getElementById('quote-product-name').textContent = productName || 'Request Bulk Quote';
+    clearFormErrors('quote-form');
+
+    popup.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => {
+      popup.classList.remove('opacity-0');
+      popup.classList.add('opacity-100');
+      modal.classList.remove('scale-95', 'translate-y-4');
+      modal.classList.add('scale-100', 'translate-y-0');
+    });
+  }
+
+  function closeQuotePopup() {
+    const popup = document.getElementById('quote-popup');
+    const modal = document.getElementById('quote-modal');
+    if (!popup || !modal) return;
+
+    popup.classList.remove('opacity-100');
+    popup.classList.add('opacity-0');
+    modal.classList.remove('scale-100', 'translate-y-0');
+    modal.classList.add('scale-95', 'translate-y-4');
+
+    setTimeout(() => {
+      popup.classList.add('hidden');
+      document.body.style.overflow = '';
+      document.getElementById('quote-form')?.reset();
+      clearFormErrors('quote-form');
+    }, 280);
+  }
+
+  function clearFormErrors(formId) {
+    const form = document.getElementById(formId);
+    if (form) {
+      form.querySelectorAll('p[id$="-error"]').forEach((el) => {
+        el.classList.add('hidden');
+        el.textContent = '';
+      });
+    }
+  }
+
+  function showFormErrors(formId, errors) {
+    clearFormErrors(formId);
+    for (const [field, message] of Object.entries(errors)) {
+      const errorEl = document.getElementById(`${field === 'full_name' ? 'name' : field}-error`);
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.classList.remove('hidden');
+      }
+    }
+  }
+
+  function getCsrfToken() {
+    return (
+      document.querySelector('[name=csrfmiddlewaretoken]')?.value ||
+      document.cookie.match(/csrftoken=([^;]+)/)?.[1] ||
+      ''
+    );
+  }
+
+  function showSuccessMessage(message) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-6 right-6 bg-[#0C0E12] border-l-4 border-emerald-500 text-white px-6 py-4 rounded-xl shadow-2xl z-[10000] text-sm font-medium';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.3s';
+      setTimeout(() => toast.remove(), 300);
+    }, 5000);
+  }
+
+  async function handleQuoteSubmit(e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('quote-submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting Request...';
+    submitBtn.disabled = true;
+
+    const selectedSizes = document.getElementById('quote-sizes-input')?.value || '';
+    const company = document.getElementById('quote-company')?.value || '';
+    const volume = document.getElementById('quote-volume')?.value || '';
+    const location = document.getElementById('quote-location')?.value || '';
+    const rawMsg = document.getElementById('quote-message')?.value || '';
+
+    let phoneValue = document.getElementById('quote-phone').value;
+    if (quotePhoneInput) {
+      const dialCode = quotePhoneInput.getSelectedCountryData().dialCode;
+      phoneValue = '+' + dialCode + ' ' + phoneValue;
+    }
+
+    const composedMessage = `Company: ${company}\nOrder Volume: ${volume}\nDelivery Location: ${location}\n\nRequirements:\n${rawMsg}`;
+
+    const data = {
+      product_uuid: document.getElementById('quote-product-uuid').value || null,
+      selected_sizes: selectedSizes,
+      full_name: `${document.getElementById('quote-name').value} (${company})`,
+      email: document.getElementById('quote-email').value,
+      phone: phoneValue,
+      message: composedMessage,
+    };
+
+    try {
+      const response = await fetch('/inquiry/submit/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCsrfToken() },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        closeQuotePopup();
+        showSuccessMessage(result.message || 'Thank you! Our B2B sales team will send your quote shortly.');
+      } else {
+        result.errors
+          ? showFormErrors('quote-form', result.errors)
+          : showSuccessMessage(result.error || 'Please check all required fields.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showSuccessMessage('Network error. Please try again.');
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
+</script>

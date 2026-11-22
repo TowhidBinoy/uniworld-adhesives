@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"Privacy Policy | Uniworld Adhesives & Sealants" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Read the Privacy Policy of Uniworld Adhesives & Sealants regarding business inquiry data, quotation requests, cookies, and data protection." }}{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK HEADER -->
+<section class="grid-blueprint-dark text-white border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-18">
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-5 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">Privacy Policy</span>
+    </nav>
+
+    <div class="max-w-3xl space-y-3">
+      <span class="font-mono text-xs uppercase tracking-[0.2em] text-rose-400 font-bold">
+        Legal &amp; Compliance · Last Updated: November 2026
+      </span>
+      <h1 class="font-display text-3xl sm:text-5xl font-extrabold text-white">
+        Privacy Policy
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+        How Uniworld Adhesives &amp; Sealants collects, uses, stores, and protects information submitted through our website and quotation channels.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. STRUCTURED LEGAL DOCUMENT -->
+<section class="py-14 sm:py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+      <!-- Sticky Section Index (4 Cols) -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-28 rounded-2xl bg-white border border-slate-200 p-6 shadow-xs space-y-3">
+        <span class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold block">Contents</span>
+        <nav class="flex flex-col space-y-2 text-sm font-medium text-slate-600">
+          <a href="#pp-1" class="hover:text-[#AB0716] transition">1. Information We Collect</a>
+          <a href="#pp-2" class="hover:text-[#AB0716] transition">2. How We Use Business Information</a>
+          <a href="#pp-3" class="hover:text-[#AB0716] transition">3. Data Sharing &amp; Confidentiality</a>
+          <a href="#pp-4" class="hover:text-[#AB0716] transition">4. Cookies &amp; Technical Logs</a>
+          <a href="#pp-5" class="hover:text-[#AB0716] transition">5. Data Security &amp; Retention</a>
+          <a href="#pp-6" class="hover:text-[#AB0716] transition">6. Contact Our Data Desk</a>
+        </nav>
+      </aside>
+
+      <!-- Main Policy Text (8 Cols) -->
+      <div class="lg:col-span-8 rounded-3xl bg-white border border-slate-200 p-7 sm:p-10 shadow-xs space-y-8 text-slate-700 leading-relaxed">
+
+        <div id="pp-1" class="space-y-2.5 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">1. Information We Collect</h2>
+          <p class="text-sm sm:text-base">
+            When you submit a quotation request, sample inquiry, or technical support form on our website, Uniworld Adhesives &amp; Sealants may collect business contact details including your name, company or factory name, phone/WhatsApp number, email address, substrate requirements, and order volume preferences.
+          </p>
+        </div>
+
+        <div id="pp-2" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">2. How We Use Business Information</h2>
+          <p class="text-sm sm:text-base">We use the information you provide strictly for legitimate B2B communication and order fulfillment:</p>
+          <ul class="list-disc pl-5 space-y-1.5 text-sm sm:text-base">
+            <li>Preparing accurate factory quotations, bulk pricing, and sample shipments.</li>
+            <li>Providing Technical Data Sheets (TDS), Safety Data Sheets (SDS), and substrate recommendations.</li>
+            <li>Coordinating dispatch and logistics from our Dhaka Head Office or Rupganj manufacturing plant.</li>
+          </ul>
+        </div>
+
+        <div id="pp-3" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">3. Data Sharing &amp; Confidentiality</h2>
+          <p class="text-sm sm:text-base">
+            Uniworld Adhesives &amp; Sealants does not sell, rent, or trade your personal or corporate contact details to third parties. Information is shared only with authorized internal sales, R&amp;D, and logistics personnel as needed to fulfill your inquiry, or where required by applicable law in Bangladesh.
+          </p>
+        </div>
+
+        <div id="pp-4" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">4. Cookies &amp; Technical Logs</h2>
+          <p class="text-sm sm:text-base">
+            Our website uses essential session and security cookies (such as CSRF protection tokens) to ensure form submissions work securely, along with standard server access logs to maintain site performance and security.
+          </p>
+        </div>
+
+        <div id="pp-5" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">5. Data Security &amp; Retention</h2>
+          <p class="text-sm sm:text-base">
+            We apply reasonable administrative and technical safeguards to protect submitted records from unauthorized access. You may request correction or deletion of your contact records at any time by emailing us.
+          </p>
+        </div>
+
+        <div id="pp-6" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">6. Contact Our Data Desk</h2>
+          <p class="text-sm sm:text-base">
+            For any questions regarding this Privacy Policy, please contact:<br />
+            <strong>Uniworld Adhesives &amp; Sealants</strong><br />
+            Head Office: Family World Tower, 2/6 Sir Syed Road, Asad Gate, Dhaka 1207, Bangladesh<br />
+            Email: <a href="mailto:info@uniworldsolutions.com" class="text-[#AB0716] font-semibold hover:underline">info@uniworldsolutions.com</a> · Phone: +880 1898-802405
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

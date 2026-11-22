@@ -1,0 +1,1360 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization",
+      "name": "Uniworld Adhesives",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/",
+      "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'product/images/header/logo.png' %}",
+      "foundingDate": "2018",
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "certification",
+        "name": "ISO 9001:2015 Quality Management System"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ request.scheme }}://{{ request.get_host }}/#website",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/",
+      "name": "Uniworld Adhesives",
+      "publisher": { "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which Uniworld adhesive has the highest bond strength?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Premium Polyurethane (PU) Adhesive delivers our highest peel strength (up to 5.2 N/mm / 23.0 kgf after 24 hours) with superior tropical heat resistance up to 85°C, followed by Standard PU Adhesive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Uniworld adhesive is formulated for spray gun application?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uniworld SBS Sprayable Adhesive (Clear and SB602 White) is engineered at 80–120 cPs viscosity for clean spray atomization on PU foam, mattresses, and upholstery fabrics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I use EVA Primer or PU/PVC Primer before bonding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use EVA Primer on low-surface-energy EVA and Phylon soles after cleaning with Synthetic Cleaner, and PU/PVC Primer on molded PVC, PU, and TPR soles to maximize peel strength."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What pack sizes and MOQs are available for factory orders?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Liquid adhesives, primers, and cleaners are supplied in 3 L tins, 15 L industrial pails, and 200 L drums. Silicone sealants and Nail Free come in 300 ml cartridges."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+  @keyframes orbitSpinSlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .orbit-ring-dashed { animation: orbitSpinSlow 24s linear infinite; }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(0.95); opacity: 0.55; }
+    50% { transform: scale(1.08); opacity: 0.25; }
+  }
+  .hero-radial-pulse { animation: pulseGlow 5s ease-in-out infinite; }
+
+  @keyframes marqueeScrollReverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+  .animate-marquee-reverse {
+    display: flex;
+    width: max-content;
+    animation: marqueeScrollReverse 34s linear infinite;
+  }
+  .animate-marquee-reverse:hover {
+    animation-play-state: paused;
+  }
+
+  .carousel-arrow-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+  }
+  .carousel-arrow-btn:hover {
+    background: #AB0716;
+    border-color: #AB0716;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(171, 7, 22, 0.45);
+  }
+
+  /* Smooth Homepage FAQ Accordion */
+  .home-faq-answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .home-faq-card.is-open .home-faq-answer-wrap {
+    grid-template-rows: 1fr;
+  }
+  .home-faq-answer-inner {
+    overflow: hidden;
+  }
+  .home-faq-card.is-open {
+    border-color: rgba(171, 7, 22, 0.45);
+    box-shadow: 0 18px 40px -16px rgba(12, 14, 18, 0.12);
+  }
+  .home-faq-card.is-open .home-faq-icon {
+    transform: rotate(45deg);
+    background-color: #AB0716;
+    color: #FFFFFF;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. ULTRA-SMOOTH ANIMATED HERO SECTION -->
+<section class="relative grid-blueprint-dark text-white overflow-hidden">
+  <div class="pointer-events-none absolute -top-20 right-0 w-[340px] sm:w-[540px] h-[340px] sm:h-[540px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+  <div class="pointer-events-none absolute bottom-0 -left-20 w-[300px] sm:w-[440px] h-[300px] sm:h-[440px] bg-rose-700/10 rounded-full blur-[110px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+      <!-- Left Column (6 Cols) -->
+      <div class="lg:col-span-6 space-y-6 text-left" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-[11px] sm:text-xs font-mono text-slate-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>ISO 9001:2015 CERTIFIED · MADE IN BANGLADESH</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight leading-[1.08] text-white">
+          High-Performance Adhesives &amp; Sealants,
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400 mt-1">
+            Made in Bangladesh
+          </span>
+        </h1>
+
+        <p class="text-sm sm:text-lg text-slate-300 leading-relaxed max-w-xl">
+          Innovative bonding solutions engineered for strength, durability, and reliability. Verified Brookfield viscosity and peel strength for footwear, furniture, and hardware manufacturing.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 pt-1">
+          <a
+            href="{% url 'contact' %}"
+            class="btn-primary-glow px-7 py-4 text-sm sm:text-base font-semibold inline-flex items-center justify-center gap-2.5"
+          >
+            <span>Get a Quote</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="{% url 'downloads' %}"
+            class="px-7 py-4 rounded-lg border border-white/20 bg-white/[0.04] hover:bg-white/[0.1] hover:border-white/40 text-sm sm:text-base font-medium text-white text-center transition-all"
+          >
+            Download Product Sheets
+          </a>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 sm:gap-6 pt-6 border-t border-white/10">
+          <div>
+            <p class="font-display text-2xl sm:text-3xl font-extrabold text-white">15+</p>
+            <p class="font-mono text-[10px] sm:text-[11px] text-slate-400 uppercase mt-0.5">Industrial Grades</p>
+          </div>
+          <div>
+            <p class="font-display text-2xl sm:text-3xl font-extrabold text-emerald-400">
+              5.2 <span class="text-xs sm:text-sm font-mono">N/mm</span>
+            </p>
+            <p class="font-mono text-[10px] sm:text-[11px] text-slate-400 uppercase mt-0.5">Max Peel Strength</p>
+          </div>
+          <div>
+            <p class="font-display text-2xl sm:text-3xl font-extrabold text-white">2018</p>
+            <p class="font-mono text-[10px] sm:text-[11px] text-slate-400 uppercase mt-0.5">Rupganj Plant Est.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: INTERACTIVE 3D-TILT PRODUCT STAGE (6 Cols) -->
+      <div class="lg:col-span-6" data-aos="fade-left" data-aos-delay="120">
+        <div
+          id="hero-3d-card"
+          class="relative rounded-3xl bg-gradient-to-b from-[#171C26] to-[#0D1016] border border-white/15 p-5 sm:p-8 shadow-[0_35px_90px_rgba(0,0,0,0.9)] overflow-hidden transition-transform duration-200 ease-out"
+          style="transform-style: preserve-3d;"
+        >
+          <div class="flex items-center justify-between gap-2 pb-4 border-b border-white/10">
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" id="hero-product-tabs">
+              <button type="button" data-idx="0" class="hero-tab-btn shrink-0 px-3.5 py-2 rounded-lg font-mono text-xs font-semibold bg-[#AB0716] text-white shadow-md shadow-[#AB0716]/40 transition-all duration-300 cursor-pointer">
+                SBS Spray
+              </button>
+              <button type="button" data-idx="1" class="hero-tab-btn shrink-0 px-3.5 py-2 rounded-lg font-mono text-xs font-semibold bg-white/[0.05] text-slate-300 hover:bg-white/[0.12] hover:text-white transition-all duration-300 cursor-pointer">
+                PU Adhesive
+              </button>
+              <button type="button" data-idx="2" class="hero-tab-btn shrink-0 px-3.5 py-2 rounded-lg font-mono text-xs font-semibold bg-white/[0.05] text-slate-300 hover:bg-white/[0.12] hover:text-white transition-all duration-300 cursor-pointer">
+                Graft CR
+              </button>
+              <button type="button" data-idx="3" class="hero-tab-btn shrink-0 px-3.5 py-2 rounded-lg font-mono text-xs font-semibold bg-white/[0.05] text-slate-300 hover:bg-white/[0.12] hover:text-white transition-all duration-300 cursor-pointer">
+                Silicone 300ml
+              </button>
+            </div>
+            <span class="hidden sm:inline-flex items-center gap-1.5 font-mono text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded shrink-0">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              ISO QC
+            </span>
+          </div>
+
+          <div id="hero-stage-wrapper" class="stage-fade grid grid-cols-1 sm:grid-cols-12 gap-6 items-center py-6 sm:py-8">
+            <div class="sm:col-span-6 relative flex items-center justify-center py-2">
+              <div class="hero-radial-pulse absolute w-44 sm:w-52 h-44 sm:h-52 rounded-full bg-[#AB0716]/15 blur-md"></div>
+              <div class="orbit-ring-dashed absolute w-44 sm:w-52 h-44 sm:h-52 rounded-full border border-dashed border-white/20"></div>
+              <img
+                id="hero-stage-img"
+                src="{% static 'product/images/product/01.png' %}"
+                alt="Uniworld SBS Sprayable Adhesive"
+                class="relative z-10 h-48 sm:h-56 w-auto object-contain float-slow drop-shadow-[0_22px_32px_rgba(0,0,0,0.9)]"
+              />
+            </div>
+
+            <div class="sm:col-span-6 space-y-4 text-center sm:text-left">
+              <div>
+                <span id="hero-stage-tag" class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold">
+                  FURNITURE &amp; FOAM SERIES
+                </span>
+                <h2 id="hero-stage-title" class="font-display text-2xl font-bold text-white mt-1">
+                  SBS Sprayable Adhesive
+                </h2>
+                <p id="hero-stage-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mt-2">
+                  Fast-tack styrene-butadiene-styrene spray formula for PU foam, mattress lamination, and upholstery lines.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2.5 text-left">
+                <div class="p-3 rounded-xl bg-black/50 border border-white/10">
+                  <span class="block font-mono text-[10px] text-slate-400">VISCOSITY</span>
+                  <span id="hero-stage-visc" class="block font-mono text-xs font-bold text-white mt-0.5">80–120 cPs</span>
+                </div>
+                <div class="p-3 rounded-xl bg-black/50 border border-white/10">
+                  <span class="block font-mono text-[10px] text-slate-400">PACK SIZES</span>
+                  <span id="hero-stage-pack" class="block font-mono text-xs font-bold text-amber-400 mt-0.5">3 L · 15 L</span>
+                </div>
+              </div>
+
+              <div class="pt-2 flex items-center justify-center sm:justify-start gap-4">
+                <a id="hero-stage-link" href="{% url 'single_product' 'sbs-sprayable-adhesive' %}" class="text-xs font-semibold text-white bg-white/10 hover:bg-[#AB0716] px-4 py-2.5 rounded-lg transition-all duration-300">
+                  Full Tech Specs →
+                </a>
+                <a href="{% url 'contact' %}" class="text-xs font-semibold text-rose-400 hover:text-white transition-colors">
+                  Request Sample
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <div class="flex items-center gap-2" id="hero-dots">
+              <span class="hero-dot w-5 h-1.5 rounded-full bg-[#AB0716] transition-all duration-300"></span>
+              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/25 transition-all duration-300"></span>
+              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/25 transition-all duration-300"></span>
+              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/25 transition-all duration-300"></span>
+            </div>
+            <a href="{% url 'technical_specs' %}" class="text-white hover:text-[#AB0716] transition">Full Matrix (15) →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 2. DUAL-TRACK ARCHITECTURAL INDUSTRIAL MARQUEE -->
+<section aria-label="Brand & Formulation Highlights" class="relative overflow-hidden bg-gradient-to-b from-[#07080B] via-[#0B0D12] to-[#07080B] border-y border-white/10 py-5 select-none">
+  <div class="pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 w-[520px] bg-[#AB0716]/15 blur-2xl"></div>
+  <div class="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#07080B] to-transparent z-10"></div>
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#07080B] to-transparent z-10"></div>
+
+  <div class="animate-marquee-track items-center mb-3">
+    {% for i in "1234" %}
+    <div class="flex items-center shrink-0">
+      <span class="mx-6 font-display text-base sm:text-xl font-extrabold uppercase tracking-[0.22em] text-white">
+        Bonding the Future
+      </span>
+      <span class="px-2.5 py-0.5 rounded bg-[#AB0716]/20 border border-[#AB0716]/40 font-mono text-[10px] font-bold text-rose-400">
+        ISO 9001:2015
+      </span>
+      <span class="mx-6 font-display text-base sm:text-xl font-extrabold uppercase tracking-[0.22em] text-transparent" style="-webkit-text-stroke: 1px rgba(255,255,255,0.4);">
+        Made in Bangladesh
+      </span>
+      <span class="w-2 h-2 rotate-45 bg-[#AB0716]"></span>
+      <span class="mx-6 font-display text-base sm:text-xl font-extrabold uppercase tracking-[0.22em] text-white">
+        Rupganj QC Tested
+      </span>
+      <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 font-mono text-[10px] font-bold text-emerald-400">
+        5.2 N/MM PEEL
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="animate-marquee-reverse items-center">
+    {% for i in "1234" %}
+    <div class="flex items-center shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-400">
+      <span class="mx-4 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-slate-200">SBS Sprayable (Clear &amp; SB602)</span>
+      <span class="text-[#AB0716]">✦</span>
+      <span class="mx-4 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-slate-200">Polyurethane (PU) Standard &amp; Premium</span>
+      <span class="text-[#AB0716]">✦</span>
+      <span class="mx-4 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-slate-200">Graft CR Chloroprene</span>
+      <span class="text-[#AB0716]">✦</span>
+      <span class="mx-4 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-slate-200">Acetic &amp; Neutral Silicone Sealants</span>
+      <span class="text-[#AB0716]">✦</span>
+      <span class="mx-4 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-slate-200">EVA &amp; PU/PVC Primers</span>
+      <span class="text-[#AB0716]">✦</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 3. BENTO GRID: WHY MANUFACTURERS CHOOSE UNIWORLD -->
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-14" data-aos="fade-up">
+      <div class="max-w-2xl">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Engineering Advantage</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2">
+          Why Manufacturers Choose <span class="text-[#AB0716]">Uniworld</span>
+        </h2>
+      </div>
+      <p class="text-slate-600 text-sm sm:text-base max-w-md">
+        Real numbers, not adjectives. Every batch is tested at our Rupganj lab for open time, viscosity stability, and heat resistance.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-5 sm:gap-6">
+      <div class="md:col-span-3 rounded-2xl bg-[#0C0E12] text-white p-7 sm:p-10 relative overflow-hidden group" data-aos="fade-up">
+        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-[#AB0716]/25 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
+        <span class="inline-block font-mono text-xs px-3 py-1 rounded bg-[#AB0716] text-white font-bold mb-5">01 · PRECISION CHEMISTRY</span>
+        <h3 class="font-display text-2xl sm:text-3xl font-bold mb-3">Engineered Performance</h3>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-md">
+          High peel strength, clean bond lines, and calibrated open tack times built for both manual brush work and high-speed automated spray lines.
+        </p>
+        <div class="mt-7 pt-5 border-t border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 font-mono text-xs text-slate-300">
+          <span>✓ Zero Delamination</span>
+          <span>✓ Heat Resistant up to 85°C</span>
+        </div>
+      </div>
+
+      <div class="md:col-span-3 rounded-2xl border border-slate-200 bg-slate-50 p-7 sm:p-10 hover:border-[#AB0716] transition-all duration-300" data-aos="fade-up" data-aos-delay="80">
+        <span class="inline-block font-mono text-xs px-3 py-1 rounded bg-white border border-slate-200 text-[#0C0E12] font-bold mb-5">02 · MULTI-SUBSTRATE</span>
+        <h3 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12] mb-3">Application-Ready Formulations</h3>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Dedicated adhesive and primer systems for EVA, Phylon, PU, PVC, leather, Rexine, PU foam, wood, aluminium, glass, and concrete.
+        </p>
+        <div class="mt-7 pt-5 border-t border-slate-200 flex flex-wrap gap-2 font-mono text-[11px]">
+          <span class="px-2.5 py-1 bg-white rounded border border-slate-200">EVA / TPR</span>
+          <span class="px-2.5 py-1 bg-white rounded border border-slate-200">PU / PVC</span>
+          <span class="px-2.5 py-1 bg-white rounded border border-slate-200">Foam &amp; Wood</span>
+          <span class="px-2.5 py-1 bg-white rounded border border-slate-200">Glass &amp; Metal</span>
+        </div>
+      </div>
+
+      <div class="md:col-span-2 rounded-2xl border border-slate-200 bg-white p-7 hover:shadow-xl hover:border-[#AB0716] transition-all duration-300" data-aos="fade-up" data-aos-delay="140">
+        <div class="w-11 h-11 rounded-xl bg-rose-50 text-[#AB0716] font-mono font-bold flex items-center justify-center mb-5">03</div>
+        <h3 class="font-display text-xl font-bold text-[#0C0E12] mb-2">Reliable Bulk Supply</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Consistent drum, 15L pail, and 3L tin availability across Dhaka, Gazipur, Savar, and Chattogram.
+        </p>
+      </div>
+
+      <div class="md:col-span-2 rounded-2xl border border-slate-200 bg-white p-7 hover:shadow-xl hover:border-[#AB0716] transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-11 h-11 rounded-xl bg-rose-50 text-[#AB0716] font-mono font-bold flex items-center justify-center mb-5">04</div>
+        <h3 class="font-display text-xl font-bold text-[#0C0E12] mb-2">Sustainability-Focused</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Cleaner solvent handling, low-VOC formulation R&amp;D, and strict factory safety compliance.
+        </p>
+      </div>
+
+      <div class="md:col-span-2 rounded-2xl bg-gradient-to-br from-[#AB0716] to-[#7A040F] text-white p-7 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="260">
+        <div>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-rose-200">05 · OEM PARTNERSHIP</span>
+          <h3 class="font-display text-xl font-bold mt-2 mb-2">Custom Lab Trials</h3>
+          <p class="text-xs text-rose-100 leading-relaxed">
+            Send us your shoe sole or foam sample—our chemists test and tune viscosity for your line.
+          </p>
+        </div>
+        <a href="{% url 'rnd' %}" class="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-white underline underline-offset-4">
+          Book a Substrate Trial →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. VISUAL VISCOSITY & BOND STRENGTH BENCHMARK -->
+<section class="py-16 sm:py-24 grid-blueprint-light border-b border-slate-200" id="viscosity-section">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-12" data-aos="fade-up">
+      <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Lab Benchmark Data</span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2">
+        Viscosity &amp; Bond Strength Across Grades
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-3">
+        Lower viscosity grades atomize cleanly through spray guns; higher viscosity grades hold on porous leather, wood, and vertical surfaces.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-6 sm:p-9 shadow-sm" data-aos="fade-right">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+          <h3 class="font-display text-lg sm:text-xl font-bold text-[#0C0E12]">Brookfield Viscosity Spectrum (25°C)</h3>
+          <span class="font-mono text-xs text-slate-400">Unit: cPs</span>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-2 gap-2">
+              <span class="text-[#0C0E12]">SBS Sprayable Adhesive (Clear &amp; White SB602)</span>
+              <span class="font-mono text-[#AB0716] shrink-0">80 – 140 cPs</span>
+            </div>
+            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+              <div class="visc-bar h-full bg-[#AB0716] rounded-full transition-all duration-1000 ease-out" data-width="16%" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-2 gap-2">
+              <span class="text-[#0C0E12]">Polyurethane (PU) Standard Adhesive</span>
+              <span class="font-mono text-[#0C0E12] shrink-0">2,000 – 2,400 cPs</span>
+            </div>
+            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+              <div class="visc-bar h-full bg-[#0C0E12] rounded-full transition-all duration-1000 ease-out" data-width="52%" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-2 gap-2">
+              <span class="text-[#0C0E12]">Polyurethane (PU) Premium Grade</span>
+              <span class="font-mono text-[#AB0716] shrink-0">2,400 – 2,800 cPs</span>
+            </div>
+            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+              <div class="visc-bar h-full bg-gradient-to-r from-[#0C0E12] to-[#AB0716] rounded-full transition-all duration-1000 ease-out" data-width="64%" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-2 gap-2">
+              <span class="text-[#0C0E12]">Graft CR (Chloroprene) Adhesive</span>
+              <span class="font-mono text-[#0C0E12] shrink-0">2,800 – 3,400 cPs</span>
+            </div>
+            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+              <div class="visc-bar h-full bg-[#0C0E12] rounded-full transition-all duration-1000 ease-out" data-width="78%" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-2 gap-2">
+              <span class="text-[#0C0E12]">Synthetic Rubber Contact Adhesive</span>
+              <span class="font-mono text-[#0C0E12] shrink-0">3,500 – 4,500 cPs</span>
+            </div>
+            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+              <div class="visc-bar h-full bg-slate-800 rounded-full transition-all duration-1000 ease-out" data-width="96%" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <span class="text-xs text-slate-500">Custom viscosity tuning available for bulk orders.</span>
+          <a href="{% url 'technical_specs' %}" class="text-xs font-bold text-[#AB0716] hover:underline">Full Spec Table →</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 bg-[#0C0E12] text-white rounded-2xl p-6 sm:p-9 shadow-xl flex flex-col justify-between" data-aos="fade-left">
+        <div>
+          <span class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold">Grade Comparison</span>
+          <h3 class="font-display text-2xl font-bold mt-1">Standard vs. Premium PU</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            When to upgrade to Uniworld Premium Polyurethane Adhesive for export footwear and high-stress soles:
+          </p>
+
+          <div class="mt-6 space-y-4">
+            <div class="p-4 rounded-xl bg-white/[0.05] border border-white/10 hover:border-[#AB0716]/50 transition">
+              <div class="flex justify-between items-center">
+                <span class="font-display font-bold text-sm text-rose-400">Premium PU Adhesive</span>
+                <span class="font-mono text-xs font-bold text-emerald-400">5.2 N/mm (24h)</span>
+              </div>
+              <p class="text-xs text-slate-300 mt-1.5">Higher solid content, superior hydrolysis &amp; tropical heat resistance (up to 85°C).</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+              <div class="flex justify-between items-center">
+                <span class="font-display font-bold text-sm text-white">Standard PU Adhesive</span>
+                <span class="font-mono text-xs font-bold text-slate-300">4.1 N/mm (24h)</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1.5">Ideal for daily domestic footwear assembly on PVC, PU, and synthetic leather.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <a href="{% url 'single_product' 'polyurethane-adhesive-premium' %}" class="text-xs font-semibold text-white hover:text-[#AB0716] transition">
+            Inspect Premium PU →
+          </a>
+          <a href="{% url 'single_product' 'polyurethane-adhesive' %}" class="text-xs text-slate-400 hover:text-white transition">
+            Standard PU →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FEATURED ADHESIVES & SEALANTS CAROUSEL -->
+<section class="py-16 sm:py-24 bg-[#0F1218] text-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12" data-aos="fade-up">
+      <div>
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Factory Supply Range</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-2">
+          Featured Adhesives &amp; Sealants
+        </h2>
+      </div>
+
+      <div class="flex items-center justify-between sm:justify-end gap-3">
+        <div class="flex items-center gap-2.5">
+          <button type="button" aria-label="Previous product" class="featured-prev carousel-arrow-btn">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button type="button" aria-label="Next product" class="featured-next carousel-arrow-btn">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <a href="{% url 'product' %}" class="px-5 py-3 rounded-full bg-white text-[#0C0E12] hover:bg-[#AB0716] hover:text-white font-semibold text-xs sm:text-sm transition-all duration-300 inline-flex items-center gap-2">
+          <span>All 15 Products</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="swiper featuredSwiper">
+      <div class="swiper-wrapper">
+        {% for product in featured_products %}
+        <div class="swiper-slide h-auto">
+          <div class="group h-full rounded-2xl bg-[#161B24] border border-white/10 hover:border-[#AB0716] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+            <div>
+              <a href="{% url 'single_product' product.slug %}" class="block relative h-60 bg-[#0B0D12] p-6 flex items-center justify-center overflow-hidden">
+                {% if product.feature_image %}
+                <img src="{{ product.feature_image.src }}" alt="{{ product.feature_image.get_alt }}" class="max-h-44 w-auto object-contain group-hover:scale-108 transition-transform duration-500" />
+                {% else %}
+                <img src="{% static 'product/images/product/01.png' %}" alt="{{ product.name }}" class="max-h-44 w-auto object-contain group-hover:scale-108 transition-transform duration-500" />
+                {% endif %}
+                {% if product.category %}
+                <span class="absolute top-3.5 left-3.5 font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded bg-white/10 text-slate-200">
+                  {{ product.category.name }}
+                </span>
+                {% endif %}
+              </a>
+              <div class="p-6">
+                <h3 class="font-display text-xl font-bold text-white group-hover:text-[#AB0716] transition-colors">
+                  <a href="{% url 'single_product' product.slug %}">{{ product.name }}</a>
+                </h3>
+                <p class="text-sm text-slate-400 mt-2.5 line-clamp-2 leading-relaxed">
+                  {{ product.description }}
+                </p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-4 border-t border-white/10 flex items-center justify-between">
+              <a href="{% url 'single_product' product.slug %}" class="text-xs font-semibold text-slate-200 hover:text-white transition inline-flex items-center gap-1">
+                <span>View Specs</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+              <a href="{% url 'contact' %}" class="text-xs font-semibold text-[#AB0716] hover:text-rose-400">
+                Get Quote
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SPLIT INTERACTIVE INDUSTRY SOLUTIONS DIRECTORY (ALL 6 SECTORS) -->
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12" data-aos="fade-up">
+      <div>
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Sector-Specific Chemistry</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2">
+          Industries <span class="text-[#AB0716]">We Serve</span>
+        </h2>
+      </div>
+      <a href="{% url 'industries_hub' %}" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-300 hover:border-[#0C0E12] text-xs sm:text-sm font-semibold text-[#0C0E12] transition shrink-0">
+        <span>View All 6 Industries</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Clean 4-Col Vertical Selector + 8-Col Preview Card (Zero Awkward Tab Wrapping) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch" data-aos="fade-up" data-aos-delay="80">
+
+      <!-- Left Selector Rail (4 Cols) -->
+      <div class="lg:col-span-4 flex lg:flex-col gap-2.5 overflow-x-auto no-scrollbar pb-1 lg:pb-0" id="industry-tabs">
+        <button type="button" data-ind="0" class="ind-tab-btn shrink-0 lg:shrink w-auto lg:w-full text-left px-4 py-3.5 rounded-2xl bg-[#0C0E12] text-white shadow-lg flex items-center justify-between gap-3 transition-all duration-300 cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="ind-num font-mono text-xs px-2 py-0.5 rounded bg-[#AB0716] text-white font-bold">01</span>
+            <span class="font-display text-sm sm:text-base font-bold whitespace-nowrap">Automotive &amp; Transport</span>
+          </div>
+          <span class="hidden lg:inline text-rose-400">→</span>
+        </button>
+
+        <button type="button" data-ind="1" class="ind-tab-btn shrink-0 lg:shrink w-auto lg:w-full text-left px-4 py-3.5 rounded-2xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 transition-all duration-300 cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="ind-num font-mono text-xs px-2 py-0.5 rounded bg-white text-slate-600 font-bold">02</span>
+            <span class="font-display text-sm sm:text-base font-bold whitespace-nowrap">Woodworking &amp; Furniture</span>
+          </div>
+          <span class="hidden lg:inline opacity-40">→</span>
+        </button>
+
+        <button type="button" data-ind="2" class="ind-tab-btn shrink-0 lg:shrink w-auto lg:w-full text-left px-4 py-3.5 rounded-2xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 transition-all duration-300 cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="ind-num font-mono text-xs px-2 py-0.5 rounded bg-white text-slate-600 font-bold">03</span>
+            <span class="font-display text-sm sm:text-base font-bold whitespace-nowrap">Footwear &amp; Leather</span>
+          </div>
+          <span class="hidden lg:inline opacity-40">→</span>
+        </button>
+
+        <button type="button" data-ind="3" class="ind-tab-btn shrink-0 lg:shrink w-auto lg:w-full text-left px-4 py-3.5 rounded-2xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 transition-all duration-300 cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="ind-num font-mono text-xs px-2 py-0.5 rounded bg-white text-slate-600 font-bold">04</span>
+            <span class="font-display text-sm sm:text-base font-bold whitespace-nowrap">Electronics &amp; Appliances</span>
+          </div>
+          <span class="hidden lg:inline opacity-40">→</span>
+        </button>
+
+        <button type="button" data-ind="4" class="ind-tab-btn shrink-0 lg:shrink w-auto lg:w-full text-left px-4 py-3.5 rounded-2xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 transition-all duration-300 cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="ind-num font-mono text-xs px-2 py-0.5 rounded bg-white text-slate-600 font-bold">05</span>
+            <span class="font-display text-sm sm:text-base font-bold whitespace-nowrap">Textile, Foam &amp; Materials</span>
+          </div>
+          <span class="hidden lg:inline opacity-40">→</span>
+        </button>
+
+        <button type="button" data-ind="5" class="ind-tab-btn shrink-0 lg:shrink w-auto lg:w-full text-left px-4 py-3.5 rounded-2xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 transition-all duration-300 cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="ind-num font-mono text-xs px-2 py-0.5 rounded bg-white text-slate-600 font-bold">06</span>
+            <span class="font-display text-sm sm:text-base font-bold whitespace-nowrap">DIY, Trade &amp; Retail</span>
+          </div>
+          <span class="hidden lg:inline opacity-40">→</span>
+        </button>
+      </div>
+
+      <!-- Right Detail Stage (8 Cols) -->
+      <div id="ind-panel-card" class="lg:col-span-8 stage-fade rounded-3xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-12 h-full items-stretch">
+          <div class="md:col-span-5 relative min-h-[250px] md:min-h-full bg-[#0C0E12]">
+            <img
+              id="ind-panel-img"
+              src="{% static 'product/images/industre/01.png' %}"
+              alt="Automotive and Transportation Adhesives"
+              class="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <span id="ind-panel-badge" class="inline-block font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded bg-[#AB0716] text-white font-bold">
+                INTERIOR TRIM, NVH &amp; ASSEMBLY
+              </span>
+            </div>
+          </div>
+
+          <div class="md:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+            <div>
+              <h3 id="ind-panel-title" class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12]">
+                Automotive &amp; Transportation
+              </h3>
+              <p id="ind-panel-desc" class="text-slate-600 text-sm sm:text-[15px] leading-relaxed mt-3">
+                High-temperature and fuel/oil-resistant bonding solutions with NVH damping and flexible adhesion on plastics, foams, and interior trim for fast cycle lines.
+              </p>
+
+              <div class="mt-5">
+                <p class="font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold mb-2.5">Recommended Uniworld Grades:</p>
+                <div id="ind-panel-products" class="flex flex-wrap gap-2">
+                  <a href="{% url 'single_product' 'synthetic-rubber-adhesive' %}" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-[#AB0716] text-xs font-semibold text-[#0C0E12] transition">Synthetic Rubber Adhesive</a>
+                  <a href="{% url 'single_product' 'sbs-sprayable-adhesive' %}" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-[#AB0716] text-xs font-semibold text-[#0C0E12] transition">SBS Sprayable Adhesive</a>
+                  <a href="{% url 'single_product' 'polyurethane-adhesive' %}" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-[#AB0716] text-xs font-semibold text-[#0C0E12] transition">Polyurethane (PU)</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-5 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+              <a id="ind-panel-link" href="{% url 'industries_hub' %}" class="btn-primary-glow px-6 py-3 text-xs sm:text-sm font-semibold">
+                Explore Automotive Solutions →
+              </a>
+              <a href="{% url 'contact' %}" class="text-xs font-mono font-bold text-[#AB0716] hover:underline">
+                Request Trial Sample
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 7. 4-STEP ISO 9001:2015 QUALITY & LAB WORKFLOW -->
+<section class="py-16 sm:py-24 bg-[#0C0E12] text-white border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12" data-aos="fade-up">
+      <div>
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Rupganj Plant Protocol</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">
+          ISO 9001:2015 Certified Manufacturing in Bangladesh
+        </h2>
+      </div>
+      <a href="{% url 'rnd' %}" class="text-xs font-mono text-rose-400 hover:text-white transition">
+        Inside Our R&amp;D &amp; QC Lab →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#AB0716] transition-all duration-300" data-aos="fade-up" data-aos-delay="0">
+        <span class="font-mono text-xs text-[#AB0716] font-bold">STEP 01</span>
+        <h3 class="font-display text-lg font-bold text-white mt-2">Polymer &amp; Solvent QC</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Every incoming batch of polychloroprene, PU resin, and SBS elastomer is verified for purity and moisture levels.</p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#AB0716] transition-all duration-300" data-aos="fade-up" data-aos-delay="80">
+        <span class="font-mono text-xs text-[#AB0716] font-bold">STEP 02</span>
+        <h3 class="font-display text-lg font-bold text-white mt-2">Controlled Reactor Blending</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Temperature-regulated mixing at our Rupganj plant ensures uniform viscosity and zero phase separation.</p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#AB0716] transition-all duration-300" data-aos="fade-up" data-aos-delay="160">
+        <span class="font-mono text-xs text-[#AB0716] font-bold">STEP 03</span>
+        <h3 class="font-display text-lg font-bold text-white mt-2">Peel, Shear &amp; Heat Test</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Sample bonds on EVA, leather, and foam undergo tensile peel testing and tropical heat-chamber checks.</p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#AB0716] transition-all duration-300" data-aos="fade-up" data-aos-delay="240">
+        <span class="font-mono text-xs text-[#AB0716] font-bold">STEP 04</span>
+        <h3 class="font-display text-lg font-bold text-white mt-2">Batch-Coded Dispatch</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Sealed in 3L tins, 15L pails, 200L drums, or 300ml cartridges with full batch traceability across Bangladesh.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FREQUENTLY ASKED QUESTIONS (HOMEPAGE KNOWLEDGE PREVIEW + CTA TO /FAQ/) -->
+<section class="py-16 sm:py-24 grid-blueprint-light border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+      <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-5" data-aos="fade-up">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">
+           Technical &amp; B2B FAQ
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0C0E12] leading-tight">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Quick technical answers on bond strength, spray viscosity, primers, pack sizes, and nationwide delivery across Bangladesh.
+        </p>
+
+        <div class="pt-2 flex flex-col sm:flex-row lg:flex-col gap-3">
+          <a
+            href="{% url 'faq' %}"
+            class="btn-primary-glow px-6 py-3.5 text-xs sm:text-sm font-semibold inline-flex items-center justify-center gap-2"
+          >
+            <span>Explore All 14 FAQs</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="{% url 'technical_specs' %}"
+            class="px-6 py-3 rounded-lg border border-slate-300 bg-white hover:border-[#0C0E12] text-xs sm:text-sm font-semibold text-[#0C0E12] text-center transition"
+          >
+            Compare All 15 Grades
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8 space-y-3.5" data-aos="fade-up" data-aos-delay="80">
+        <div class="home-faq-card is-open rounded-2xl bg-white border border-slate-200 transition-all duration-300">
+          <button type="button" aria-expanded="true" class="home-faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12]">
+              Which Uniworld adhesive has the highest bond strength?
+            </span>
+            <span class="home-faq-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="home-faq-answer-wrap">
+            <div class="home-faq-answer-inner">
+              <div class="px-6 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-base text-slate-600 leading-relaxed">
+                <a href="{% url 'single_product' 'polyurethane-adhesive-premium' %}" class="text-[#AB0716] font-semibold hover:underline">Premium Polyurethane (PU) Adhesive</a> delivers our highest peel strength (up to <strong>5.2 N/mm / 23.0 kgf</strong> 24 hours after bonding) with tropical heat resistance up to 85°C, followed by <a href="{% url 'single_product' 'polyurethane-adhesive' %}" class="text-[#AB0716] font-semibold hover:underline">Standard PU Adhesive</a> (18.5 kgf).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300">
+          <button type="button" aria-expanded="false" class="home-faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12]">
+              Which Uniworld adhesive is formulated for spray gun application?
+            </span>
+            <span class="home-faq-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="home-faq-answer-wrap">
+            <div class="home-faq-answer-inner">
+              <div class="px-6 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-base text-slate-600 leading-relaxed">
+                <a href="{% url 'single_product' 'sbs-sprayable-adhesive' %}" class="text-[#AB0716] font-semibold hover:underline">SBS Sprayable Adhesive</a> (Clear and <a href="{% url 'single_product' 'sbs-sprayable-adhesive-white-sb602' %}" class="text-[#AB0716] font-semibold hover:underline">White SB602</a>). At <strong>80–120 cPs</strong> viscosity, it is the lowest-viscosity grade in our range—engineered for clean spray atomization and soft seams on PU foam, mattresses, and upholstery.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300">
+          <button type="button" aria-expanded="false" class="home-faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12]">
+              When should I use EVA Primer or PU/PVC Primer before bonding?
+            </span>
+            <span class="home-faq-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="home-faq-answer-wrap">
+            <div class="home-faq-answer-inner">
+              <div class="px-6 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-base text-slate-600 leading-relaxed">
+                Low-surface-energy soles like EVA and Phylon require <a href="{% url 'single_product' 'eva-primer' %}" class="text-[#AB0716] font-semibold hover:underline">EVA Primer</a> after cleaning with Synthetic Cleaner so the adhesive anchors properly. Molded PU, PVC, and TPR soles benefit from <a href="{% url 'single_product' 'pu-pvc-primer' %}" class="text-[#AB0716] font-semibold hover:underline">PU/PVC Primer</a> to treat plasticizers and prevent sole separation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300">
+          <button type="button" aria-expanded="false" class="home-faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12]">
+              What is the difference between Acetic Silicone and Neutral Silicone Sealant?
+            </span>
+            <span class="home-faq-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="home-faq-answer-wrap">
+            <div class="home-faq-answer-inner">
+              <div class="px-6 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-base text-slate-600 leading-relaxed">
+                <a href="{% url 'single_product' 'silicone-sealant' %}" class="text-[#AB0716] font-semibold hover:underline">Acetic Silicone Sealant</a> cures fast for glass, ceramic tiles, and sanitary fixtures, while <a href="{% url 'single_product' 'silicone-sealant-neutral' %}" class="text-[#AB0716] font-semibold hover:underline">Neutral Cure Silicone Sealant</a> is low-odor and non-corrosive—preventing mirror desilvering and metal oxidation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300">
+          <button type="button" aria-expanded="false" class="home-faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12]">
+              What pack sizes, MOQs, and sample trials are available for factories?
+            </span>
+            <span class="home-faq-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="home-faq-answer-wrap">
+            <div class="home-faq-answer-inner">
+              <div class="px-6 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-base text-slate-600 leading-relaxed">
+                Liquid adhesives, primers, and cleaners come in <strong>3 L tins</strong>, <strong>15 L industrial pails</strong>, and <strong>200 L drums</strong>, while sealants come in <strong>300 ml cartridges</strong>. Factories can request trial samples and TDS/SDS sheets directly via our <a href="{% url 'contact' %}" class="text-[#AB0716] font-semibold hover:underline">Contact &amp; Quote Desk</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. LATEST TECHNICAL GUIDES & BLOG INSIGHTS -->
+{% if recent_posts %}
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 space-y-12">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6" data-aos="fade-up">
+      <div class="max-w-2xl">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">
+           R&amp;D Knowledge Hub
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2">
+          Technical Guides &amp; <span class="text-[#AB0716]">Industry Insights</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2.5">
+          Practical field guides on surface preparation, spray lamination, and silicone curing from Uniworld's application specialists.
+        </p>
+      </div>
+
+      <a
+        href="{% url 'blog' %}"
+        class="px-6 py-3.5 rounded-xl bg-[#0C0E12] hover:bg-[#AB0716] text-white font-semibold text-xs sm:text-sm transition-colors duration-300 inline-flex items-center justify-center gap-2 shrink-0"
+      >
+        <span>View All Guides</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+      {% for post in recent_posts %}
+      <article
+        class="group rounded-2xl bg-slate-50 border border-slate-200 hover:border-[#AB0716]/50 hover:bg-white hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
+        data-aos="fade-up"
+        data-aos-delay="{{ forloop.counter0 }}0"
+      >
+        <div>
+          <a href="{% url 'blog_details' post.slug %}" class="relative block h-52 bg-[#0C0E12] overflow-hidden">
+            {% if post.featured_image %}
+            <img
+              src="{{ post.featured_image.url }}"
+              alt="{{ post.title }}"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            {% else %}
+            <img
+              src="{% static 'product/images/blog/bg.png' %}"
+              alt="{{ post.title }}"
+              class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+            />
+            {% endif %}
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0C0E12]/70 via-transparent to-transparent"></div>
+            <span class="absolute bottom-3 left-3 font-mono text-[10px] px-2.5 py-1 rounded bg-black/80 text-white">
+              {{ post.published_date|date:"j M Y" }}
+            </span>
+          </a>
+
+          <div class="p-6 space-y-2.5">
+            {% if post.tags %}
+            <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block truncate">
+              {{ post.tags }}
+            </span>
+            {% endif %}
+
+            <h3 class="font-display text-xl font-bold text-[#0C0E12] group-hover:text-[#AB0716] transition-colors leading-snug line-clamp-2">
+              <a href="{% url 'blog_details' post.slug %}">{{ post.title }}</a>
+            </h3>
+
+            {% if post.excerpt %}
+            <p class="text-sm text-slate-600 leading-relaxed line-clamp-3">
+              {{ post.excerpt }}
+            </p>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="px-6 py-4 border-t border-slate-200/70 flex items-center justify-between">
+          <a href="{% url 'blog_details' post.slug %}" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0C0E12] group-hover:text-[#AB0716] transition">
+            <span>Read Full Guide</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+          <span class="font-mono text-[11px] text-slate-400">5 min read</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- 10. DIRECT QUERY & FACTORY DESK -->
+<section class="py-16 sm:py-24 grid-blueprint-light">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div class="lg:col-span-5 space-y-6" data-aos="fade-right">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Direct Factory Desk</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0C0E12] leading-tight">
+          Request a Quote or Technical Sample
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          We deliver the science, consistency, and reliability that power industrial, construction, and hardware applications across Bangladesh.
+        </p>
+
+        <div class="p-5 rounded-xl bg-white border border-slate-200 space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+            <span class="font-mono uppercase text-slate-500">Working Hours</span>
+            <span class="font-semibold text-[#0C0E12]">Saturday – Thursday, 9:00 AM – 6:00 PM</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs border-t border-slate-100 pt-3">
+            <span class="font-mono uppercase text-slate-500">Manufacturing Plant</span>
+            <span class="font-semibold text-[#0C0E12]">Rupganj, Narayanganj</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs border-t border-slate-100 pt-3">
+            <span class="font-mono uppercase text-slate-500">Direct Hotline</span>
+            <a href="tel:+8801898802405" class="font-mono font-bold text-[#AB0716]">+880 1898-802405</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 bg-[#0C0E12] text-white rounded-2xl p-6 sm:p-10 lg:p-12 shadow-2xl border border-white/10" data-aos="fade-left">
+        <h3 class="font-display text-2xl sm:text-3xl font-bold mb-2">Send Us Your Query</h3>
+        <p class="text-sm text-slate-400 mb-7">Get bulk pricing, TDS/SDS sheets, or sample testing support.</p>
+
+        <form id="home-query-form" class="space-y-4 sm:space-y-5">
+          {% csrf_token %}
+          <div>
+            <input type="text" name="full_name" required placeholder="Enter Your Name / Company Name *" class="w-full px-4 py-3.5 rounded-lg bg-white/[0.06] border border-white/15 text-white placeholder-slate-400 focus:outline-none focus:border-[#AB0716] text-sm transition" />
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            <input type="email" name="email" required placeholder="Email Address *" class="w-full px-4 py-3.5 rounded-lg bg-white/[0.06] border border-white/15 text-white placeholder-slate-400 focus:outline-none focus:border-[#AB0716] text-sm transition" />
+            <input type="tel" name="phone" required placeholder="Phone Number *" class="w-full px-4 py-3.5 rounded-lg bg-white/[0.06] border border-white/15 text-white placeholder-slate-400 focus:outline-none focus:border-[#AB0716] text-sm transition" />
+          </div>
+          <div>
+            <textarea name="message" rows="4" required placeholder="Tell us about your application, substrates, or required quantity *" class="w-full px-4 py-3.5 rounded-lg bg-white/[0.06] border border-white/15 text-white placeholder-slate-400 focus:outline-none focus:border-[#AB0716] text-sm resize-none transition"></textarea>
+          </div>
+          <button type="submit" id="home-query-btn" class="btn-primary-glow w-full py-4 text-sm sm:text-base font-semibold cursor-pointer">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const heroCard = document.getElementById('hero-3d-card');
+    if (heroCard && window.innerWidth >= 1024) {
+      heroCard.addEventListener('mousemove', (e) => {
+        const rect = heroCard.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        heroCard.style.transform = `perspective(1100px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg)`;
+      });
+      heroCard.addEventListener('mouseleave', () => {
+        heroCard.style.transform = 'perspective(1100px) rotateY(0deg) rotateX(0deg)';
+      });
+    }
+
+    const heroProducts = [
+      {
+        tag: 'FURNITURE & FOAM SERIES',
+        title: 'SBS Sprayable Adhesive',
+        desc: 'Fast-tack styrene-butadiene-styrene spray formula for PU foam, mattress lamination, and upholstery lines.',
+        visc: '80–120 cPs',
+        pack: '3 L · 15 L',
+        img: "{% static 'product/images/product/01.png' %}",
+        url: "{% url 'single_product' 'sbs-sprayable-adhesive' %}"
+      },
+      {
+        tag: 'FOOTWEAR BONDING SERIES',
+        title: 'Polyurethane (PU) Adhesive',
+        desc: 'Heat-activated high-strength polyurethane adhesive engineered for PU, PVC, and synthetic leather shoe soles.',
+        visc: '2,000–2,400 cPs',
+        pack: '3 L · 15 L',
+        img: "{% static 'product/images/product/single01.png' %}",
+        url: "{% url 'single_product' 'polyurethane-adhesive' %}"
+      },
+      {
+        tag: 'ELASTOMER & EVA SERIES',
+        title: 'Graft CR (Chloroprene)',
+        desc: 'Grafted chloroprene formulation delivering aggressive initial tack and flex resistance on EVA and rubber.',
+        visc: '2,800–3,400 cPs',
+        pack: '3 L · 15 L',
+        img: "{% static 'product/images/product/single02.png' %}",
+        url: "{% url 'single_product' 'graft-adhesive' %}"
+      },
+      {
+        tag: 'HARDWARE & GLAZING SERIES',
+        title: 'Acetic & Neutral Silicone',
+        desc: 'Weatherproof, UV-resistant 300ml silicone sealant cartridges for glass, aluminium, tiles, and mirrors.',
+        visc: 'Non-Sag Paste',
+        pack: '300 ml Cartridge',
+        img: "{% static 'product/images/product/single03.png' %}",
+        url: "{% url 'single_product' 'silicone-sealant' %}"
+      }
+    ];
+
+    let activeHeroIdx = 0;
+    const stageWrapper = document.getElementById('hero-stage-wrapper');
+    const tabBtns = document.querySelectorAll('.hero-tab-btn');
+    const heroDots = document.querySelectorAll('.hero-dot');
+
+    function switchHeroProduct(idx) {
+      if (idx === activeHeroIdx) return;
+      activeHeroIdx = idx;
+      const item = heroProducts[idx];
+      if (!item) return;
+
+      tabBtns.forEach((b, i) => {
+        if (i === idx) {
+          b.classList.remove('bg-white/[0.05]', 'text-slate-300');
+          b.classList.add('bg-[#AB0716]', 'text-white', 'shadow-md', 'shadow-[#AB0716]/40');
+        } else {
+          b.classList.remove('bg-[#AB0716]', 'text-white', 'shadow-md', 'shadow-[#AB0716]/40');
+          b.classList.add('bg-white/[0.05]', 'text-slate-300');
+        }
+      });
+
+      heroDots.forEach((d, i) => {
+        if (i === idx) {
+          d.classList.remove('w-1.5', 'bg-white/25');
+          d.classList.add('w-5', 'bg-[#AB0716]');
+        } else {
+          d.classList.remove('w-5', 'bg-[#AB0716]');
+          d.classList.add('w-1.5', 'bg-white/25');
+        }
+      });
+
+      stageWrapper?.classList.add('is-switching');
+      setTimeout(() => {
+        document.getElementById('hero-stage-tag').textContent = item.tag;
+        document.getElementById('hero-stage-title').textContent = item.title;
+        document.getElementById('hero-stage-desc').textContent = item.desc;
+        document.getElementById('hero-stage-visc').textContent = item.visc;
+        document.getElementById('hero-stage-pack').textContent = item.pack;
+        document.getElementById('hero-stage-img').src = item.img;
+        document.getElementById('hero-stage-link').href = item.url;
+        stageWrapper?.classList.remove('is-switching');
+      }, 220);
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        switchHeroProduct(parseInt(this.dataset.idx, 10));
+      });
+    });
+
+    const viscSection = document.getElementById('viscosity-section');
+    if (viscSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.visc-bar').forEach(bar => {
+              bar.style.width = bar.dataset.width;
+            });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.25 });
+      observer.observe(viscSection);
+    }
+
+    // All 6 Industries Data
+    const industryData = [
+      {
+        badge: 'INTERIOR TRIM, NVH & ASSEMBLY',
+        title: 'Automotive & Transportation',
+        desc: 'High-temperature and fuel/oil-resistant bonding solutions with NVH damping and flexible adhesion on plastics, foams, and interior trim for fast cycle lines.',
+        img: "{% static 'product/images/industre/01.png' %}",
+        link: "{% url 'industries_hub' %}",
+        linkText: 'Explore Automotive Solutions →',
+        chips: [
+          { name: 'Synthetic Rubber Adhesive', url: "{% url 'single_product' 'synthetic-rubber-adhesive' %}" },
+          { name: 'SBS Sprayable Adhesive', url: "{% url 'single_product' 'sbs-sprayable-adhesive' %}" },
+          { name: 'Polyurethane (PU)', url: "{% url 'single_product' 'polyurethane-adhesive' %}" }
+        ]
+      },
+      {
+        badge: 'LAMINATES, PANELING & CABINETRY',
+        title: 'Woodworking & Furniture',
+        desc: 'Fast-tack, heat-resistant contact and spray/roll formulations with calibrated open-time options for laminates, plywood, veneers, and wooden furniture assembly.',
+        img: "{% static 'product/images/industre/02.png' %}",
+        link: "{% url 'category_products' 'furniture' %}",
+        linkText: 'Explore Furniture Adhesives →',
+        chips: [
+          { name: 'Synthetic Rubber Adhesive', url: "{% url 'single_product' 'synthetic-rubber-adhesive' %}" },
+          { name: 'SBS Sprayable Adhesive', url: "{% url 'single_product' 'sbs-sprayable-adhesive' %}" },
+          { name: 'Nail Free Sealant', url: "{% url 'single_product' 'nail-free-sealant' %}" }
+        ]
+      },
+      {
+        badge: 'EXPORT & DOMESTIC SHOE LINES',
+        title: 'Footwear & Leather Goods',
+        desc: 'Strong elastomer bonding for EVA, PU, PVC, TPR, and genuine or synthetic leather—delivering high green strength, flex-crack resistance, and reliable heat activation.',
+        img: "{% static 'product/images/industre/03.png' %}",
+        link: "{% url 'category_products' 'footwear' %}",
+        linkText: 'Explore Footwear Solutions →',
+        chips: [
+          { name: 'Premium PU Adhesive', url: "{% url 'single_product' 'polyurethane-adhesive-premium' %}" },
+          { name: 'Graft CR Adhesive', url: "{% url 'single_product' 'graft-adhesive' %}" },
+          { name: 'EVA Primer', url: "{% url 'single_product' 'eva-primer' %}" },
+          { name: 'Synthetic Cleaner', url: "{% url 'single_product' 'synthetic-cleaner' %}" }
+        ]
+      },
+      {
+        badge: 'NON-CORROSIVE SEALING & INSULATION',
+        title: 'Electronics & Appliances',
+        desc: 'Dielectric stability for sealants, thermal cycling tolerance, clean bonds on plastics and metals, and low-outgassing neutral cure formulations.',
+        img: "{% static 'product/images/industre/04.png' %}",
+        link: "{% url 'single_product' 'silicone-sealant-neutral' %}",
+        linkText: 'Explore Neutral Sealants →',
+        chips: [
+          { name: 'Neutral Silicone Sealant', url: "{% url 'single_product' 'silicone-sealant-neutral' %}" },
+          { name: 'Cyanoacrylate Super Glue', url: "{% url 'single_product' 'cyanoacrylate-super-glue' %}" }
+        ]
+      },
+      {
+        badge: 'MATTRESS, SOFA & ACOUSTIC LAMINATION',
+        title: 'Textile, Foam & Flexible Materials',
+        desc: 'High tack to porous substrates, adjustable open time, soft non-hardening seams, and low-odor spray options (Clear & SB602 White) for foam and upholstery.',
+        img: "{% static 'product/images/industre/05.png' %}",
+        link: "{% url 'single_product' 'sbs-sprayable-adhesive-white-sb602' %}",
+        linkText: 'Explore Foam & Textile Grades →',
+        chips: [
+          { name: 'SBS Sprayable Adhesive', url: "{% url 'single_product' 'sbs-sprayable-adhesive' %}" },
+          { name: 'SB602 White Spray', url: "{% url 'single_product' 'sbs-sprayable-adhesive-white-sb602' %}" }
+        ]
+      },
+      {
+        badge: 'GLAZING, TRADE & RETAIL COUNTERS',
+        title: 'DIY, Trade & Retail',
+        desc: 'Easy application, multi-substrate compatibility, clear instructions, and safe handling across silicone sealants, Nail Free mounting adhesive, super glue, and spray paints.',
+        img: "{% static 'product/images/industre/06.png' %}",
+        link: "{% url 'category_products' 'hardware' %}",
+        linkText: 'Explore Trade & Hardware Range →',
+        chips: [
+          { name: 'Acetic Silicone Sealant', url: "{% url 'single_product' 'silicone-sealant' %}" },
+          { name: 'Nail Free Sealant', url: "{% url 'single_product' 'nail-free-sealant' %}" },
+          { name: 'Super Glue', url: "{% url 'single_product' 'cyanoacrylate-super-glue' %}" },
+          { name: 'Aerosol Spray Paint', url: "{% url 'single_product' 'aerosol-spray-paint' %}" }
+        ]
+      }
+    ];
+
+    const indPanelCard = document.getElementById('ind-panel-card');
+    document.querySelectorAll('.ind-tab-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const idx = parseInt(this.dataset.ind, 10);
+        const data = industryData[idx];
+        if (!data) return;
+
+        document.querySelectorAll('.ind-tab-btn').forEach(b => {
+          b.classList.remove('bg-[#0C0E12]', 'text-white', 'shadow-lg');
+          b.classList.add('bg-slate-100', 'text-slate-700');
+          const num = b.querySelector('.ind-num');
+          if (num) {
+            num.classList.remove('bg-[#AB0716]', 'text-white');
+            num.classList.add('bg-white', 'text-slate-600');
+          }
+        });
+        this.classList.remove('bg-slate-100', 'text-slate-700');
+        this.classList.add('bg-[#0C0E12]', 'text-white', 'shadow-lg');
+        const activeNum = this.querySelector('.ind-num');
+        if (activeNum) {
+          activeNum.classList.remove('bg-white', 'text-slate-600');
+          activeNum.classList.add('bg-[#AB0716]', 'text-white');
+        }
+
+        indPanelCard?.classList.add('is-switching');
+        setTimeout(() => {
+          document.getElementById('ind-panel-badge').textContent = data.badge;
+          document.getElementById('ind-panel-title').textContent = data.title;
+          document.getElementById('ind-panel-desc').textContent = data.desc;
+          document.getElementById('ind-panel-img').src = data.img;
+          document.getElementById('ind-panel-link').href = data.link;
+          document.getElementById('ind-panel-link').textContent = data.linkText;
+
+          const chipsContainer = document.getElementById('ind-panel-products');
+          chipsContainer.innerHTML = data.chips.map(c =>
+            `<a href="${c.url}" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-[#AB0716] text-xs font-semibold text-[#0C0E12] transition">${c.name}</a>`
+          ).join('');
+          indPanelCard?.classList.remove('is-switching');
+        }, 200);
+      });
+    });
+
+    // Smooth Homepage FAQ Accordion
+    document.querySelectorAll('.home-faq-toggle').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const card = this.closest('.home-faq-card');
+        const isOpen = card.classList.contains('is-open');
+
+        document.querySelectorAll('.home-faq-card').forEach(c => {
+          c.classList.remove('is-open');
+          c.querySelector('.home-faq-toggle')?.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          card.classList.add('is-open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    if (typeof Swiper !== 'undefined') {
+      new Swiper('.featuredSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        navigation: {
+          nextEl: '.featured-next',
+          prevEl: '.featured-prev',
+        },
+        breakpoints: {
+          640: { slidesPerView: 2, spaceBetween: 24 },
+          1024: { slidesPerView: 3, spaceBetween: 24 },
+        },
+      });
+    }
+
+    document.getElementById('home-query-form')?.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('home-query-btn');
+      const orig = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const payload = Object.fromEntries(new FormData(this).entries());
+      try {
+        const res = await fetch('/inquiry/submit/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCsrfToken() },
+          body: JSON.stringify(payload),
+        });
+        const result = await res.json();
+        if (result.success) {
+          this.reset();
+          showSuccessMessage(result.message || 'Thank you! Your inquiry has been received.');
+        } else {
+          showSuccessMessage(result.error || 'Please check your details and try again.');
+        }
+      } catch (err) {
+        showSuccessMessage('Network error. Please try again.');
+      } finally {
+        btn.textContent = orig;
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
+{% endblock %}

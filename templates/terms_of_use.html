@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"Terms of Use | Uniworld Adhesives & Sealants" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Terms of Use for Uniworld Adhesives & Sealants website, technical specifications, product testing recommendations, and intellectual property." }}{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK HEADER -->
+<section class="grid-blueprint-dark text-white border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-18">
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-5 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">Terms of Use</span>
+    </nav>
+
+    <div class="max-w-3xl space-y-3">
+      <span class="font-mono text-xs uppercase tracking-[0.2em] text-rose-400 font-bold">
+        Legal &amp; Compliance · Last Updated: November 2026
+      </span>
+      <h1 class="font-display text-3xl sm:text-5xl font-extrabold text-white">
+        Terms of Use
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+        Terms and conditions governing your access to the Uniworld Adhesives &amp; Sealants website, technical data sheets, and inquiry services.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. STRUCTURED LEGAL DOCUMENT -->
+<section class="py-14 sm:py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+      <!-- Sticky Section Index (4 Cols) -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-28 rounded-2xl bg-white border border-slate-200 p-6 shadow-xs space-y-3">
+        <span class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold block">Contents</span>
+        <nav class="flex flex-col space-y-2 text-sm font-medium text-slate-600">
+          <a href="#tu-1" class="hover:text-[#AB0716] transition">1. Acceptance of Terms</a>
+          <a href="#tu-2" class="hover:text-[#AB0716] transition">2. Technical Data &amp; Substrate Testing</a>
+          <a href="#tu-3" class="hover:text-[#AB0716] transition">3. Quotations &amp; Commercial Orders</a>
+          <a href="#tu-4" class="hover:text-[#AB0716] transition">4. Intellectual Property</a>
+          <a href="#tu-5" class="hover:text-[#AB0716] transition">5. Safe Handling &amp; Compliance</a>
+          <a href="#tu-6" class="hover:text-[#AB0716] transition">6. Governing Law</a>
+        </nav>
+      </aside>
+
+      <!-- Main Legal Text (8 Cols) -->
+      <div class="lg:col-span-8 rounded-3xl bg-white border border-slate-200 p-7 sm:p-10 shadow-xs space-y-8 text-slate-700 leading-relaxed">
+
+        <div id="tu-1" class="space-y-2.5 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">1. Acceptance of Terms</h2>
+          <p class="text-sm sm:text-base">
+            By accessing or using the Uniworld Adhesives &amp; Sealants website, downloading technical documents, or submitting a quotation inquiry, you agree to comply with these Terms of Use.
+          </p>
+        </div>
+
+        <div id="tu-2" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">2. Technical Data &amp; Substrate Testing</h2>
+          <p class="text-sm sm:text-base">
+            Viscosity ranges, open tack windows, peel strength values, and cure times published on this site are typical laboratory averages measured under controlled ISO 9001:2015 test conditions. Because factory substrates, plasticizer levels, ambient humidity, and equipment vary, buyers are responsible for conducting small-scale production trials prior to full commercial runs.
+          </p>
+        </div>
+
+        <div id="tu-3" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">3. Quotations &amp; Commercial Orders</h2>
+          <p class="text-sm sm:text-base">
+            Submitting an online inquiry or quote request does not constitute a binding contract until confirmed in writing by Uniworld Adhesives &amp; Sealants with formal pricing, pack size specifications (3 L, 15 L, 200 L, or carton quantities), and delivery terms.
+          </p>
+        </div>
+
+        <div id="tu-4" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">4. Intellectual Property</h2>
+          <p class="text-sm sm:text-base">
+            All brand names, Uniworld logos, product packaging designs, technical specification tables, and downloadable catalogues on this website are the intellectual property of Uniworld Adhesives &amp; Sealants and may not be reproduced or redistributed for competing commercial purposes without prior written permission.
+          </p>
+        </div>
+
+        <div id="tu-5" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">5. Safe Handling &amp; Compliance</h2>
+          <p class="text-sm sm:text-base">
+            Users must follow all product label instructions, ventilation requirements, personal protective equipment (PPE) guidelines, and Safety Data Sheets (SDS) when storing or applying solvent-based adhesives, primers, cleaners, aerosol sprays, and sealants.
+          </p>
+        </div>
+
+        <div id="tu-6" class="space-y-2.5 pt-6 border-t border-slate-100 scroll-mt-28">
+          <h2 class="font-display text-2xl font-bold text-[#0C0E12]">6. Governing Law</h2>
+          <p class="text-sm sm:text-base">
+            These Terms of Use are governed by and construed in accordance with the laws of the People's Republic of Bangladesh. For legal or commercial inquiries, contact <a href="mailto:info@uniworldsolutions.com" class="text-[#AB0716] font-semibold hover:underline">info@uniworldsolutions.com</a>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,362 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"Sustainability & Responsible Manufacturing | Uniworld Adhesives Bangladesh" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Learn how Uniworld Adhesives promotes safer chemical handling, VOC control, bulk packaging efficiency, and ISO 9001:2015 quality at our Rupganj plant." }}{% endblock %}
+
+{% block extra_head %}
+<style>
+  .sust-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    border: 1px solid #CBD5E1;
+    background: #FFFFFF;
+    color: #0C0E12;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+  }
+  .sust-nav-btn:hover {
+    background: #AB0716;
+    border-color: #AB0716;
+    color: #FFFFFF;
+    transform: scale(1.06);
+    box-shadow: 0 10px 20px -6px rgba(171, 7, 22, 0.45);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK BLUEPRINT HERO -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <img
+    src="{% static 'product/images/blog/bg2.png' %}"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity pointer-events-none"
+  />
+  <div class="pointer-events-none absolute -top-24 right-0 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-6 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">Sustainability</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <!-- Left Hero Content (7 Cols) -->
+      <div class="lg:col-span-7 space-y-6" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs font-mono text-emerald-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>RESPONSIBLE CHEMISTRY · ISO 9001:2015 PLANT</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.08]">
+          Sustainability at
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400 mt-1">
+            Uniworld Adhesives
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+          We minimize environmental impact through greener chemistry, cleaner production, controlled solvent handling, and durable bonding formulations that extend product lifespan and reduce manufacturing scrap.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
+          <a href="{% url 'rnd' %}" class="btn-primary-glow px-7 py-4 text-sm font-semibold inline-flex items-center justify-center gap-2">
+            <span>Explore R&amp;D &amp; Lab QC</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="{% url 'contact' %}" class="px-6 py-4 rounded-lg border border-white/20 bg-white/[0.04] hover:bg-white/[0.1] text-sm font-semibold text-white text-center transition">
+            Request SDS &amp; Bulk Info
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Plant Sustainability Snapshot Card (5 Cols) -->
+      <div class="lg:col-span-5" data-aos="fade-left" data-aos-delay="120">
+        <div class="rounded-3xl bg-[#131720]/95 border border-white/15 p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.85)] space-y-5">
+          <div class="flex items-center justify-between gap-3 pb-4 border-b border-white/10">
+            <div>
+              <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-400">Rupganj Facility Focus</span>
+              <span class="font-display font-bold text-lg text-white">Cleaner &amp; Safer Operations</span>
+            </div>
+            <!-- Custom SVG Icon: Eco / Sustainable Chemistry -->
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-400/30 text-emerald-400 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M3 12h2m14 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41M12 7a5 5 0 00-5 5c0 2.76 2.24 5 5 5 1.38 0 2.63-.56 3.54-1.46A4.98 4.98 0 0017 12a5 5 0 00-5-5z" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3.5">
+            <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">REACTOR SYSTEM</span>
+              <span class="block font-display text-base font-bold text-white mt-1">Closed-Loop</span>
+              <span class="block text-[11px] text-slate-400 mt-0.5">Controlled solvent mixing</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">PACK EFFICIENCY</span>
+              <span class="block font-display text-base font-bold text-emerald-400 mt-1">Bulk Pails &amp; Drums</span>
+              <span class="block text-[11px] text-slate-400 mt-0.5">Lower container waste</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">SAFETY DATA</span>
+              <span class="block font-display text-base font-bold text-white mt-1">SDS Ready</span>
+              <span class="block text-[11px] text-slate-400 mt-0.5">Clear handling &amp; PPE notes</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+              <span class="block font-mono text-[10px] text-slate-400">QUALITY SYSTEM</span>
+              <span class="block font-display text-base font-bold text-[#AB0716] mt-1">ISO 9001:2015</span>
+              <span class="block text-[11px] text-slate-400 mt-0.5">Standardized QC workflow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. AUTOPLAY CAROUSEL SECTION: HOW WE BUILD RESPONSIBLY (Custom Content-Matched SVG Icons) -->
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12" data-aos="fade-up">
+      <div class="max-w-2xl">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#AB0716] font-bold">Core Commitments</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C0E12] mt-2">
+          How We Build Responsibly
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+          Sustainable industrial manufacturing requires practical formulation choices, disciplined plant operations, and reliable bonding that prevents costly factory rejects.
+        </p>
+      </div>
+
+      <!-- Carousel Navigation Controls -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <button type="button" aria-label="Previous sustainability pillar" class="sust-prev sust-nav-btn">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button type="button" aria-label="Next sustainability pillar" class="sust-next sust-nav-btn">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Autoplay Swiper -->
+    <div class="swiper sustainabilitySwiper" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        <!-- Slide 1: Safer & Cleaner Formulation Choices -->
+        <div class="swiper-slide h-auto">
+          <div class="h-full rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#AB0716] hover:shadow-xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 flex items-center justify-center">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
+                <span class="font-mono text-[11px] px-3 py-1 rounded-full bg-white border border-slate-200 text-[#0C0E12] font-bold">PILLAR 01</span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-[#0C0E12] mb-3">
+                Safer &amp; Cleaner Formulation Choices
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                We develop options suited for indoor, commercial, and sensitive environments—such as non-corrosive <a href="{% url 'single_product' 'silicone-sealant-neutral' %}" class="text-[#AB0716] font-semibold hover:underline">Neutral Cure Silicone Sealant</a> and poison-free, non-toxic <a href="{% url 'single_product' 'rat-glue' %}" class="text-[#AB0716] font-semibold hover:underline">Rat Glue</a>—while tuning viscosity so operators apply less material cleanly.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200/80 font-mono text-[11px] text-slate-500">
+              Cleaner Indoor &amp; Trade Chemistry
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Controlled Blending & Solvent Discipline -->
+        <div class="swiper-slide h-auto">
+          <div class="h-full rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#AB0716] hover:shadow-xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-rose-50 border border-rose-200 text-[#AB0716] flex items-center justify-center">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                </div>
+                <span class="font-mono text-[11px] px-3 py-1 rounded-full bg-white border border-slate-200 text-[#0C0E12] font-bold">PILLAR 02</span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-[#0C0E12] mb-3">
+                Controlled Blending &amp; Solvent Discipline
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                At our Rupganj manufacturing plant, polymer mixing and batch processing follow structured procedures with controlled containment and ventilation—limiting unnecessary solvent loss and maintaining cleaner working conditions.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200/80 font-mono text-[11px] text-slate-500">
+              Batch Precision &amp; Containment
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Bulk Packaging & Scrap Reduction -->
+        <div class="swiper-slide h-auto">
+          <div class="h-full rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#AB0716] hover:shadow-xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-amber-700 flex items-center justify-center">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                </div>
+                <span class="font-mono text-[11px] px-3 py-1 rounded-full bg-white border border-slate-200 text-[#0C0E12] font-bold">PILLAR 03</span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-[#0C0E12] mb-3">
+                Bulk Packaging &amp; Scrap Reduction
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                High-volume footwear, furniture, and foam factories can order in 15 L pails and bulk drums to reduce repeated small-pack waste, while dependable adhesion prevents sole separation and costly rejects.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200/80 font-mono text-[11px] text-slate-500">
+              3 L · 15 L · Bulk Supply &amp; Zero Rejects
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Workplace Safety & Clear Guidance -->
+        <div class="swiper-slide h-auto">
+          <div class="h-full rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#AB0716] hover:shadow-xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-slate-900/10 border border-slate-300 text-[#0C0E12] flex items-center justify-center">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <span class="font-mono text-[11px] px-3 py-1 rounded-full bg-white border border-slate-200 text-[#0C0E12] font-bold">PILLAR 04</span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-[#0C0E12] mb-3">
+                Workplace Safety &amp; Clear Guidance
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                We supply clear technical application instructions, ventilation guidelines, and Safety Data Sheets (SDS) so factory safety teams and distributors handle primers, cleaners, and sealants safely.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200/80 font-mono text-[11px] text-slate-500">
+              Ventilation &amp; SDS Documentation
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SPLIT FEATURE BANNER: SDS, COMPLIANCE & DIRECT PARTNER DESK -->
+<section class="py-16 sm:py-24 grid-blueprint-light">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="rounded-3xl bg-[#0C0E12] text-white border border-white/10 shadow-2xl overflow-hidden" data-aos="fade-up">
+      <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+
+        <!-- Left Column: SDS & Factory Safety Checklist (7 Cols) -->
+        <div class="lg:col-span-7 p-8 sm:p-10 lg:p-14 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <span class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-rose-400 font-bold">
+              <span class="w-2 h-2 rounded-full bg-[#AB0716]"></span>
+              Partner With Uniworld
+            </span>
+            <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+              Need Safety Data Sheets (SDS) or Bulk Supply Details?
+            </h2>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Reach out to our technical and sales team for product safety information, bulk pail/drum options, and application guidance tailored to your production floor.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-slate-200">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0">✓</span>
+              <span>Safety Data Sheets (SDS) on Request</span>
+            </div>
+            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-slate-200">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0">✓</span>
+              <span>3 L, 15 L Pail &amp; Bulk Drum Options</span>
+            </div>
+            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-slate-200">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0">✓</span>
+              <span>Ventilation &amp; Storage Guidance</span>
+            </div>
+            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-slate-200">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0">✓</span>
+              <span>Rupganj Lab &amp; Sales Support</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: ISO Badge + Direct Action Panel (5 Cols) -->
+        <div class="lg:col-span-5 bg-gradient-to-br from-[#161A24] to-[#0B0D12] border-t lg:border-t-0 lg:border-l border-white/10 p-8 sm:p-10 lg:p-14 flex flex-col justify-between space-y-8">
+          <div class="p-5 rounded-2xl bg-black/45 border border-white/10 flex items-center gap-4">
+            <img src="{% static 'product/images/footer/iso-9001.png' %}" alt="ISO 9001:2015 Certified" class="h-14 w-auto bg-white p-1.5 rounded-lg shrink-0" />
+            <div>
+              <span class="block font-mono text-[10px] uppercase tracking-wider text-emerald-400 font-bold">CERTIFIED QUALITY</span>
+              <p class="font-display font-bold text-base text-white mt-0.5">ISO 9001:2015 Standard</p>
+              <p class="text-xs text-slate-400 mt-0.5">Quality &amp; process discipline</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <a href="{% url 'contact' %}" class="btn-primary-glow w-full py-4 px-6 text-sm font-semibold inline-flex items-center justify-center gap-2">
+              <span>Contact Us Today</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="{% url 'product' %}" class="w-full py-3.5 px-6 rounded-lg border border-white/15 hover:border-white/35 text-xs font-mono text-slate-200 hover:text-white flex items-center justify-center transition">
+              Browse All 15 Products →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper !== 'undefined') {
+      new Swiper('.sustainabilitySwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        grabCursor: true,
+        autoplay: {
+          delay: 3500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        navigation: {
+          nextEl: '.sust-next',
+          prevEl: '.sust-prev',
+        },
+        breakpoints: {
+          640: { slidesPerView: 2, spaceBetween: 24 },
+          1024: { slidesPerView: 3, spaceBetween: 24 },
+        },
+      });
+    }
+  });
+</script>
+{% endblock %}

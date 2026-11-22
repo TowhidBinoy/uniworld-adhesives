@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniWorld &mdash; Contact</title>
+    <!-- Google Font: Outfit from Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- Tailwind CSS CDN (v3.4+) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      // Custom configuration for your brand color and font
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#AB0716", // Your main brand color
+              "primary-hover": "#8f0512", // Optional darker shade for hover
+            },
+            fontFamily: {
+              sans: ["Outfit", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Ensure the font is applied globally */
+      body {
+        @apply font-sans antialiased;
+        font-family: "Outfit", sans-serif;
+      }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .animate-marquee {
+        display: inline-block;
+        animation: marquee 20s linear infinite;
+      }
+      .animate-marquee:hover {
+        animation-play-state: paused; /* optional: pause on hover */
+      }
+    </style>
+    <!-- Marquee Animation (smooth infinite scroll) -->
+  </head>
+  <body>
+    <!-- header -->
+    <!-- <header
+      class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300"
+    > -->
+    <header
+      class="absolute top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid-cols-5 grid items-center h-[65px]">
+          <!-- Logo -->
+          <div class="col-span-1">
+            <img
+              src="assets/images/header/logo.png"
+              alt="Logo"
+              class="h-[70px] w-auto"
+            />
+            <!-- Replace the src with your real logo -->
+          </div>
+          <div class="col-span-4 hidden lg:block">
+            <div
+              class="lg:border-b-2 lg:border-primary flex items-center justify-between"
+            >
+              <!-- Desktop Menu (hidden on <lg) -->
+              <!-- Menu -->
+              <nav class="flex items-center h-full">
+                <ul class="flex items-center h-full text-[14px]">
+                  <li class="h-full flex items-center">
+                    <a
+                      href="#"
+                      class="text-white bg-primary p-6 h-full flex items-center font-medium"
+                      >Home</a
+                    >
+                  </li>
+
+                  <!-- PRODUCTS MEGA MENU -->
+                  <li class="relative group h-full flex items-center">
+                    <a
+                      href="#"
+                      class="text-white hover:bg-primary font-medium flex items-center gap-1 p-6 transition"
+                    >
+                      Products
+                      <svg
+                        class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </a>
+
+                    <!-- MAIN DROPDOWN -->
+                    <div
+                      class="absolute top-full left-1/2 -translate-x-1/2 w-96 bg-gray-900 text-white shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-5 pb-6"
+                    >
+                      <div class="grid grid-cols-1 gap-1 px-3">
+                        <!-- SHOE & FURNITURE – TRIGGERS NESTED MENU -->
+                        <div class="group/nested relative">
+                          <a
+                            href="#"
+                            class="flex items-center justify-between py-3 px-6 rounded hover:bg-primary transition text-white font-medium"
+                          >
+                            Shoe & Furniture
+                            <svg
+                              class="w-4 h-4 transition-transform group-hover/nested:rotate-90"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </a>
+
+                          <!-- NESTED SUBMENU (RIGHT SIDE) -->
+                          <div
+                            class="absolute top-0 left-full ml-2 w-80 bg-gray-800 text-white shadow-2xl opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300 py-5 px-6"
+                          >
+                            <h4
+                              class="text-xs uppercase text-gray-400 font-bold mb-4 tracking-wider"
+                            >
+                              Adhesive Categories
+                            </h4>
+                            <ul class="space-y-3">
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Synthetic Rubber Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Polyurethane (PU) Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Graft Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >SBS Sprayable Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Primer (PU/PVC)</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Primer (EVA)</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- Construction, Hardware & Miscellaneous– TRIGGERS NESTED MENU -->
+                        <div class="group/nested relative">
+                          <a
+                            href="#"
+                            class="flex items-center justify-between py-3 px-6 rounded hover:bg-primary transition text-white font-medium"
+                          >
+                            Construction, Hardware & Miscellaneous
+                            <svg
+                              class="w-4 h-4 transition-transform group-hover/nested:rotate-90"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </a>
+
+                          <!-- NESTED SUBMENU (RIGHT SIDE) -->
+                          <div
+                            class="absolute top-0 left-full ml-2 w-80 bg-gray-800 text-white shadow-2xl opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300 py-5 px-6"
+                          >
+                            <h4
+                              class="text-xs uppercase text-gray-400 font-bold mb-4 tracking-wider"
+                            >
+                              Adhesive Categories
+                            </h4>
+                            <ul class="space-y-3">
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Synthetic Rubber Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Polyurethane (PU) Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Graft Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >SBS Sprayable Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Primer (PU/PVC)</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Primer (EVA)</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- Industries MEGA MENU -->
+                  <li class="relative group h-full flex items-center">
+                    <a
+                      href="#"
+                      class="text-white hover:bg-primary font-medium flex items-center gap-1 p-6 transition"
+                    >
+                      Industries
+                      <svg
+                        class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </a>
+
+                    <!-- MAIN DROPDOWN -->
+                    <div
+                      class="absolute top-full left-1/2 -translate-x-1/2 w-96 bg-gray-900 text-white shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pt-5 pb-6"
+                    >
+                      <div class="grid grid-cols-1 gap-1 px-3">
+                        <!-- SHOE & FURNITURE – TRIGGERS NESTED MENU -->
+                        <div class="group/nested relative">
+                          <a
+                            href="#"
+                            class="flex items-center justify-between py-3 px-6 rounded hover:bg-primary transition text-white font-medium"
+                          >
+                            Shoe & Furniture
+                            <svg
+                              class="w-4 h-4 transition-transform group-hover/nested:rotate-90"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </a>
+
+                          <!-- NESTED SUBMENU (RIGHT SIDE) -->
+                          <div
+                            class="absolute top-0 left-full ml-2 w-80 bg-gray-800 text-white shadow-2xl opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300 py-5 px-6"
+                          >
+                            <h4
+                              class="text-xs uppercase text-gray-400 font-bold mb-4 tracking-wider"
+                            >
+                              Adhesive Categories
+                            </h4>
+                            <ul class="space-y-3">
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Synthetic Rubber Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Polyurethane (PU) Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Graft Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >SBS Sprayable Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Primer (PU/PVC)</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Primer (EVA)</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- Construction, Hardware & Miscellaneous– TRIGGERS NESTED MENU -->
+                        <div class="group/nested relative">
+                          <a
+                            href="#"
+                            class="flex items-center justify-between py-3 px-6 rounded hover:bg-primary transition text-white font-medium"
+                          >
+                            Construction, Hardware & Miscellaneous
+                            <svg
+                              class="w-4 h-4 transition-transform group-hover/nested:rotate-90"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </a>
+
+                          <!-- NESTED SUBMENU (RIGHT SIDE) -->
+                          <div
+                            class="absolute top-0 left-full ml-2 w-80 bg-gray-800 text-white shadow-2xl opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300 py-5 px-6"
+                          >
+                            <h4
+                              class="text-xs uppercase text-gray-400 font-bold mb-4 tracking-wider"
+                            >
+                              Adhesive Categories
+                            </h4>
+                            <ul class="space-y-3">
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Synthetic Rubber Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Polyurethane (PU) Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Graft Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >SBS Sprayable Adhesive</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Primer (PU/PVC)</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  class="block hover:text-primary transition"
+                                  >Primer (EVA)</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="h-full flex items-center">
+                    <a
+                      href="#"
+                      class="text-white hover:text-primary font-medium px-6 transition"
+                      >About</a
+                    >
+                  </li>
+                  <li class="h-full flex items-center">
+                    <a
+                      href="#"
+                      class="text-white hover:text-primary font-medium px-6 transition"
+                      >R&D</a
+                    >
+                  </li>
+                  <li class="h-full flex items-center">
+                    <a
+                      href="#"
+                      class="text-white hover:text-primary font-medium px-6 transition"
+                      >Quality</a
+                    >
+                  </li>
+                  <li class="h-full flex items-center">
+                    <a
+                      href="#"
+                      class="text-white hover:text-primary font-medium px-6 transition"
+                      >Sustainability</a
+                    >
+                  </li>
+                  <li class="h-full flex items-center">
+                    <a
+                      href="#"
+                      class="text-white hover:text-primary font-medium px-6 transition"
+                      >Blog</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+
+              <!-- Right side: Contact Button + Bottom border line -->
+              <div
+                class="hidden lg:flex items-center relative bg-primary h-[70px] p-4"
+              >
+                <!-- Bottom border from menu to right -->
+                <a
+                  href="#"
+                  class="border hover:bg-primary-hover text-white font-medium px-5 py-2 rounded border-white transition"
+                >
+                  Contact Us
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Hamburger -->
+          <div class="col-span-4 flex justify-end lg:hidden">
+            <button id="mobile-menu-btn" class="text-white focus:outline-none">
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Slider -->
+      <div
+        id="mobile-menu"
+        class="fixed inset-y-0 left-0 w-80 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50 lg:hidden overflow-y-auto"
+      >
+        <div class="px-8 py-6">
+          <div class="flex justify-between items-center mb-10">
+            <img
+              src="assets/images/header/logo.png"
+              alt="Logo"
+              class="h-10 w-auto"
+            />
+            <button
+              id="mobile-menu-close"
+              class="text-gray-600 hover:text-gray-900"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <nav class="space-y-1">
+            <a
+              href="#"
+              class="block py-4 text-primary text-xl font-bold border-b border-gray-100"
+              >Home</a
+            >
+
+            <!-- PRODUCTS ACCORDION -->
+            <div class="border-b border-gray-100">
+              <button
+                id="mobile-products-toggle"
+                class="w-full text-left py-4 flex justify-between items-center text-gray-900 font-semibold text-xl hover:text-primary transition"
+              >
+                Products
+                <svg
+                  class="w-5 h-5 transition-transform duration-300"
+                  id="products-arrow"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              <div id="mobile-products-submenu" class="hidden pb-4">
+                <a
+                  href="#"
+                  class="block py-3 pl-6 text-gray-700 hover:text-primary font-medium"
+                >
+                  Construction, Hardware & Miscellaneous
+                </a>
+
+                <!-- NESTED: Shoe & Furniture -->
+                <div>
+                  <button
+                    id="mobile-shoe-toggle"
+                    class="w-full text-left py-3 pl-6 flex justify-between items-center text-gray-900 font-medium hover:text-primary"
+                  >
+                    Shoe & Furniture
+                    <svg
+                      class="w-4 h-4 transition-transform duration-300"
+                      id="shoe-arrow"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
+
+                  <div
+                    id="mobile-nested-submenu"
+                    class="hidden pl-12 pb-3 space-y-2 text-gray-600"
+                  >
+                    <a href="#" class="block py-2 hover:text-primary"
+                      >Synthetic Rubber Adhesive</a
+                    >
+                    <a href="#" class="block py-2 hover:text-primary"
+                      >Polyurethane (PU) Adhesive</a
+                    >
+                    <a href="#" class="block py-2 hover:text-primary"
+                      >Graft Adhesive</a
+                    >
+                    <a href="#" class="block py-2 hover:text-primary"
+                      >SBS Sprayable Adhesive</a
+                    >
+                    <a href="#" class="block py-2 hover:text-primary"
+                      >Primer (PU/PVC)</a
+                    >
+                    <a href="#" class="block py-2 hover:text-primary"
+                      >Primer (EVA)</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- You can add same accordion for Industries later -->
+            <a
+              href="#"
+              class="block py-4 text-gray-900 font-medium text-xl border-b border-gray-100 hover:text-primary"
+              >Industries</a
+            >
+            <a
+              href="#"
+              class="block py-4 text-gray-900 font-medium text-xl border-b border-gray-100 hover:text-primary"
+              >About</a
+            >
+            <a
+              href="#"
+              class="block py-4 text-gray-900 font-medium text-xl border-b border-gray-100 hover:text-primary"
+              >R&D</a
+            >
+            <a
+              href="#"
+              class="block py-4 text-gray-900 font-medium text-xl border-b border-gray-100 hover:text-primary"
+              >Quality</a
+            >
+            <a
+              href="#"
+              class="block py-4 text-gray-900 font-medium text-xl border-b border-gray-100 hover:text-primary"
+              >Sustainability</a
+            >
+            <a
+              href="#"
+              class="block py-4 text-gray-900 font-medium text-xl border-b border-gray-100 hover:text-primary"
+              >Blog</a
+            >
+
+            <a
+              href="#"
+              class="block bg-primary hover:bg-primary-hover text-white text-center font-semibold text-xl py-5 mt-8 rounded-lg shadow-lg transition transform hover:scale-105"
+            >
+              Contact Us
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Overlay -->
+      <div
+        id="mobile-overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 lg:hidden"
+      ></div>
+    </header>
+    <!-- banner section -->
+    <section
+      class="relative h-[60vh] flex items-center justify-center text-center bg-cover bg-center bg-no-repeat"
+      style="
+        background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.7) 100%
+          ),
+          url('assets/images/contact/bg.png');
+      "
+    >
+      <!-- You can change the image path above ^^^^^^^^^^^^^^^^^^^^^^ -->
+
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+          <!-- Main Title -->
+          <h1
+            class="text-white text-5xl md:text-6xl lg:text-7xl xl:text-[72px] font-semibold leading-tight"
+          >
+            Contact Us
+          </h1>
+         
+          <!-- Get a Quote Button -->
+        </div>
+      </div>
+    </section>
+    <!--  PRODUCT SECTION  -->
+
+    <!-- CONTACT US PAGE -->
+    <section class="py-20 lg:py-32 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <!-- Page Title -->
+        <h1 class="text-center text-4xl lg:text-6xl font-bold text-black mb-16 leading-tight">
+          We’re here to help you build
+          <span class="text-primary">stronger bonds</span>
+        </h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          <!-- LEFT COLUMN – 8/12 Form -->
+          <div class="lg:col-span-8">
+
+            <form class="space-y-8">
+
+              <!-- Full Name -->
+              <div>
+                <label class="block text-lg font-medium text-black mb-2">Full Name</label>
+                <input type="text" placeholder="First name"
+                      class="w-full px-6 py-4 bg-[#E6E6E666] border border-[#0000004D] 
+                              rounded-sm focus:outline-none focus:border-primary text-lg">
+              </div>
+
+              <!-- Phone Number – Country Code + Number -->
+              <div>
+                <label class="block text-lg font-medium text-black mb-2">Phone Number</label>
+                <div class="flex">
+                  <select class="w-32 px-4 py-4 bg-[#E6E6E666] border border-[#0000004D] 
+                                border-r-0 rounded-l-sm focus:outline-none text-lg">
+                    <option>+880</option>
+                    <option>+91</option>
+                    <option>+1</option>
+                  </select>
+                  <input type="tel" placeholder="1700 000 000"
+                        class="flex-1 px-6 py-4 bg-[#E6E6E666] border border-[#0000004D] 
+                                rounded-r-sm focus:outline-none text-lg border-l-0 ">
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label class="block text-lg font-medium text-black mb-2">Email</label>
+                <input type="email" placeholder="you@example.com"
+                      class="w-full px-6 py-4 bg-[#E6E6E666] border border-[#0000004D] 
+                              rounded-sm focus:outline-none focus:border-primary text-lg">
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label class="block text-lg font-medium text-black mb-2">Message</label>
+                <textarea rows="6" placeholder="Write your message here..."
+                          class="w-full px-6 py-4 bg-[#E6E6E666] border border-[#0000004D] 
+                                rounded-sm focus:outline-none focus:border-primary resize-none text-lg"></textarea>
+              </div>
+
+              <!-- Privacy Checkbox -->
+              <label class="flex items-center gap-4 cursor-pointer select-none">
+                <input type="checkbox" class="w-6 h-6 accent-black rounded">
+                <span class="text-base text-black">
+                  You agree to our friendly 
+                  <a href="#" class="underline hover:text-primary transition">privacy policy.</a>
+                </span>
+              </label>
+
+              <!-- Submit Button -->
+              <button type="submit"
+                      class="w-full bg-black hover:bg-gray-900 text-white font-bold text-lg py-6 
+                            shadow-lg hover:shadow-2xl transition-all duration-300 
+                            hover:scale-[1.02] transform">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                     Send Message &nbsp;
+                    <img
+                      src="assets/images/button/point2.png"
+                      alt=""
+                      class="h-auto w-auto"
+                    />
+                  </span>
+              </button>
+
+            </form>
+          </div>
+
+          <!-- RIGHT COLUMN – 4/12 Contact Info -->
+          <div class="lg:col-span-4 space-y-12">
+
+            <!-- Email -->
+            <div class="flex gap-3 items-start">
+              <div class="flex-shrink-0 w-16 h-16 flex items-start mt-2 ">
+                <img src="assets/images/contact/email.png" alt="Email" class="">
+              </div>
+              <div>
+                <h3 class="text-3xl font-medium text-black mb-2">Email</h3>
+                <p class="text-lg text-gray-600 break-all">info@uniworldsolutions.com</p>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex gap-6 items-start mt-12">
+              <div class="flex-shrink-0 w-16 h-16 flex items-start mt-2 ">
+                <img src="assets/images/contact/hour.png" alt="Phone" class=" ">
+              </div>
+              <div>
+                <h3 class="text-3xl font-medium text-black mb-2">Working Hours</h3>
+                <p class="text-lg text-gray-600">Sunday – Thursday, 9 AM – 6 PM</p>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="flex gap-6 items-start mt-12">
+              <div class="flex-shrink-0 w-16 h-16 flex items-start mt-2 ">
+                <img src="assets/images/contact/pin_theme.png" alt="Location" class=" ">
+              </div>
+              <div>
+                <h3 class="text-3xl font-medium text-black mb-2">Head Office</h3>
+                <p class="text-lg text-gray-600">
+                  Family World Tower, 2/6 Sir Syed Road, Asad Gate, Dhaka 1207
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-6 items-start mt-12">
+              <div class="flex-shrink-0 w-16 h-16 flex items-start mt-2 ">
+                <img src="assets/images/contact/pin.png" alt="Location" class="ml-2 w-8">
+              </div>
+              <div>
+                <h3 class="text-3xl font-medium text-black mb-2">Factory</h3>
+                <p class="text-lg text-gray-600">
+                  Dhaka-Sylhet Highway, Mahona, Rupganj, Narayanganj
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-gradient-to-b from-[#A70916] to-[#410409] text-white pt-16 lg:pt-20 pb-10 px-6"
+    >
+      <div class="container mx-auto ">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6"
+        >
+        <!-- COLUMN 1: Logo + Follow Us + UniWorld Watermark + Social Pills -->
+          <div class="relative">
+
+            <!-- Logo -->
+            <img src="assets/images/header/logo.png" alt="Uniworld Logo" class="h-16 mb-2">
+
+            <p class="text-sm leading-relaxed text-white/90 mb-10 max-w-xs">
+              Premier manufacturer of high-performance adhesives, solvents, and chemical solutions.
+            </p>
+
+            <!-- Follow Us + Social Buttons -->
+            <div class="mb-12">
+              <p class="text-sm font-semibold text-white mb-5 tracking-wider">Follow Us</p>
+              <div class="flex flex-wrap gap-2">
+                <a href="#" class="px-7 py-3 bg-white/10 border border-white/30 rounded-full text-white text-sm font-medium 
+                                  hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 backdrop-blur-sm">
+                  Facebook
+                </a>
+                <a href="#" class="px-7 py-3 bg-white/10 border border-white/30 rounded-full text-white text-sm font-medium 
+                                  hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 backdrop-blur-sm">
+                  Instagram
+                </a>
+                <a href="#" class="px-7 py-3 bg-white/10 border border-white/30 rounded-full text-white text-sm font-medium 
+                                  hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 backdrop-blur-sm">
+                  LinkedIn
+                </a>
+                <a href="#" class="px-7 py-3 bg-white/10 border border-white/30 rounded-full text-white text-sm font-medium 
+                                  hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 backdrop-blur-sm">
+                  Twitter
+                </a>
+              </div>
+            </div>
+            <span class="text-[30px] lg:text-[56px] font-black text-white/100 leading-none tracking-tighter">
+                UniWorld
+              </span>
+
+            <!-- Big UNI WORLD Watermark – Centered behind content -->
+            <!-- <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+              <span class="text-[120px] lg:text-[180px] font-black uppercase text-white/5 leading-none tracking-tighter">
+                UniWorld
+              </span>
+            </div> -->
+
+          </div>
+
+          <!-- COLUMN 2: Factory Location + Bangladesh Map -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6">Factory</h3>
+            <p class="text-sm leading-relaxed opacity-90 max-w-xs">
+              Dhaka-Sylhet Highway,<br />
+              Mahona, Rupganj,<br />
+              Narayanganj
+            </p>
+
+            <!-- Bangladesh Map SVG (white, clean) -->
+            <div class="mt-10">
+              <img src="assets/images/footer/bangladesh.png" alt="Bangladesh Map" class="w-40 h-auto">
+            </div>
+          </div>
+
+          <!-- COLUMNS 3 & 4 WILL COME HERE AFTER YOU TELL ME -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6"> Head Office</h3>
+            <p class="text-sm leading-relaxed opacity-90 max-w-xs">Family World Tower, 2/6 Sir Syed Road, Asad Gate, Dhaka 1207</p>
+            <h3 class="text-xl font-semibold my-6"> Contact Info</h3>
+            <p class="text-sm leading-relaxed opacity-90 max-w-xs"><a href="tel:+1234567890" class="hover:text-primary transition"
+                >+1 (234) 567-890</a
+              ><br />
+              
+              <a
+                href="mailto:LZb7o@example.com"
+                class="hover:text-primary transition"
+                >LZb7o@example.com</a
+              ></p>
+            <h3 class="text-xl font-semibold my-6"> Working Hours</h3>
+            <p class="text-sm leading-relaxed opacity-90 max-w-xs">Sunday – Thursday, 9 AM – 6 PM</p>
+          </div>
+          <!-- COLUMN 4 -->
+          <div>
+            <div class="flex justify-between">
+              <div>
+                <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+                  <ul class="space-y-4 text-sm opacity-90">
+                    <li>
+                      <a href="#" class="hover:text-primary transition">Products</a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition">Industries</a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition">About</a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition">R&D</a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition">Quality</a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition"
+                        >Sustainability</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition">Blog</a>
+                    </li>
+                  </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-6">Our Products</h3>
+                  <ul class="space-y-4 text-sm opacity-90">
+                    <li>
+                      <a href="#" class="hover:text-primary transition">Contact Adhesives</a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition">Graft CR Rubber Solutions</a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition">PU Adhesives</a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:text-primary transition">Silicon Sealant&D</a>
+                    </li>
+                  </ul>
+              </div>
+              
+            </div>
+            <!-- Newsletter -->
+            <div>
+              <h3 class="text-xl font-semibold my-6"> Newsletter</h3>
+              <form>
+                <div class="flex flex-col sm:flex-row gap-0 mb-4">
+                  <input type="email" placeholder="Your Email Id" class="px-2 py-1 bg-white/10 border border-white/20 text-sm placeholder-white/60 focus:outline-none focus:border-white/50">
+                  <button type="submit" class="px-6 py-3 bg-black text-[#fff] font-semibold hover:bg-black/50 transition">
+                    Subscribe
+                  </button>
+                </div>
+                <label class="flex items-center gap-4 cursor-pointer select-none">
+                <input type="checkbox" class="w-6 h-6 accent-black rounded">
+                <span class="text-xs text-white/70 mt-2">
+                  Your email is safe with us, we don’t spam!
+                  <a href="#" class="underline hover:text-primary transition">privacy policy.</a>
+                </span>
+              </label>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+        <div class="relative mt-10">
+          <!-- This div creates the gradient "border" effect -->
+          <div class="absolute inset-0 -m-0.5 pointer-events-none">
+            <div class="h-full w-full bg-gradient-to-r from-transparent via-white/40 to-transparent 
+                        bg-[length:100%_2px] bg-no-repeat bg-center">
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center text-sm text-white/70">
+          <p>Built by: <a href="#0" class="text-white font-medium  hover:text-primary transition">Kreatech</a></p>
+          <div>
+            <a href="#0" class="hover:text-primary transition">Privacy policy</a> <span class="mx-2">/</span> <a href="" class="hover:text-primary transition"> Terms of use</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3@3.14.1/dist/cdn.min.js"
+      defer
+    ></script>
+    <script>
+      // Mobile menu open/close
+      document
+        .getElementById("mobile-menu-btn")
+        .addEventListener("click", () => {
+          document
+            .getElementById("mobile-menu")
+            .classList.remove("-translate-x-full");
+          document.getElementById("mobile-overlay").classList.remove("hidden");
+        });
+
+      document
+        .getElementById("mobile-menu-close")
+        .addEventListener("click", () => {
+          document
+            .getElementById("mobile-menu")
+            .classList.add("-translate-x-full");
+          document.getElementById("mobile-overlay").classList.add("hidden");
+        });
+
+      document
+        .getElementById("mobile-overlay")
+        .addEventListener("click", () => {
+          document
+            .getElementById("mobile-menu")
+            .classList.add("-translate-x-full");
+          document.getElementById("mobile-overlay").classList.add("hidden");
+        });
+
+      // Accordion: Products
+      document
+        .getElementById("mobile-products-toggle")
+        .addEventListener("click", function () {
+          const submenu = document.getElementById("mobile-products-submenu");
+          submenu.classList.toggle("hidden");
+          document
+            .getElementById("products-arrow")
+            .classList.toggle("rotate-180");
+        });
+
+      // Nested: Shoe & Furniture
+      document
+        .getElementById("mobile-shoe-toggle")
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+          const nested = document.getElementById("mobile-nested-submenu");
+          nested.classList.toggle("hidden");
+          document.getElementById("shoe-arrow").classList.toggle("rotate-90");
+        });
+    </script>
+    <!-- Swiper Init Script -->
+    <!-- Swiper Init Script -->
+    <script>
+      const blogSwiper = new Swiper(".blogSwiper", {
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        speed: 800,
+        spaceBetween: 32,
+        grabCursor: true,
+        breakpoints: {
+          320: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        },
+        navigation: {
+          nextEl: ".blog-next",
+          prevEl: ".blog-prev",
+        },
+      });
+    </script>
+    <script>
+      const featuredSwiper = new Swiper(".featuredSwiper", {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        speed: 800,
+        spaceBetween: 30,
+        grabCursor: true,
+        breakpoints: {
+          320: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 4 },
+        },
+        navigation: {
+          nextEl: ".featured-next",
+          prevEl: ".featured-prev",
+        },
+      });
+
+      document.querySelectorAll(".faq-item").forEach((item) => {
+        const btn = item.querySelector("button");
+        const answer = item.querySelector(".faq-answer");
+
+        btn.addEventListener("click", () => {
+          const isOpen = item.hasAttribute("data-open");
+
+          // Close all others
+          document.querySelectorAll(".faq-item").forEach((i) => {
+            i.removeAttribute("data-open");
+            i.querySelector(".faq-answer").style.maxHeight = "0";
+            i.querySelector("svg").style.transform = "rotate(0deg)";
+          });
+
+          // Open current if it was closed
+          if (!isOpen) {
+            item.setAttribute("data-open", "");
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            btn.querySelector("svg").style.transform = "rotate(45deg)";
+          }
+        });
+      });
+    </script>
+    <!-- Counter Animation Script (lightweight, no library needed) -->
+    <script>
+      const counters = document.querySelectorAll(".counter");
+      const speed = 200; // Adjust speed
+
+      const animateCounter = (counter) => {
+        const target = +counter.getAttribute("data-target");
+        const count = +counter.innerText;
+        const increment = target / speed;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(() => animateCounter(counter), 15);
+        } else {
+          counter.innerText = target.toLocaleString(); // Format with commas if large
+        }
+      };
+
+      const runCounters = () => {
+        let triggered = false;
+        return () => {
+          if (
+            !triggered &&
+            window.scrollY + window.innerHeight >
+              document.querySelector(".counter").offsetTop
+          ) {
+            counters.forEach((counter) => animateCounter(counter));
+            triggered = true;
+          }
+        };
+      };
+
+      window.addEventListener("scroll", runCounters());
+    </script>
+    <!-- Swiper Init Script -->
+    <script>
+      const coreValuesSwiper = new Swiper(".coreValuesSwiper", {
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        speed: 800,
+        spaceBetween: 32,
+        grabCursor: true,
+        breakpoints: {
+          320: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        },
+        navigation: {
+          nextEl: ".core-next",
+          prevEl: ".core-prev",
+        },
+      });
+    </script>
+  </body>
+</html>

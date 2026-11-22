@@ -1,0 +1,561 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:"Frequently Asked Questions: Ordering, MOQ & Delivery | Uniworld" }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:"Answers to 14 common B2B questions about Uniworld Adhesives grades, substrate primers, application open times, MOQs, pack sizes, storage, and ISO 9001:2015 QC." }}{% endblock %}
+
+{% block extra_head %}
+<style>
+  /* Smooth Accordion Expand/Collapse via CSS Grid */
+  .faq-answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .faq-card.is-open .faq-answer-wrap {
+    grid-template-rows: 1fr;
+  }
+  .faq-answer-inner {
+    overflow: hidden;
+  }
+  .faq-card.is-open {
+    border-color: rgba(171, 7, 22, 0.45);
+    box-shadow: 0 18px 40px -16px rgba(12, 14, 18, 0.14);
+  }
+  .faq-card.is-open .faq-plus-icon {
+    transform: rotate(45deg);
+    background-color: #AB0716;
+    color: #FFFFFF;
+  }
+</style>
+{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What industries does Uniworld Adhesives & Sealants serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uniworld supplies industrial adhesives, primers, surface cleaners, and silicone sealants for footwear & leather manufacturing, furniture & foam lamination, construction & glazing, retail hardware, and automotive/general assembly across Bangladesh."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use EVA Primer or PU/PVC Primer before bonding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EVA and Phylon soles require EVA Primer after cleaning with Synthetic Cleaner so the adhesive anchors properly. Molded PU, PVC, and TPR soles benefit from PU/PVC Primer to treat surface plasticizers and maximize peel strength."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Acetic Silicone and Neutral Silicone Sealant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Acetic Silicone Sealant cures fast with a slight vinegar odor and is ideal for glass, ceramic tiles, and sanitary ware. Neutral Cure Silicone Sealant is low-odor and non-corrosive—safe for mirrors, coated metals, marble/stone, and sensitive plastics."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What pack sizes and MOQs are available for factory and wholesale orders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liquid adhesives, primers, and cleaners are supplied in 3 L tins, 15 L pails, and 200 L bulk drums. Silicone sealants and Nail Free come in 300 ml cartridges, Super Glue in 20 g & 50 g bottles, and Aerosol Spray Paints in 400 ml cans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can we request lab samples and Technical/Safety Data Sheets (TDS/SDS)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Factories and distributors can request trial samples for substrate testing as well as Technical Data Sheets (TDS) and Safety Data Sheets (SDS) through our Contact & Quote Desk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Uniworld Adhesives ISO 9001:2015 certified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Uniworld Adhesives & Sealants operates an ISO 9001:2015 certified quality management system at our manufacturing facility in Rupganj, Narayanganj, with batch viscosity, peel strength, and retained sample testing."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK BLUEPRINT HERO (Aligned max-w-7xl) -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <div class="pointer-events-none absolute -top-24 right-0 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] bg-[#AB0716]/25 rounded-full blur-[130px]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-6 flex items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <span class="text-white">Frequently Asked Questions</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-8 space-y-5" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs font-mono text-rose-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>TECHNICAL &amp; PROCUREMENT KNOWLEDGE BASE</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.08]">
+          Frequently Asked
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#AB0716] via-rose-500 to-amber-400 mt-1">
+            Questions
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Detailed answers on adhesive grade selection, surface primers, open tack windows, MOQs, bulk packaging, storage safety, and nationwide dispatch across Bangladesh.
+        </p>
+      </div>
+
+      <div class="lg:col-span-4" data-aos="fade-left" data-aos-delay="120">
+        <div class="rounded-3xl bg-[#131720]/95 border border-white/15 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.85)] space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <span class="font-mono text-[10px] uppercase tracking-wider text-slate-400">DIRECT SUPPORT</span>
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">
+              14 Q&amp;As INDEXED
+            </span>
+          </div>
+          <p class="font-display text-lg font-bold text-white">Need Custom Grade Advice?</p>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Can't find your exact substrate or curing question? Message our Rupganj R&amp;D and sales desk for tailored recommendations.
+          </p>
+          <a href="{% url 'contact' %}" class="btn-primary-glow block text-center py-3 px-4 text-xs font-semibold">
+            Ask a Specialist →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. SPLIT 2-COLUMN FAQ DIRECTORY (Exact Hero Width Alignment: max-w-7xl) -->
+<section class="py-16 sm:py-24 grid-blueprint-light border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
+      <!-- LEFT SIDEBAR (4 Cols): Sticky Category Filter + Search + Direct Desk -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-28 space-y-5" data-aos="fade-up">
+        <!-- Search & Filter Box -->
+        <div class="rounded-3xl bg-white border border-slate-200 p-6 shadow-xs space-y-5">
+          <div>
+            <span class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold block">Filter Topics</span>
+            <h2 class="font-display text-xl font-bold text-[#0C0E12] mt-1">Browse by Category</h2>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative">
+            <input
+              type="text"
+              id="faq-search"
+              placeholder="Search keyword (e.g., EVA, MOQ, Silicone)..."
+              class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#AB0716] focus:bg-white focus:ring-2 focus:ring-[#AB0716]/15 focus:outline-none text-sm transition"
+            />
+            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <!-- Vertical Category Pills (Horizontal scroll on small screens, clean stack on desktop) -->
+          <div class="flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar pb-1 lg:pb-0" id="faq-cat-btns">
+            <button type="button" data-cat="all" class="faq-cat-btn shrink-0 w-auto lg:w-full px-4 py-3 rounded-xl font-mono text-xs font-bold bg-[#0C0E12] text-white flex items-center justify-between gap-3 cursor-pointer transition">
+              <span>All Questions</span>
+              <span class="px-2 py-0.5 rounded bg-white/15 text-[10px]">14</span>
+            </button>
+            <button type="button" data-cat="products" class="faq-cat-btn shrink-0 w-auto lg:w-full px-4 py-3 rounded-xl font-mono text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 cursor-pointer transition">
+              <span>Products &amp; Substrates</span>
+              <span class="px-2 py-0.5 rounded bg-white text-[10px] text-slate-600">05</span>
+            </button>
+            <button type="button" data-cat="application" class="faq-cat-btn shrink-0 w-auto lg:w-full px-4 py-3 rounded-xl font-mono text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 cursor-pointer transition">
+              <span>Application &amp; Curing</span>
+              <span class="px-2 py-0.5 rounded bg-white text-[10px] text-slate-600">03</span>
+            </button>
+            <button type="button" data-cat="ordering" class="faq-cat-btn shrink-0 w-auto lg:w-full px-4 py-3 rounded-xl font-mono text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 cursor-pointer transition">
+              <span>MOQ, Packs &amp; Delivery</span>
+              <span class="px-2 py-0.5 rounded bg-white text-[10px] text-slate-600">03</span>
+            </button>
+            <button type="button" data-cat="quality" class="faq-cat-btn shrink-0 w-auto lg:w-full px-4 py-3 rounded-xl font-mono text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-between gap-3 cursor-pointer transition">
+              <span>QC, Storage &amp; Safety</span>
+              <span class="px-2 py-0.5 rounded bg-white text-[10px] text-slate-600">03</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Contact Card -->
+        <div class="hidden lg:block rounded-3xl bg-[#0C0E12] text-white p-6 border border-white/10 space-y-4">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-rose-400 font-bold">Technical Helpdesk</span>
+          <h3 class="font-display text-xl font-bold text-white leading-snug">
+            Still Have a Specific Question?
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Our Dhaka &amp; Rupganj specialists assist with substrate trials, bulk pricing, and TDS/SDS sheets.
+          </p>
+          <a href="{% url 'contact' %}" class="btn-primary-glow w-full py-3.5 text-xs font-semibold inline-flex items-center justify-center">
+            Contact Technical Team →
+          </a>
+        </div>
+      </aside>
+
+      <!-- RIGHT COLUMN (8 Cols): 14 Smooth Accordion Items -->
+      <div class="lg:col-span-8 space-y-3.5" id="faq-accordion-list" data-aos="fade-up" data-aos-delay="80">
+
+        <!-- Q01 -->
+        <div class="faq-card is-open rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="products">
+          <button type="button" aria-expanded="true" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q01 · PRODUCTS &amp; SUBSTRATES</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                What industries does Uniworld Adhesives &amp; Sealants serve?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Uniworld manufactures industrial adhesives, primers, surface cleaners, and silicone sealants for footwear &amp; leather goods, woodworking &amp; foam lamination, construction &amp; glazing, retail hardware, and automotive/general assembly across Bangladesh.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q02 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="products">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q02 · PRODUCTS &amp; SUBSTRATES</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                When should I use EVA Primer or PU/PVC Primer before bonding?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Low-surface-energy soles like EVA and Phylon require <a href="{% url 'single_product' 'eva-primer' %}" class="text-[#AB0716] font-semibold hover:underline">EVA Primer</a> after cleaning with Synthetic Cleaner so the adhesive wets and anchors properly. Molded PU, PVC, and TPR soles benefit from <a href="{% url 'single_product' 'pu-pvc-primer' %}" class="text-[#AB0716] font-semibold hover:underline">PU/PVC Primer</a> to treat surface plasticizers and maximize peel strength.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q03 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="products">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q03 · PRODUCTS &amp; SUBSTRATES</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                What is the difference between Polyurethane (PU) and Graft CR Adhesive?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                <a href="{% url 'single_product' 'polyurethane-adhesive' %}" class="text-[#AB0716] font-semibold hover:underline">Polyurethane (PU) Adhesive</a> requires heat reactivation (55°C–65°C) and delivers maximum heat resistance and peel strength on PVC, PU, and leather uppers. <a href="{% url 'single_product' 'graft-adhesive' %}" class="text-[#AB0716] font-semibold hover:underline">Graft CR Adhesive</a> is a grafted chloroprene formula offering strong cold or warm contact grab on primed EVA, rubber, and synthetic substrates.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q04 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="products">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q04 · PRODUCTS &amp; SUBSTRATES</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                What is the difference between Acetic Silicone and Neutral Silicone Sealant?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                <a href="{% url 'single_product' 'silicone-sealant' %}" class="text-[#AB0716] font-semibold hover:underline">Acetic Silicone Sealant</a> cures fast with a slight vinegar odor and is ideal for glass, ceramic tiles, and sanitary ware. <a href="{% url 'single_product' 'silicone-sealant-neutral' %}" class="text-[#AB0716] font-semibold hover:underline">Neutral Cure Silicone Sealant</a> is low-odor and non-corrosive—safe for mirrors, coated metals, marble/stone, and sensitive plastics.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q05 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="products">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q05 · PRODUCTS &amp; SUBSTRATES</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                Why choose White SB602 over Clear SBS Sprayable Adhesive for foam &amp; mattresses?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Both provide low-viscosity spray atomization and soft, non-hardening foam seams. <a href="{% url 'single_product' 'sbs-sprayable-adhesive-white-sb602' %}" class="text-[#AB0716] font-semibold hover:underline">SB602 White</a> adds visual spray-coverage contrast on white PU foam and mattress ticking so operators avoid missed spots or over-spraying.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q06 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="application">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q06 · APPLICATION &amp; CURING</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                How long should I wait after applying adhesive before pressing substrates together?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Allow solvents to flash off completely until the film feels dry to the back of a finger yet tacky (typically <strong>3–8 minutes</strong> for SBS spray adhesives and <strong>10–20 minutes</strong> for brush-grade PU or Synthetic Rubber contact adhesives, depending on factory temperature and humidity). Pressing before solvent flash-off can trap vapor and weaken bond strength.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q07 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="application">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q07 · APPLICATION &amp; CURING</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                What spray gun nozzle size and air pressure work best for SBS Spray Adhesive?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Use a standard gravity or pressure-feed adhesive spray gun with a <strong>1.5 mm to 2.0 mm nozzle</strong> at <strong>3.5–5.0 bar (50–70 PSI)</strong> air pressure, holding the gun 20–30 cm from the foam or panel surface for a uniform web pattern without cobwebbing.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q08 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="application">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q08 · APPLICATION &amp; CURING</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                How long does Nail Free construction adhesive take to reach full load strength?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                <a href="{% url 'single_product' 'nail-free-sealant' %}" class="text-[#AB0716] font-semibold hover:underline">Nail Free</a> provides high initial grab within minutes of firm pressing; heavy vertical panels, skirting boards, or decorative trims should be braced or supported for <strong>24 hours</strong> while full structural cure completes over 48–72 hours.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q09 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="ordering">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q09 · MOQ, PACKS &amp; DELIVERY</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                What pack sizes and Minimum Order Quantities (MOQ) are available?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Industrial liquid adhesives, primers, and cleaners are supplied in <strong>3 L tins</strong>, <strong>15 L pails</strong>, and <strong>200 L bulk drums</strong>. Silicone sealants and Nail Free come in <strong>300 ml cartridges</strong> (24 pcs/carton), Cyanoacrylate Super Glue in <strong>20 g &amp; 50 g bottles</strong>, and Aerosol Spray Paints in <strong>400 ml cans</strong>. Contact our sales desk for exact factory or distributor MOQs.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="ordering">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q10 · MOQ, PACKS &amp; DELIVERY</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                Do you deliver nationwide across Bangladesh and how fast is dispatch?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Yes. From our Rupganj manufacturing plant and Dhaka distribution network, we supply factories and hardware dealers across Dhaka, Narayanganj, Gazipur, Savar, Chattogram, Bogura, Khulna, and Sylhet. Standard in-stock grades typically dispatch within <strong>24–48 hours</strong> of order confirmation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="ordering">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q11 · MOQ, PACKS &amp; DELIVERY</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                Can we request trial sample packs or custom viscosity formulations?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Yes. Share your substrate materials, application method, and monthly volume via our <a href="{% url 'contact' %}" class="text-[#AB0716] font-semibold hover:underline">Contact &amp; Quote Desk</a>. Our Rupganj R&amp;D lab can provide trial samples and adjust solids content, viscosity, or open time for recurring bulk orders.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="quality">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q12 · QC, STORAGE &amp; SAFETY</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                What quality tests does Uniworld run before releasing a batch?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Under our <strong>ISO 9001:2015</strong> quality management system, every production batch at Rupganj undergoes Brookfield viscosity verification, non-volatile solids percentage checks, open-tack timing, 180° peel strength testing, and 12-month retained sample archiving. See our <a href="{% url 'rnd' %}" class="text-[#AB0716] font-semibold hover:underline">R&amp;D &amp; Quality Lab</a> page for details.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="quality">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q13 · QC, STORAGE &amp; SAFETY</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                What is the shelf life and recommended warehouse storage condition?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                Unopened containers have a typical shelf life of <strong>12 months</strong> when stored tightly sealed in a cool, dry, well-ventilated area between <strong>15°C and 30°C</strong>, away from direct sunlight, heat sources, sparks, and open flames. Always reseal tins and pails immediately after dispensing to prevent solvent evaporation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="faq-card rounded-2xl bg-white border border-slate-200 transition-all duration-300" data-cat="quality">
+          <button type="button" aria-expanded="false" class="faq-toggle w-full px-5 sm:px-7 py-5 text-left flex items-center justify-between gap-4 cursor-pointer">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#AB0716] font-bold block">Q14 · QC, STORAGE &amp; SAFETY</span>
+              <span class="font-display font-bold text-base sm:text-lg text-[#0C0E12] block">
+                How can we obtain Technical Data Sheets (TDS) and Safety Data Sheets (SDS)?
+              </span>
+            </div>
+            <span class="faq-plus-icon w-8 h-8 rounded-full bg-slate-100 text-[#0C0E12] flex items-center justify-center font-mono text-lg shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="px-5 sm:px-7 pb-6 pt-3 border-t border-slate-100 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                You can download available product catalogues and company profiles from our <a href="{% url 'downloads' %}" class="text-[#AB0716] font-semibold hover:underline">Downloads</a> page, or request grade-specific TDS and SDS documents directly through our <a href="{% url 'contact' %}" class="text-[#AB0716] font-semibold hover:underline">Contact Desk</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile-only Bottom CTA -->
+        <div class="lg:hidden rounded-2xl bg-[#0C0E12] text-white p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6">
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-widest text-rose-400 font-bold">Still Have a Question?</span>
+            <h3 class="font-display text-xl font-bold text-white mt-0.5">Speak With Our Technical Team</h3>
+          </div>
+          <a href="{% url 'contact' %}" class="btn-primary-glow px-6 py-3 text-xs font-semibold text-center shrink-0">
+            Ask a Specialist →
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Smooth Accordion Toggle
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const card = this.closest('.faq-card');
+      const isOpen = card.classList.contains('is-open');
+
+      document.querySelectorAll('.faq-card').forEach(c => {
+        c.classList.remove('is-open');
+        c.querySelector('.faq-toggle')?.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        card.classList.add('is-open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Category & Search Filter
+  let activeFaqCat = 'all';
+  function filterFaqs() {
+    const q = (document.getElementById('faq-search')?.value || '').toLowerCase().trim();
+    document.querySelectorAll('.faq-card').forEach(card => {
+      const matchCat = activeFaqCat === 'all' || card.dataset.cat === activeFaqCat;
+      const matchText = !q || card.textContent.toLowerCase().includes(q);
+      card.classList.toggle('hidden', !(matchCat && matchText));
+    });
+  }
+
+  document.querySelectorAll('.faq-cat-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      activeFaqCat = this.dataset.cat;
+      document.querySelectorAll('.faq-cat-btn').forEach(b => {
+        b.classList.remove('bg-[#0C0E12]', 'text-white');
+        b.classList.add('bg-slate-100', 'text-slate-700');
+      });
+      this.classList.remove('bg-slate-100', 'text-slate-700');
+      this.classList.add('bg-[#0C0E12]', 'text-white');
+      filterFaqs();
+    });
+  });
+
+  document.getElementById('faq-search')?.addEventListener('input', filterFaqs);
+</script>
+{% endblock %}

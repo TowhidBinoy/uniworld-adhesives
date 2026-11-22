@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+{% block og_type %}product{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'product' %}" }{% if product.category %},
+        { "@type": "ListItem", "position": 3, "name": "{{ product.category.name|escapejs }}", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'category_products' product.category.slug|lower %}" },
+        { "@type": "ListItem", "position": 4, "name": "{{ product.name|escapejs }}", "item": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" }{% else %},
+        { "@type": "ListItem", "position": 3, "name": "{{ product.name|escapejs }}", "item": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" }{% endif %}
+      ]
+    },
+    {
+      "@type": "Product",
+      "name": "{{ product.display_h1|escapejs }}",
+      "description": "{{ meta_description|escapejs }}",
+      "brand": { "@type": "Brand", "name": "Uniworld Adhesives" },
+      "manufacturer": { "@type": "Organization", "name": "Uniworld Adhesives" }
+    }{% if product.faqs %},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in product.faqs %}
+        {
+          "@type": "Question",
+          "name": "{{ item.question|escapejs }}",
+          "acceptedAnswer": { "@type": "Answer", "text": "{{ item.answer|escapejs }}" }
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. DARK PRODUCT HERO + BREADCRUMB + SINGLE H1 -->
+<section class="relative grid-blueprint-dark text-white border-b border-white/10 overflow-hidden">
+  <img
+    src="{% static 'product/images/product/bg2.png' %}"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-luminosity pointer-events-none"
+  />
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <!-- Clean Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="font-mono text-xs text-slate-400 mb-8 flex flex-wrap items-center gap-2">
+      <a href="{% url 'index' %}" class="hover:text-white transition">Home</a>
+      <span>›</span>
+      <a href="{% url 'product' %}" class="hover:text-white transition">Products</a>
+      {% if product.category %}
+      <span>›</span>
+      <a href="{% url 'category_products' product.category.slug|lower %}" class="hover:text-white transition">{{ product.category.name }}</a>
+      {% endif %}
+      <span>›</span>
+      <span class="text-white">{{ product.name }}</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <!-- Product Gallery Stage (5 Cols) -->
+      <div class="lg:col-span-5" data-aos="fade-right">
+        <div class="rounded-3xl bg-[#141821] border border-white/15 p-8 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute w-52 h-52 rounded-full bg-[#AB0716]/15 blur-xl"></div>
+          {% if product.feature_image %}
+          <img
+            id="main-product-img"
+            src="{{ product.feature_image.src }}"
+            alt="{{ product.feature_image.get_alt }}"
+            class="relative z-10 max-h-72 w-auto object-contain float-slow drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)]"
+          />
+          {% else %}
+          <img
+            src="{% static 'product/images/product/01.png' %}"
+            alt="{{ product.name }} - Uniworld Adhesives Bangladesh"
+            class="relative z-10 max-h-72 w-auto object-contain float-slow"
+          />
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Product Summary & Pack Size Selector (7 Cols) -->
+      <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {% if product.category %}
+          <span class="font-mono text-xs uppercase tracking-wider px-3 py-1 rounded bg-[#AB0716] text-white font-bold">
+            {{ product.category.name }}
+          </span>
+          {% endif %}
+          <span class="font-mono text-xs px-3 py-1 rounded bg-white/10 text-slate-200">
+            ISO 9001:2015 Certified
+          </span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          {{ product.display_h1 }}
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+          {{ product.description }}
+        </p>
+
+        {% if product.get_sizes_list %}
+        <div id="product-sizes-container" class="pt-2">
+          <p class="font-mono text-xs uppercase tracking-wider text-slate-400 mb-3">Select Available Pack Size(s):</p>
+          <div class="flex flex-wrap gap-2.5">
+            {% for size in product.get_sizes_list %}
+            <label class="cursor-pointer">
+              <input type="checkbox" value="{{ size }}" class="product-size-checkbox peer sr-only" />
+              <span class="inline-block px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-sm font-mono text-white peer-checked:bg-[#AB0716] peer-checked:border-[#AB0716] transition">
+                {{ size }}
+              </span>
+            </label>
+            {% endfor %}
+          </div>
+          <p id="size-warning" class="text-rose-400 text-xs mt-2 hidden">Please select at least one pack size before requesting a quote.</p>
+        </div>
+        {% endif %}
+
+        <div class="flex flex-wrap items-center gap-4 pt-3">
+          <button
+            type="button"
+            onclick="handleGetQuote('{{ product.uuid }}', '{{ product.name|escapejs }}')"
+            class="btn-primary-glow px-8 py-4 text-sm sm:text-base font-semibold inline-flex items-center gap-2.5 cursor-pointer"
+          >
+            <span>Request Bulk Quote</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </button>
+
+          <a href="{% url 'downloads' %}" class="px-5 py-4 rounded-lg border border-white/20 hover:border-white text-xs sm:text-sm font-mono text-white transition">
+            Download Catalogue (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FULL-WIDTH ALIGNED STRUCTURED PRODUCT DETAILS + STICKY SIDEBAR -->
+<section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+      <!-- Left Main Technical Content (8 Cols) -->
+      <div class="lg:col-span-8 space-y-14">
+
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12] mb-4">
+            What is {{ product.name }}?
+          </h2>
+          <div class="text-slate-700 text-base leading-relaxed space-y-4">
+            <p>{{ product.description }}</p>
+            <p>
+              Manufactured at Uniworld Adhesives' ISO 9001:2015 certified facility in Rupganj, Narayanganj, {{ product.name }} undergoes strict batch-by-batch viscosity and bonding verification to ensure consistent performance across factories and workshops in Bangladesh.
+            </p>
+          </div>
+        </div>
+
+        {% if 'polyurethane-adhesive' in product.slug %}
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-8">
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mb-4">Standard vs. Premium PU Adhesive Comparison</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="border-b border-slate-300 font-mono text-xs uppercase text-slate-500">
+                  <th class="py-3 pr-4">Parameter</th>
+                  <th class="py-3 px-4">Standard PU Adhesive</th>
+                  <th class="py-3 pl-4 text-[#AB0716]">Premium PU Adhesive</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr><td class="py-3 pr-4 font-semibold">24-Hour Peel Strength</td><td class="py-3 px-4 font-mono">4.1 N/mm</td><td class="py-3 pl-4 font-mono font-bold text-emerald-700">5.2 N/mm</td></tr>
+                <tr><td class="py-3 pr-4 font-semibold">Heat Resistance</td><td class="py-3 px-4">Up to 70°C</td><td class="py-3 pl-4 font-semibold">Up to 85°C (Tropical / Export)</td></tr>
+                <tr><td class="py-3 pr-4 font-semibold">Best For</td><td class="py-3 px-4">Domestic footwear, PVC &amp; PU soles</td><td class="py-3 pl-4">Export footwear, heavy-stress &amp; humid climates</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if 'silicone-sealant' in product.slug %}
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-8">
+          <h3 class="font-display text-xl font-bold text-[#0C0E12] mb-3">Acetic vs. Neutral Cure Silicone: Which One Should You Choose?</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            <strong><a href="{% url 'single_product' 'silicone-sealant' %}" class="text-[#AB0716] hover:underline">Acetic Silicone Sealant</a></strong> cures rapidly with a vinegar-like scent and is ideal for non-porous glass, ceramic bathroom tiles, and glazed surfaces. For mirrors, galvanized steel, anodized aluminium, masonry, and natural stone, choose <strong><a href="{% url 'single_product' 'silicone-sealant-neutral' %}" class="text-[#AB0716] hover:underline">Neutral Cure Silicone Sealant</a></strong>.
+          </p>
+        </div>
+        {% endif %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="rounded-2xl border border-slate-200 p-7">
+            <h2 class="font-display text-2xl font-bold text-[#0C0E12] mb-4">Key features</h2>
+            <ul class="space-y-3 text-sm text-slate-700">
+              {% for feat in product.get_features_list %}
+              <li class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-rose-50 text-[#AB0716] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span>{{ feat }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-7">
+            <h2 class="font-display text-2xl font-bold text-[#0C0E12] mb-4">Applications &amp; suitable materials</h2>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              {{ product.applications }}
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12] mb-5">Technical specifications</h2>
+          <div class="rounded-2xl border border-slate-200 overflow-hidden">
+            <table class="w-full text-left text-sm border-collapse">
+              <tbody class="divide-y divide-slate-200">
+                {% for key, val in product.tech_specs.items %}
+                <tr class="hover:bg-slate-50">
+                  <th class="py-3.5 px-6 bg-slate-50 font-mono text-xs uppercase text-slate-600 w-2/5">{{ key }}</th>
+                  <td class="py-3.5 px-6 font-medium text-[#0C0E12]">{{ val }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12] mb-5">How to apply</h2>
+          <ol class="space-y-3 text-sm sm:text-base text-slate-700 list-decimal pl-5">
+            {% for step in product.get_steps_list %}
+            <li class="leading-relaxed pl-1">{{ step }}</li>
+            {% endfor %}
+          </ol>
+        </div>
+
+        {% if product.faqs %}
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12] mb-5">Frequently asked questions</h2>
+          <div class="space-y-3">
+            {% for faq in product.faqs %}
+            <details class="group rounded-xl border border-slate-200 bg-slate-50 p-5" open>
+              <summary class="flex items-center justify-between font-display font-bold text-base text-[#0C0E12] cursor-pointer list-none">
+                <span>{{ faq.question }}</span>
+                <span class="text-[#AB0716] font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p class="text-sm text-slate-600 mt-3 leading-relaxed">{{ faq.answer }}</p>
+            </details>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Right Sticky B2B Order & Lab Card (Popup opens on click) -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+        <div class="rounded-2xl bg-[#0C0E12] text-white p-7 border border-white/10 shadow-xl space-y-5">
+          <span class="font-mono text-[11px] uppercase tracking-wider text-[#AB0716] font-bold">Direct Factory Supply</span>
+          <h2 class="font-display text-2xl font-bold text-white">Pack sizes &amp; bulk supply</h2>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Available in <strong>{{ product.sizes|default:"3 L, 15 L, and Bulk Drums" }}</strong>. Fast dispatch from our Rupganj plant across Dhaka, Gazipur, Savar, and Chattogram.
+          </p>
+          <button
+            type="button"
+            onclick="handleGetQuote('{{ product.uuid }}', '{{ product.name|escapejs }}')"
+            class="btn-primary-glow w-full py-3.5 text-sm font-semibold cursor-pointer"
+          >
+            Request Bulk Quote
+          </button>
+          <div class="pt-4 border-t border-white/10 text-xs font-mono text-slate-400 space-y-1.5">
+            <p>Hotline: <a href="tel:+8801898802405" class="text-white hover:text-[#AB0716]">+880 1898-802405</a></p>
+            <p>Email: <a href="mailto:info@uniworldsolutions.com" class="text-white hover:text-[#AB0716]">info@uniworldsolutions.com</a></p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 space-y-3">
+          <p class="font-display font-bold text-base text-[#0C0E12]">Need Lab Substrate Testing?</p>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Send your sole, foam, or laminate sample to our Rupganj R&amp;D lab for free peel-strength testing.
+          </p>
+          <a href="{% url 'rnd' %}" class="inline-block text-xs font-bold text-[#AB0716] hover:underline">Learn About R&amp;D Lab →</a>
+        </div>
+      </aside>
+
+    </div>
+
+    {% if related_products %}
+    <div class="mt-20 pt-14 border-t border-slate-200">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0C0E12] mb-8">Related products</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {% for rel in related_products %}
+        <a href="{% url 'single_product' rel.slug %}" class="group rounded-2xl border border-slate-200 p-5 hover:border-[#AB0716] hover:shadow-lg transition">
+          <div class="h-36 flex items-center justify-center bg-slate-50 rounded-xl mb-4 p-3">
+            {% if rel.feature_image %}
+            <img src="{{ rel.feature_image.src }}" alt="{{ rel.feature_image.get_alt }}" class="max-h-28 w-auto object-contain group-hover:scale-105 transition-transform" />
+            {% else %}
+            <img src="{% static 'product/images/product/01.png' %}" alt="{{ rel.name }}" class="max-h-28 w-auto object-contain" />
+            {% endif %}
+          </div>
+          <p class="font-display font-bold text-base text-[#0C0E12] group-hover:text-[#AB0716] transition">{{ rel.name }}</p>
+          <span class="block text-xs text-slate-500 mt-1">View Specs →</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}
